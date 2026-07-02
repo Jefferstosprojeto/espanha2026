@@ -7,657 +7,525 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-:root{--gold:#F0C040;--silver:#A8B5C8;--white:#F5F0E8;--bg:#080C14;--surface:#0F1520;--r:14px}
+:root{--gold:#F0C040;--silver:#A8B5C8;--white:#F5F0E8;--bg:#080C14;--r:14px}
 html,body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
-.phase{display:none}.phase.active{display:block}
 
 /* TOP BAR */
-.top-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,12,20,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
-.top-logo{font-family:'Playfair Display',serif;font-size:14px;font-weight:700}
-.top-logo span{color:var(--gold);font-style:italic}
-.top-date{font-size:10px;color:var(--silver);font-weight:500}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,12,20,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:14px;font-weight:700}
+.logo em{color:var(--gold);font-style:italic}
+.topdate{font-size:10px;color:var(--silver)}
 
-/* COUNTDOWN */
-.cd-hero{background:linear-gradient(160deg,#6B0808 0%,#B22222 30%,#1A1A4C 65%,#0A3C2C 100%);min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px 40px;position:relative;overflow:hidden}
-.cd-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,rgba(240,192,64,.1) 0%,transparent 65%)}
-.cd-flag{font-size:52px;margin-bottom:20px;animation:pulse 2.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.cd-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1.15;margin-bottom:8px}
+/* COUNTDOWN BANNER */
+.cd-banner{background:linear-gradient(135deg,#6B0808,#B22222 50%,#1A1A3C);padding:80px 20px 28px;text-align:center}
+.cd-flag{font-size:44px;margin-bottom:14px}
+.cd-title{font-family:'Playfair Display',serif;font-size:clamp(24px,7vw,38px);font-weight:900;line-height:1.2;margin-bottom:6px}
 .cd-title em{color:var(--gold);font-style:italic}
-.cd-sub{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:32px;letter-spacing:.4px}
-.cd-timer{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:32px;max-width:320px;width:100%}
-.cd-unit{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 6px}
-.cd-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1;color:var(--gold);display:block}
-.cd-lbl{font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-top:3px;display:block}
-.cd-route{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center;font-size:11px;color:rgba(255,255,255,.6);margin-bottom:24px}
-.cd-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.cd-city{font-weight:600;color:rgba(255,255,255,.85)}
-.cd-badge{background:rgba(240,192,64,.15);border:1px solid rgba(240,192,64,.3);border-radius:30px;padding:8px 18px;font-size:12px;color:var(--gold);font-weight:600}
+.cd-sub{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:20px}
+.cd-timer{display:flex;gap:8px;justify-content:center;margin-bottom:8px}
+.cd-unit{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 10px;min-width:64px;text-align:center}
+.cd-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold);display:block}
+.cd-lbl{font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;display:block;margin-top:2px}
+.cd-note{font-size:11px;color:rgba(255,255,255,.45);margin-top:10px}
 
-/* HERO */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:all .8s ease}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,12,20,.97) 0%,rgba(8,12,20,.55) 50%,rgba(8,12,20,.15) 100%)}
-.hero-content{position:relative;z-index:2;padding:24px 20px 28px}
-.pt80{padding-top:80px}
+/* LIVE BANNER */
+.live-banner{background:linear-gradient(135deg,#0A3C1A,#1A7A45);padding:76px 20px 20px;text-align:center}
+.live-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(240,192,64,.2);border:1px solid rgba(240,192,64,.4);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--gold);margin-bottom:10px}
+.live-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;margin-bottom:4px}
+.live-sub{font-size:11px;color:rgba(255,255,255,.6)}
 
-.city-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:30px;padding:5px 13px;font-size:12px;font-weight:600;margin-bottom:12px}
-.day-eyebrow{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px}
-.day-headline{font-family:'Playfair Display',serif;font-size:clamp(24px,6.5vw,36px);font-weight:900;line-height:1.2;margin-bottom:8px}
-.day-datestr{font-size:11px;color:rgba(255,255,255,.55);margin-bottom:16px}
-.hotel-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:7px 12px;font-size:12px;font-weight:500}
+/* COMPLETE BANNER */
+.done-banner{background:linear-gradient(135deg,#0D4A1E,#27AE60);padding:76px 20px 28px;text-align:center}
+.done-trophy{font-size:56px;margin-bottom:12px}
+.done-title{font-family:'Playfair Display',serif;font-size:clamp(22px,6vw,34px);font-weight:900;line-height:1.2;margin-bottom:8px}
+.done-title em{color:var(--gold);font-style:italic}
 
-/* SECTION LABELS */
-.sec-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:13px}
-.sec-label::after{content:'';flex:1;height:1px;background:rgba(240,192,64,.2)}
-.sec-label.silver{color:var(--silver)}
-.sec-label.silver::after{background:rgba(168,181,200,.15)}
+/* DAY SELECTOR */
+.day-selector{padding:16px 0 4px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.07)}
+.ds-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);padding:0 16px;margin-bottom:10px}
+.ds-scroll{overflow-x:auto;scrollbar-width:none;padding:0 16px 4px}
+.ds-scroll::-webkit-scrollbar{display:none}
+.ds-inner{display:flex;gap:8px;min-width:max-content}
+.ds-btn{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;flex-shrink:0;border:none;background:none;color:var(--white);font-family:'Inter',sans-serif}
+.ds-circle{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);transition:all .2s}
+.ds-btn.active .ds-circle{background:var(--gold);border-color:var(--gold);transform:scale(1.12);box-shadow:0 0 16px rgba(240,192,64,.45)}
+.ds-btn.today .ds-circle{border-color:var(--gold);box-shadow:0 0 10px rgba(240,192,64,.3)}
+.ds-btn.past .ds-circle{background:rgba(39,174,96,.15);border-color:rgba(39,174,96,.3)}
+.ds-name{font-size:8px;color:rgba(255,255,255,.4);max-width:48px;text-align:center;line-height:1.2}
+.ds-btn.active .ds-name{color:var(--gold);font-weight:700}
+.ds-sep{width:6px;height:2px;background:rgba(255,255,255,.08);align-self:center;flex-shrink:0}
+
+/* DAY HERO */
+.day-hero{position:relative;min-height:260px;display:flex;align-items:flex-end}
+.hero-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,12,20,.95) 0%,rgba(8,12,20,.3) 100%)}
+.hero-text{position:relative;z-index:2;padding:18px 16px}
+.hero-eyebrow{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,5.5vw,30px);font-weight:900;line-height:1.25;margin-bottom:8px}
+.hero-hotel{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:5px 10px;font-size:11px}
+
+/* CONTENT SECTIONS */
+.section{padding:16px}
+.sec-hd{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sec-hd::after{content:'';flex:1;height:1px;background:rgba(240,192,64,.2)}
+.sec-hd.silver{color:var(--silver)}
+.sec-hd.silver::after{background:rgba(168,181,200,.15)}
 
 /* ACTIVITIES */
-.acts-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:15px}
-.act-row{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.act-row:last-child{border:none;padding-bottom:0}
-.act-t{font-size:10px;color:var(--silver);min-width:40px;flex-shrink:0;margin-top:2px;font-weight:500}
-.act-i{font-size:15px;flex-shrink:0}
-.act-txt{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.85)}
-.act-txt strong{color:var(--white);font-weight:600}
+.acts{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:13px}
+.act{display:flex;gap:9px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.act:last-child{border:none;padding-bottom:0}
+.act-t{font-size:10px;color:var(--silver);min-width:38px;flex-shrink:0;margin-top:1px;font-weight:500}
+.act-i{font-size:14px;flex-shrink:0}
+.act-x{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.85)}
+.act-x strong{color:var(--white)}
 
-/* PHOTO STRIP */
-.scroll-x{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.scroll-x::-webkit-scrollbar{display:none}
-.strip{display:flex;gap:10px;padding:0 20px 4px;min-width:max-content}
-.ph-card{width:155px;flex-shrink:0;border-radius:12px;overflow:hidden;position:relative;cursor:default}
-.ph-card img{width:100%;height:115px;object-fit:cover;display:block;background:rgba(255,255,255,.05)}
-.ph-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.78));padding:6px 8px;font-size:10px;font-weight:600;line-height:1.2}
+/* SCROLL STRIPS */
+.xscroll{overflow-x:auto;scrollbar-width:none;padding:0 16px 4px}
+.xscroll::-webkit-scrollbar{display:none}
+.xinner{display:flex;gap:10px;min-width:max-content}
 
-/* FOOD STRIP */
-.food-card{width:148px;flex-shrink:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden}
-.food-img{width:100%;height:90px;object-fit:cover;display:block;background:rgba(255,255,255,.04)}
-.food-emoji-fallback{width:100%;height:90px;display:flex;align-items:center;justify-content:center;font-size:38px}
-.food-body{padding:9px 10px}
-.food-name{font-size:12px;font-weight:700;margin-bottom:3px;line-height:1.2}
-.food-desc{font-size:10px;color:rgba(255,255,255,.55);line-height:1.35;margin-bottom:4px}
-.food-where{font-size:9px;color:var(--gold);font-weight:600}
+/* PHOTO CARDS */
+.ph{width:150px;flex-shrink:0;border-radius:11px;overflow:hidden;position:relative}
+.ph img{width:100%;height:110px;object-fit:cover;display:block;background:rgba(255,255,255,.05)}
+.ph-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:5px 7px;font-size:10px;font-weight:600}
 
-/* TIMELINE */
-.tl-wrap{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:0 20px}
-.tl-wrap::-webkit-scrollbar{display:none}
-.tl-inner{display:flex;gap:6px;padding-bottom:4px;min-width:max-content}
-.tl-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;flex-shrink:0}
-.tl-bubble{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .2s;border:2px solid transparent}
-.tl-item.past .tl-bubble{background:rgba(255,255,255,.08);color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.08)}
-.tl-item.current .tl-bubble{background:var(--gold);color:#080C14;border-color:var(--gold);transform:scale(1.18);box-shadow:0 0 18px rgba(240,192,64,.5)}
-.tl-item.future .tl-bubble{background:rgba(255,255,255,.04);color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.07)}
-.tl-item.sel .tl-bubble{border-color:var(--gold)!important;box-shadow:0 0 10px rgba(240,192,64,.3)!important}
-.tl-lbl{font-size:8.5px;color:rgba(255,255,255,.38);font-weight:500;max-width:44px;text-align:center;line-height:1.2}
-.tl-item.current .tl-lbl{color:var(--gold);font-weight:700}
-.tl-sep{height:2px;width:6px;background:rgba(255,255,255,.08);align-self:center;flex-shrink:0}
+/* FOOD CARDS */
+.fc{width:145px;flex-shrink:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:11px;overflow:hidden}
+.fc-img{width:100%;height:86px;object-fit:cover;display:block;background:rgba(255,255,255,.04)}
+.fc-em{width:100%;height:86px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.fc-body{padding:8px 9px}
+.fc-name{font-size:11.5px;font-weight:700;margin-bottom:2px;line-height:1.2}
+.fc-desc{font-size:9.5px;color:rgba(255,255,255,.5);line-height:1.3;margin-bottom:3px}
+.fc-where{font-size:9px;color:var(--gold);font-weight:600}
 
-/* DAY PANEL */
-.day-panel{background:var(--surface);border-top:1px solid rgba(255,255,255,.07);display:none}
-.day-panel.open{display:block}
-.dp-head{padding:18px 20px 14px;display:flex;align-items:center;gap:12px}
-.dp-emoji{font-size:30px}
-.dp-meta .dp-n{font-size:10px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
-.dp-meta .dp-t{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.3}
-.dp-meta .dp-d{font-size:10px;color:var(--silver);margin-top:2px}
-.dp-hotel{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border-radius:9px;padding:7px 12px;font-size:11.5px;margin:0 20px 16px}
-.dp-badge{font-size:10px;font-weight:700;border-radius:20px;padding:3px 9px;margin-left:auto;white-space:nowrap}
-.dp-badge.past{background:rgba(39,174,96,.2);color:#27AE60}
-.dp-badge.future{background:rgba(240,192,64,.15);color:var(--gold)}
-.dp-px{padding:0 20px}
-.dp-pb{padding-bottom:20px}
-
-/* COMPLETE */
-.complete-hero{background:linear-gradient(160deg,#0D4A1E,#1A7A45 40%,#0D3A5C 100%);min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px 40px}
-.trophy{font-size:72px;margin-bottom:18px;animation:bounce .9s ease infinite alternate}
-@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-14px)}}
-.comp-title{font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,44px);font-weight:900;line-height:1.2;margin-bottom:12px}
-.comp-sub{font-size:14px;color:rgba(255,255,255,.7);max-width:300px;line-height:1.6;margin-bottom:30px}
-.mem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:340px;width:100%;margin-bottom:26px}
-.mem-card{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:10px;font-weight:700}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:320px;width:100%}
-.stat{background:rgba(255,255,255,.1);border-radius:12px;padding:13px 6px;text-align:center}
-.stat-n{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold);display:block}
-.stat-l{font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;margin-top:2px;display:block}
-
-.px{padding-left:20px;padding-right:20px}
-.pb16{padding-bottom:16px}
-.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(8,12,20,.9);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.06);padding:10px 20px 14px;text-align:center;font-size:10px;color:rgba(255,255,255,.35);z-index:50}
-.bottom-bar strong{color:rgba(255,255,255,.55)}
+.pb80{padding-bottom:80px}
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <div class="top-logo">🇵🇹 Santos na <span>Espanha</span> 🇪🇸</div>
-  <div class="top-date" id="top-dt"></div>
+<div class="topbar">
+  <div class="logo">🇵🇹 Santos na <em>Espanha</em> 🇪🇸</div>
+  <div class="topdate" id="top-dt"></div>
 </div>
 
-<!-- ══ COUNTDOWN ══ -->
-<div class="phase" id="phase-countdown">
-<div class="cd-hero">
-  <div class="cd-flag">🇵🇹✈️🇪🇸</div>
-  <h1 class="cd-title">Família Santos<br><em>na Espanha!</em></h1>
-  <p class="cd-sub">A aventura começa em breve — acompanhe aqui!</p>
-  <div class="cd-timer">
-    <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-lbl">Dias</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-lbl">Horas</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-lbl">Min</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">Seg</span></div>
-  </div>
-  <div class="cd-route">
-    <span class="cd-city">🇵🇹 Portugal</span><div class="cd-dot"></div>
-    <span class="cd-city">Madrid</span><div class="cd-dot"></div>
-    <span class="cd-city">Zaragoza</span><div class="cd-dot"></div>
-    <span class="cd-city">Barcelona</span><div class="cd-dot"></div>
-    <span class="cd-city">Salou</span><div class="cd-dot"></div>
-    <span class="cd-city">Toledo</span><div class="cd-dot"></div>
-    <span class="cd-city">🏠 Casa</span>
-  </div>
-  <div class="cd-badge">6 a 16 de Julho 2026 · 11 dias · ~2.400 km</div>
+<!-- Banner: changes based on date -->
+<div id="banner"></div>
 
-  <div style="margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:320px">
-    <button id="btn-explore" style="width:100%;background:var(--gold);color:#080C14;border:none;border-radius:14px;padding:14px 20px;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.3px;font-family:'Inter',sans-serif">
-      🗺️ Explorar os 11 dias da viagem
-    </button>
-    <p style="font-size:11px;color:rgba(255,255,255,.4);text-align:center">Toque para ver fotos, programa e gastronomia de cada dia</p>
-  </div>
-</div>
+<!-- Day selector: always visible -->
+<div class="day-selector">
+  <div class="ds-label">OS 11 DIAS DA VIAGEM</div>
+  <div class="ds-scroll"><div class="ds-inner" id="ds"></div></div>
 </div>
 
-<!-- ══ LIVE ══ -->
-<div class="phase" id="phase-live">
-  <div class="hero" id="live-hero">
-    <div class="hero-bg" id="hero-bg"></div>
-    <div class="hero-content">
-      <div id="back-btn" style="display:none;margin-bottom:12px">
-        <button id="btn-back" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:30px;padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">← Voltar</button>
-      </div>
-      <div class="city-tag"><span id="h-emoji">📍</span><span id="h-city">—</span></div>
-      <div class="day-eyebrow" id="h-num">DIA 1 DE 11</div>
-      <h1 class="day-headline" id="h-title">—</h1>
-      <div class="day-datestr" id="h-date">—</div>
-      <div class="hotel-chip">🏨 <span id="h-hotel">—</span></div>
-    </div>
-  </div>
-
-  <!-- ACTIVITIES -->
-  <div style="padding:20px 0 14px">
-    <div class="px"><div class="sec-label" id="h-acts-lbl">HOJE POR LÁ</div></div>
-    <div class="px pb16"><div class="acts-card" id="h-acts"></div></div>
-
-    <!-- FOTOS -->
-    <div class="px"><div class="sec-label silver">📸 FOTOS — O QUE VÃO VER</div></div>
-    <div class="scroll-x pb16"><div class="strip" id="h-photos"></div></div>
-
-    <!-- GASTRONOMIA -->
-    <div class="px"><div class="sec-label silver">🍽️ O QUE VÃO COMER</div></div>
-    <div class="scroll-x" style="padding-bottom:20px"><div class="strip" id="h-food"></div></div>
-  </div>
-
-  <!-- TIMELINE -->
-  <div style="padding:4px 0 8px">
-    <div class="px"><div class="sec-label" style="margin-bottom:11px">TODOS OS 11 DIAS</div></div>
-    <div class="tl-wrap"><div class="tl-inner" id="tl"></div></div>
-  </div>
-
-  <div class="day-panel" id="day-panel"></div>
-  <div style="height:70px"></div>
-</div>
-
-<!-- ══ COMPLETE ══ -->
-<div class="phase" id="phase-complete">
-<div class="complete-hero">
-  <div class="trophy">🏆</div>
-  <h1 class="comp-title">Viagem<br><span style="color:var(--gold);font-style:italic">Concluída!</span></h1>
-  <p class="comp-sub">Jefferson, Ana e Arthur regressaram a Portugal cheios de memórias e saudades da Espanha!</p>
-  <div class="mem-grid">
-    <div class="mem-card" style="background:linear-gradient(135deg,#8B1A1A,#C0392B)"><span style="font-size:26px">🏟️</span>Bernabéu</div>
-    <div class="mem-card" style="background:linear-gradient(135deg,#7D3C98,#1A5276)"><span style="font-size:26px">⛪</span>Sagrada Família</div>
-    <div class="mem-card" style="background:linear-gradient(135deg,#0E6655,#16A085)"><span style="font-size:26px">🎢</span>PortAventura</div>
-    <div class="mem-card" style="background:linear-gradient(135deg,#1A5276,#0E6655)"><span style="font-size:26px">⚽</span>Camp Nou</div>
-    <div class="mem-card" style="background:linear-gradient(135deg,#6B2D8B,#4A235A)"><span style="font-size:26px">🏰</span>Toledo</div>
-    <div class="mem-card" style="background:linear-gradient(135deg,#8B4513,#D35400)"><span style="font-size:26px">🌊</span>Barceloneta</div>
-  </div>
-  <div class="stats">
-    <div class="stat"><span class="stat-n">11</span><span class="stat-l">Dias</span></div>
-    <div class="stat"><span class="stat-n">4</span><span class="stat-l">Cidades</span></div>
-    <div class="stat"><span class="stat-n">2.4k</span><span class="stat-l">km</span></div>
+<!-- Selected day content -->
+<div class="day-hero" id="d-hero">
+  <div class="hero-img" id="d-bg"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow" id="d-eyebrow">DIA 1 DE 11</div>
+    <div class="hero-title" id="d-title">—</div>
+    <div class="hero-hotel" id="d-hotel">🏨 —</div>
   </div>
 </div>
-</div>
 
-<div class="bottom-bar"><strong>Santos na Espanha 2026</strong> · Actualiza todos os dias automaticamente 🌍</div>
+<div id="d-content" class="pb80"></div>
 
 <script>
-const W = 'https://upload.wikimedia.org/wikipedia/commons/thumb/';
-const P = (id,f,s='400px')=> W+id[0]+'/'+id.slice(0,2)+'/'+f+'/'+s+'-'+f;
+var TRIP_START = new Date('2026-07-06T00:00:00');
+var TRIP_END   = new Date('2026-07-17T00:00:00');
+var activeDay  = 0;
 
-const DAYS = [
-{n:1,date:'2026-07-06',emoji:'🚗',city:'Madrid',cityE:'🏙️',
+var DAYS = [
+{n:1,date:'2026-07-06',em:'🚗',city:'Madrid',
  title:'Chegámos a Madrid!',hotel:'ibis Madrid Norte Las Tablas',
  grad:'linear-gradient(160deg,#6B0808,#B22222 40%,#1A1A3C)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Gran_V%C3%ADa_%28Madrid%29_1.jpg/1200px-Gran_V%C3%ADa_%28Madrid%29_1.jpg',
  acts:[
-  {t:'07:00',i:'🚗',txt:'Partida de <strong>Montijo</strong> — a aventura começa!'},
-  {t:'12:30',i:'🛣️',txt:'Almoço em <strong>Badajoz</strong> — fronteira com Espanha'},
-  {t:'14:30',i:'🏨',txt:'Check-in no hotel em <strong>Las Tablas, Madrid</strong>'},
-  {t:'17:00',i:'⛲',txt:'Passeio pela <strong>Plaza Mayor</strong> e arredores'},
-  {t:'20:00',i:'🍺',txt:'Jantar no <strong>El Tigre</strong> — tapas grátis com a bebida!'},
- ],
+  {t:'07:00',i:'🚗',x:'Partida de <strong>Montijo, Portugal</strong> — a aventura começa!'},
+  {t:'12:30',i:'🛣️',x:'Almoço em <strong>Badajoz</strong> — última cidade portuguesa'},
+  {t:'14:30',i:'🏨',x:'Check-in <strong>ibis Madrid Norte Las Tablas</strong>'},
+  {t:'17:00',i:'⛲',x:'Passeio pela <strong>Plaza Mayor</strong> e centro histórico'},
+  {t:'20:00',i:'🍺',x:'Jantar no <strong>El Tigre</strong> — tapas grátis com a bebida!'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Gran_V%C3%ADa_%28Madrid%29_1.jpg/400px-Gran_V%C3%ADa_%28Madrid%29_1.jpg',c:'Gran Vía'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Plaza_Mayor%2C_Madrid%2C_Espa%C3%B1a%2C_2014-12-27%2C_DD_15.JPG/400px-Plaza_Mayor%2C_Madrid%2C_Espa%C3%B1a%2C_2014-12-27%2C_DD_15.JPG',c:'Plaza Mayor'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Puerta_del_sol_de_Madrid.jpg/400px-Puerta_del_sol_de_Madrid.jpg',c:'Puerta del Sol'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Palacio_Real_de_Madrid.jpg/400px-Palacio_Real_de_Madrid.jpg',c:'Palácio Real'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Palacio_Real_de_Madrid.jpg/400px-Palacio_Real_de_Madrid.jpg',c:'Palácio Real'}],
  food:[
-  {n:'Tortilla Española',e:'🍳',d:'Omelete grossa com batatas e cebola — o clássico espanhol',w:'Em qualquer bar de Madrid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/A_Spanish_Omelette.jpg/300px-A_Spanish_Omelette.jpg'},
-  {n:'Churros con Chocolate',e:'🍫',d:'Massa frita mergulhada em chocolate quente espesso',w:'Chocolatería San Ginés (aberto 24h!)',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Churros_fritos.jpg/300px-Churros_fritos.jpg'},
-  {n:'Jamón Ibérico',e:'🥩',d:'O melhor presunto do mundo — de bolota, derrete na boca',w:'Mercado de San Miguel',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Jamon-Serrano.jpg/300px-Jamon-Serrano.jpg'},
-  {n:'Vermut con Tapas',e:'🍸',d:'Aperitivo vermouth com croquetas e pimentos fritos',w:'Bairro de La Latina',img:''},
- ]},
-{n:2,date:'2026-07-07',emoji:'🏛️',city:'Madrid',cityE:'🎨',
+  {n:'Tortilla Española',e:'🍳',d:'Omelete grossa com batatas — o clássico espanhol',w:'Em qualquer bar de Madrid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/A_Spanish_Omelette.jpg/300px-A_Spanish_Omelette.jpg'},
+  {n:'Churros con Chocolate',e:'🍫',d:'Massa frita em chocolate quente espesso',w:'Chocolatería San Ginés (24h!)',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Churros_fritos.jpg/300px-Churros_fritos.jpg'},
+  {n:'Jamón Ibérico',e:'🥩',d:'O melhor presunto do mundo — de bolota',w:'Mercado de San Miguel',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Jamon-Serrano.jpg/300px-Jamon-Serrano.jpg'},
+  {n:'Patatas Bravas',e:'🥔',d:'Batatas com molho picante — tapa mais popular',w:'Docamar',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Patatas_bravas_Madrid.jpg/300px-Patatas_bravas_Madrid.jpg'}]},
+
+{n:2,date:'2026-07-07',em:'🏛️',city:'Madrid',
  title:'Madrid — Arte e Cultura!',hotel:'ibis Madrid Norte Las Tablas',
  grad:'linear-gradient(160deg,#7B1515,#A31515 35%,#1A1A3C)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Museo_del_Prado_2016_%2825185969599%29.jpg/1200px-Museo_del_Prado_2016_%2825185969599%29.jpg',
  acts:[
-  {t:'10:00',i:'🌳',txt:'<strong>Parque del Retiro</strong> — barco no lago e cristal palace'},
-  {t:'13:00',i:'🛒',txt:'Almoço no <strong>Mercado de San Miguel</strong>'},
-  {t:'15:00',i:'🏙️',txt:'Passeio pela <strong>Gran Vía</strong> e compras'},
-  {t:'18:00',i:'🖼️',txt:'<strong>Museo del Prado</strong> — GRÁTIS a partir das 18h!'},
-  {t:'19:30',i:'🎨',txt:'<strong>Reina Sofía</strong> — Guernica de Picasso — GRÁTIS às 19h!'},
- ],
+  {t:'10:00',i:'🌳',x:'<strong>Parque del Retiro</strong> — barco no lago e Crystal Palace'},
+  {t:'13:00',i:'🛒',x:'Almoço no <strong>Mercado de San Miguel</strong>'},
+  {t:'18:00',i:'🖼️',x:'<strong>Museo del Prado</strong> — GRÁTIS a partir das 18h!'},
+  {t:'19:30',i:'🎨',x:'<strong>Reina Sofía</strong> — Guernica de Picasso — GRÁTIS às 19h!'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Museo_del_Prado_2016_%2825185969599%29.jpg/400px-Museo_del_Prado_2016_%2825185969599%29.jpg',c:'Museo del Prado'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/El_Retiro_Madrid.jpg/400px-El_Retiro_Madrid.jpg',c:'Parque del Retiro'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Guernica-Restaured.jpg/400px-Guernica-Restaured.jpg',c:'Guernica — Picasso'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Puerta_de_Alcala_%28Madrid%29_06.jpg/400px-Puerta_de_Alcala_%28Madrid%29_06.jpg',c:'Puerta de Alcalá'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Guernica-Restaured.jpg/400px-Guernica-Restaured.jpg',c:'Guernica — Picasso'}],
  food:[
-  {n:'Cocido Madrileño',e:'🍲',d:'Cozido de grão-de-bico com carne, morcela e legumes — prato da cidade',w:'La Bola Taberna (1870!)',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cocido_de_Madrid_con_perejil.jpg/300px-Cocido_de_Madrid_con_perejil.jpg'},
-  {n:'Patatas Bravas',e:'🥔',d:'Batatas fritas com molho picante ou alioli — tapa mais popular',w:'Docamar — as originais de Madrid',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Patatas_bravas_Madrid.jpg/300px-Patatas_bravas_Madrid.jpg'},
-  {n:'Bocadillo de Calamares',e:'🦑',txt:'Sandes de lulas fritas — o sandes ícone de Madrid',w:'Plaza Mayor — bares ao redor',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bocadillo_de_calamares_%28Madrid%29.jpg/300px-Bocadillo_de_calamares_%28Madrid%29.jpg'},
-  {n:'Croquetas de Jamón',e:'🧆',d:'Croquetes cremosos de presunto — imperdíveis como entrada',w:'Em qualquer restaurante',img:''},
- ]},
-{n:3,date:'2026-07-08',emoji:'⚽',city:'Madrid',cityE:'🏟️',
+  {n:'Cocido Madrileño',e:'🍲',d:'Cozido de grão-de-bico com carnes — prato da cidade',w:'La Bola Taberna (1870!)',img:''},
+  {n:'Bocadillo de Calamares',e:'🦑',d:'Sandes de lulas fritas — ícone de Madrid',w:'Plaza Mayor',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bocadillo_de_calamares_%28Madrid%29.jpg/300px-Bocadillo_de_calamares_%28Madrid%29.jpg'},
+  {n:'Churros con Chocolate',e:'🍫',d:'O lanche mais famoso de Espanha!',w:'Chocolatería San Ginés',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Churros_fritos.jpg/300px-Churros_fritos.jpg'},
+  {n:'Croquetas de Jamón',e:'🧆',d:'Croquetes cremosos de presunto ibérico',w:'Qualquer bar de Madrid',img:''}]},
+
+{n:3,date:'2026-07-08',em:'⚽',city:'Madrid',
  title:'Tour no Bernabéu! 🏟️',hotel:'ibis Madrid Norte Las Tablas',
  grad:'linear-gradient(160deg,#8B0000,#C0392B 40%,#2C0808)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Estadio_Santiago_Bernab%C3%A9u_2022.jpg/1200px-Estadio_Santiago_Bernab%C3%A9u_2022.jpg',
  acts:[
-  {t:'10:00',i:'🏟️',txt:'<strong>Classic Tour Bernabéu</strong> — 15 Championsˈ League, vestiários e campo LED 360°'},
-  {t:'11:30',i:'🏆',txt:'Sala dos <strong>troféus</strong> — 15 Taças dos Campeões Europeus!'},
-  {t:'13:00',i:'🍽️',txt:'Almoço no bairro de <strong>Chamartín</strong>'},
-  {t:'15:00',i:'👑',txt:'<strong>Palácio Real</strong> — exterior e troca da guarda'},
-  {t:'18:00',i:'🌆',txt:'<strong>Gran Vía</strong> ao pôr do sol — a Broadway de Madrid'},
- ],
+  {t:'10:00',i:'🏟️',x:'<strong>Classic Tour Bernabéu</strong> — 15 Champions, vestiários e campo LED 360°!'},
+  {t:'12:00',i:'🛍️',x:'Loja oficial do <strong>Real Madrid</strong>'},
+  {t:'13:00',i:'🍽️',x:'Almoço em <strong>Chamartín</strong>'},
+  {t:'15:00',i:'👑',x:'<strong>Palácio Real</strong> — exterior e troca da guarda'}],
  photos:[
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Estadio_Santiago_Bernab%C3%A9u_2022.jpg/400px-Estadio_Santiago_Bernab%C3%A9u_2022.jpg',c:'Bernabéu Exterior'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Estadio_Santiago_Bernabeu_-_campo.jpg/400px-Estadio_Santiago_Bernabeu_-_campo.jpg',c:'Campo do Bernabéu'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Estadio_Santiago_Bernab%C3%A9u_2022.jpg/400px-Estadio_Santiago_Bernab%C3%A9u_2022.jpg',c:'Bernabéu exterior'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Palacio_Real_de_Madrid.jpg/400px-Palacio_Real_de_Madrid.jpg',c:'Palácio Real'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Madrid_-_Catedral_de_la_Almudena.jpg/400px-Madrid_-_Catedral_de_la_Almudena.jpg',c:'Catedral Almudena'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Gran_V%C3%ADa_%28Madrid%29_1.jpg/400px-Gran_V%C3%ADa_%28Madrid%29_1.jpg',c:'Gran Vía'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Plaza_Mayor%2C_Madrid%2C_Espa%C3%B1a%2C_2014-12-27%2C_DD_15.JPG/400px-Plaza_Mayor%2C_Madrid%2C_Espa%C3%B1a%2C_2014-12-27%2C_DD_15.JPG',c:'Plaza Mayor'}],
  food:[
-  {n:'Bocadillo de Calamares',e:'🦑',d:'O sandes ícone de Madrid — lulas fritas em pão crujiente',w:'Plaza Mayor — bares históricos',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bocadillo_de_calamares_%28Madrid%29.jpg/300px-Bocadillo_de_calamares_%28Madrid%29.jpg'},
-  {n:'Churros con Chocolate',e:'🍫',d:'Antes da visita ao Bernabéu — energia garantida!',w:'Chocolatería San Ginés',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Churros_fritos.jpg/300px-Churros_fritos.jpg'},
-  {n:'Tortilla Española',e:'🍳',d:'Pequeno-almoço típico espanhol — não sair de Madrid sem provar',w:'Cafetaria do hotel ou bar local',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/A_Spanish_Omelette.jpg/300px-A_Spanish_Omelette.jpg'},
-  {n:'Caña de Cerveja',e:'🍺',d:'Cerveja espanhola bem fresca — acompanha tudo!',w:'Qualquer bar em Madrid',img:''},
- ]},
-{n:4,date:'2026-07-09',emoji:'🗺️',city:'Zaragoza → Barcelona',cityE:'🕌',
+  {n:'Bocadillo de Calamares',e:'🦑',d:'O sandes ícone de Madrid — lulas fritas em pão',w:'Plaza Mayor',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bocadillo_de_calamares_%28Madrid%29.jpg/300px-Bocadillo_de_calamares_%28Madrid%29.jpg'},
+  {n:'Tortilla Española',e:'🍳',d:'Pequeno-almoço típico — não sair sem provar!',w:'Bar do hotel ou local',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/A_Spanish_Omelette.jpg/300px-A_Spanish_Omelette.jpg'},
+  {n:'Jamón Ibérico',e:'🥩',d:'Uma tábua de presunto antes do Bernabéu!',w:'Mercado de San Miguel',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Jamon-Serrano.jpg/300px-Jamon-Serrano.jpg'},
+  {n:'Caña de Cerveja',e:'🍺',d:'Cerveja espanhola fresquinha — acompanha tudo',w:'Qualquer bar',img:''}]},
+
+{n:4,date:'2026-07-09',em:'🗺️',city:'Zaragoza→Barcelona',
  title:'Rumo a Barcelona! Paragem em Zaragoza',hotel:'Attica 21 Barcelona Mar',
  grad:'linear-gradient(160deg,#1A1A5C,#2980B9 40%,#7D3C98)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Basilica-del-Pilar.jpg/1200px-Basilica-del-Pilar.jpg',
  acts:[
-  {t:'08:30',i:'🚗',txt:'Partida cedo de Madrid rumo a <strong>Zaragoza</strong>'},
-  {t:'11:30',i:'🕌',txt:'<strong>Basílica del Pilar</strong> — Zaragoza — joia barroca! (GRÁTIS)'},
-  {t:'13:00',i:'🍢',txt:'Almoço: <strong>Pintxos na Calle del Temple</strong> — o melhor de Zaragoza!'},
-  {t:'14:30',i:'🚗',txt:'Continuação para <strong>Barcelona</strong> — ~3 horas'},
-  {t:'17:30',i:'🏨',txt:'Check-in <strong>Attica 21 Barcelona Mar</strong>'},
-  {t:'19:30',i:'⛩️',txt:'Passeio no <strong>Barri Gòtic</strong> ao final do dia'},
- ],
+  {t:'08:30',i:'🚗',x:'Partida cedo de Madrid para <strong>Zaragoza</strong>'},
+  {t:'11:30',i:'🕌',x:'<strong>Basílica del Pilar</strong> em Zaragoza — GRÁTIS'},
+  {t:'13:00',i:'🍢',x:'Almoço: <strong>Pintxos na Calle del Temple</strong>'},
+  {t:'17:30',i:'🏨',x:'Check-in <strong>Attica 21 Barcelona Mar</strong>'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Basilica-del-Pilar.jpg/400px-Basilica-del-Pilar.jpg',c:'Basílica del Pilar — Zaragoza'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Rambla_de_Barcelona.jpg/400px-La_Rambla_de_Barcelona.jpg',c:'La Rambla — Barcelona'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Gothic_Quarter_Barcelona.jpg/400px-Gothic_Quarter_Barcelona.jpg',c:'Barri Gòtic — Barcelona'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/BCN_des_de_Sant_Pere_de_Rodes.jpg/400px-BCN_des_de_Sant_Pere_de_Rodes.jpg',c:'Vista de Barcelona'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Gothic_Quarter_Barcelona.jpg/400px-Gothic_Quarter_Barcelona.jpg',c:'Barri Gòtic'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pintxos.jpg/400px-Pintxos.jpg',c:'Pintxos — Zaragoza'}],
  food:[
-  {n:'Pintxos (Zaragoza)',e:'🍢',d:'Mini tostas com combinações incríveis — €1,50 cada, com sidra',w:'Calle del Temple, Zaragoza',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pintxos.jpg/300px-Pintxos.jpg'},
-  {n:'Ternasco Aragonês',e:'🐑',d:'Borrego de Aragão assado — especialidade regional única',w:'Restaurantes de Zaragoza',img:''},
-  {n:'Pa amb Tomàquet',e:'🍅',d:'Pão com tomate esfregado e azeite — a entrada catalã por excelência',w:'Qualquer restaurante em Barcelona',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Pan_con_tomate.jpg/300px-Pan_con_tomate.jpg'},
-  {n:'Croquetes de Bacallà',e:'🐟',d:'Croquetes de bacalhau catalão — deliciosas e diferentes das portuguesas',w:'Bares do Barri Gòtic',img:''},
- ]},
-{n:5,date:'2026-07-10',emoji:'🌆',city:'Barcelona',cityE:'🌊',
+  {n:'Pintxos',e:'🍢',d:'Mini tostas incríveis — €1,50 cada com sidra',w:'Calle del Temple, Zaragoza',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pintxos.jpg/300px-Pintxos.jpg'},
+  {n:'Pa amb Tomàquet',e:'🍅',d:'Pão com tomate esfregado — entrada catalã',w:'Barcelona à chegada',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Pan_con_tomate.jpg/300px-Pan_con_tomate.jpg'},
+  {n:'Ternasco Aragonês',e:'🐑',d:'Borrego de Aragão — especialidade de Zaragoza',w:'Restaurantes de Zaragoza',img:''},
+  {n:'Croquetes de Bacalhau',e:'🐟',d:'Versão catalã das croquetes — diferentes e deliciosas',w:'Bares do Barri Gòtic',img:''}]},
+
+{n:5,date:'2026-07-10',em:'🌆',city:'Barcelona',
  title:'Primeiro Dia em Barcelona!',hotel:'Attica 21 Barcelona Mar',
  grad:'linear-gradient(160deg,#1A0A3C,#7D3C98 40%,#1A3A5C)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Rambla_de_Barcelona.jpg/1200px-La_Rambla_de_Barcelona.jpg',
  acts:[
-  {t:'10:00',i:'🛒',txt:'<strong>La Rambla</strong> + <strong>Mercado da Boqueria</strong> — frutas tropicais frescas!'},
-  {t:'12:00',i:'⛩️',txt:'<strong>Barri Gòtic</strong> — Catedral de Barcelona (exterior GRÁTIS)'},
-  {t:'13:30',i:'🍢',txt:'Almoço: <strong>Carrer de Blai</strong> — pintxos a €1,50!'},
-  {t:'15:30',i:'🏖️',txt:'Tarde na <strong>Praia de Barceloneta</strong> — Mediterrâneo!'},
-  {t:'20:00',i:'🍻',txt:'Jantar na <strong>Cervecería Catalana</strong>'},
- ],
+  {t:'10:00',i:'🛒',x:'<strong>La Rambla</strong> e <strong>Mercado da Boqueria</strong>'},
+  {t:'12:00',i:'⛩️',x:'<strong>Barri Gòtic</strong> + Catedral (exterior GRÁTIS)'},
+  {t:'13:30',i:'🍢',x:'Almoço: <strong>Carrer de Blai</strong> — pintxos a €1,50!'},
+  {t:'16:00',i:'🏖️',x:'Tarde na <strong>Praia de Barceloneta</strong> 🌊'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Rambla_de_Barcelona.jpg/400px-La_Rambla_de_Barcelona.jpg',c:'La Rambla'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Barcelona_Mercado_de_la_Boqueria.jpg/400px-Barcelona_Mercado_de_la_Boqueria.jpg',c:'Mercado da Boqueria'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/400px-Barceloneta_beach.jpg',c:'Praia Barceloneta'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/400px-Barceloneta_beach.jpg',c:'Barceloneta'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Gothic_Quarter_Barcelona.jpg/400px-Gothic_Quarter_Barcelona.jpg',c:'Barri Gòtic'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pintxos.jpg/400px-Pintxos.jpg',c:'Pintxos — Carrer de Blai'}],
  food:[
-  {n:'Pintxos — Carrer de Blai',e:'🍢',d:'Rua dos pintxos de Barcelona — dezenas de opções a €1,50',w:'Carrer de Blai, El Poble Sec',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pintxos.jpg/300px-Pintxos.jpg'},
-  {n:'Frutas da Boqueria',e:'🍓',d:'Sumos e frutas frescas cortadas — refrescante no calor de julho',w:'Mercado de la Boqueria',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Mercat_de_la_Boqueria%2C_Barcelona%2C_Spain.jpg/300px-Mercat_de_la_Boqueria%2C_Barcelona%2C_Spain.jpg'},
-  {n:'Pa amb Tomàquet',e:'🍅',d:'O pão catalão com tomate esfregado — começo de toda refeição',w:'Cervecería Catalana',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Pan_con_tomate.jpg/300px-Pan_con_tomate.jpg'},
-  {n:'Cava Catalão',e:'🥂',d:'Espumante catalão — similar ao champagne, ao pôr do sol na praia',w:'Chiringuitos da Barceloneta',img:''},
- ]},
-{n:6,date:'2026-07-11',emoji:'⛪',city:'Barcelona — Gaudí',cityE:'🎨',
+  {n:'Pintxos Carrer de Blai',e:'🍢',d:'A rua dos pintxos de Barcelona — dezenas a €1,50',w:'Carrer de Blai, Poble Sec',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pintxos.jpg/300px-Pintxos.jpg'},
+  {n:'Frutas da Boqueria',e:'🍓',d:'Sumos e frutas frescas cortadas — refrescantes!',w:'Mercat de la Boqueria',img:''},
+  {n:'Pa amb Tomàquet',e:'🍅',d:'O pão catalão — começo de toda refeição em BCN',w:'Qualquer restaurante',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Pan_con_tomate.jpg/300px-Pan_con_tomate.jpg'},
+  {n:'Cava Catalão',e:'🥂',d:'Espumante catalão — ao pôr do sol na Barceloneta',w:'Chiringuitos da praia',img:''}]},
+
+{n:6,date:'2026-07-11',em:'⛪',city:'Barcelona',
  title:'Sagrada Família e Park Güell! ⛪',hotel:'Attica 21 Barcelona Mar',
  grad:'linear-gradient(160deg,#4A0A7A,#8B2FC9 40%,#1A1A5C)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Sagrada_Familia_01.jpg/1200px-Sagrada_Familia_01.jpg',
  acts:[
-  {t:'09:00',i:'⛪',txt:'<strong>Sagrada Família</strong> — a obra-prima de Gaudí (140 anos em construção!)'},
-  {t:'12:00',i:'🍽️',txt:'Almoço no <strong>Eixample</strong> — bairro modernista'},
-  {t:'14:00',i:'🌿',txt:'<strong>Park Güell</strong> — mosaicos e vista panorâmica 360° de Barcelona'},
-  {t:'17:30',i:'🌅',txt:'<strong>Bunkers del Carmel</strong> — o melhor pôr do sol de Barcelona!'},
-  {t:'21:00',i:'🍷',txt:'Jantar catalão no <strong>Bar del Pla</strong>'},
- ],
+  {t:'09:00',i:'⛪',x:'<strong>Sagrada Família</strong> — a obra-prima de Gaudí (140 anos!)'},
+  {t:'14:00',i:'🌿',x:'<strong>Park Güell</strong> — mosaicos e vista 360° de Barcelona'},
+  {t:'17:30',i:'🌅',x:'<strong>Bunkers del Carmel</strong> — o melhor pôr do sol de BCN!'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Sagrada_Familia_01.jpg/400px-Sagrada_Familia_01.jpg',c:'Sagrada Família'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Park_G%C3%BCell_Barcelona_Spain.jpg/400px-Park_G%C3%BCell_Barcelona_Spain.jpg',c:'Park Güell'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Casa_Batll%C3%B3_at_night.jpg/400px-Casa_Batll%C3%B3_at_night.jpg',c:'Casa Batlló (Gaudí)'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sagrada_Familia_nave_roof_detail.jpg/400px-Sagrada_Familia_nave_roof_detail.jpg',c:'Interior Sagrada Família'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Casa_Batll%C3%B3_at_night.jpg/400px-Casa_Batll%C3%B3_at_night.jpg',c:'Casa Batlló — Gaudí'}],
  food:[
-  {n:'Crema Catalana',e:'🍮',d:'A versão catalã do crème brûlée — queimada na hora com açúcar',w:'Qualquer restaurante catalão',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Cr%C3%A8me-brul%C3%A9e.jpg/300px-Cr%C3%A8me-brul%C3%A9e.jpg'},
-  {n:'Escalivada',e:'🫑',d:'Pimentos e beringela assados com azeite e flor de sal — entrada típica',w:'Bar del Pla',img:''},
-  {n:'Fideuà',e:'🦐',d:'Como a paella mas com massa fina — especialidade de Barcelona!',w:'Restaurantes do Barceloneta',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Fideua.jpg/300px-Fideua.jpg'},
-  {n:'Cava ao pôr do sol',e:'🌅',d:'Espumante local nos Bunkers del Carmel enquanto o sol se põe',w:'Levar uma garrafa ao Bunkers!',img:''},
- ]},
-{n:7,date:'2026-07-12',emoji:'🔵',city:'Barcelona — Camp Nou',cityE:'⚽',
- title:'Camp Nou e Tarde na Praia! ⚽🏖️',hotel:'Attica 21 Barcelona Mar',
+  {n:'Crema Catalana',e:'🍮',d:'O crème brûlée catalão — queimado na hora!',w:'Qualquer restaurante catalão',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Cr%C3%A8me-brul%C3%A9e.jpg/300px-Cr%C3%A8me-brul%C3%A9e.jpg'},
+  {n:'Fideuà',e:'🦐',d:'Como paella mas com massa — especialidade BCN',w:'Restaurante do Barceloneta',img:''},
+  {n:'Escalivada',e:'🫑',d:'Pimentos e beringela assados com azeite',w:'Bar del Pla',img:''},
+  {n:'Cava ao pôr do sol',e:'🌅',d:'Uma garrafa nos Bunkers del Carmel ao pôr do sol',w:'Levar ao Bunkers!',img:''}]},
+
+{n:7,date:'2026-07-12',em:'🔵',city:'Barcelona',
+ title:'Camp Nou + Praia! ⚽🏖️',hotel:'Attica 21 Barcelona Mar',
  grad:'linear-gradient(160deg,#0A1A5C,#1A5276 40%,#0E4A3C)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/1200px-Barceloneta_beach.jpg',
  acts:[
-  {t:'09:30',i:'⚽',txt:'<strong>Camp Nou Barça Immersive Museum</strong> — museu + experiência imersiva 360°'},
-  {t:'11:30',i:'🛍️',txt:'Loja oficial do <strong>FC Barcelona</strong>'},
-  {t:'13:00',i:'🍢',txt:'Almoço: <strong>Carrer de Blai</strong>'},
-  {t:'15:00',i:'🏖️',txt:'Tarde <strong>Barceloneta</strong> — último mergulho no Mediterrâneo!'},
-  {t:'20:30',i:'🦞',txt:'Jantar de despedida de Barcelona: <strong>paella de marisco</strong>!'},
- ],
+  {t:'10:00',i:'⚽',x:'<strong>Camp Nou Barça Immersive Museum</strong> — troféus e experiência 360°'},
+  {t:'12:00',i:'🛍️',x:'Loja oficial do <strong>FC Barcelona</strong>'},
+  {t:'14:00',i:'🏖️',x:'Tarde inteira na <strong>Barceloneta</strong> — último mergulho!'},
+  {t:'20:30',i:'🦞',x:'Jantar de despedida de BCN — <strong>paella de mariscos!</strong>'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Camp_Nou_E-_2018.jpg/400px-Camp_Nou_E-_2018.jpg',c:'Camp Nou'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/400px-Barceloneta_beach.jpg',c:'Praia Barceloneta'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/BCN_des_de_Sant_Pere_de_Rodes.jpg/400px-BCN_des_de_Sant_Pere_de_Rodes.jpg',c:'Vista Barcelona'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Rambla_de_Barcelona.jpg/400px-La_Rambla_de_Barcelona.jpg',c:'La Rambla à noite'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/400px-Barceloneta_beach.jpg',c:'Barceloneta'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Paella_de_mariscos.jpg/400px-Paella_de_mariscos.jpg',c:'Paella de Mariscos'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Rambla_de_Barcelona.jpg/400px-La_Rambla_de_Barcelona.jpg',c:'La Rambla à noite'}],
  food:[
-  {n:'Paella de Mariscos',e:'🦐',d:'A rainha das paellas — arroz com gambas, mexilhão e lagostim',w:'Els Pescadors — o melhor de Barcelona',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Paella_de_mariscos.jpg/300px-Paella_de_mariscos.jpg'},
-  {n:'Gambas a la Plancha',e:'🦐',d:'Camarões grelhados no ponto — aperitivo perfeito na praia',w:'Chiringuitos da Barceloneta',img:''},
-  {n:'Cerveja Estrella Damm',e:'🍺',d:'A cerveja de Barcelona — refrescante com sal e limão (clara con limón)',w:'Em qualquer bar de BCN',img:''},
-  {n:'Gelado Artesanal',e:'🍦',d:'Sorbet de frutas mediterrâneas — o melhor do calor de julho!',w:'Heladería ao longo da praia',img:''},
- ]},
-{n:8,date:'2026-07-13',emoji:'🎢',city:'Salou · PortAventura',cityE:'🎢',
+  {n:'Paella de Mariscos',e:'🦐',d:'Arroz com gambas, mexilhão e lagostim — a rainha!',w:'Els Pescadors — o melhor',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Paella_de_mariscos.jpg/300px-Paella_de_mariscos.jpg'},
+  {n:'Gambas a la Plancha',e:'🍤',d:'Camarões grelhados — aperitivo na praia',w:'Chiringuitos da Barceloneta',img:''},
+  {n:'Cerveja Estrella Damm',e:'🍺',d:'A cerveja de Barcelona com sal e limão',w:'Qualquer bar de BCN',img:''},
+  {n:'Gelado Artesanal',e:'🍦',d:'Sorbet mediterrâneo — perfeito no calor!',w:'Heladería na praia',img:''}]},
+
+{n:8,date:'2026-07-13',em:'🎢',city:'Salou',
  title:'PortAventura! Adrenalina total! 🎢',hotel:'H10 Mediterranean Village',
  grad:'linear-gradient(160deg,#0A3C2C,#0E6655 40%,#16A085)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/ShambhalaPortAventura.jpg/1200px-ShambhalaPortAventura.jpg',
  acts:[
-  {t:'09:00',i:'🚗',txt:'Partida de Barcelona — <strong>~1h até Salou</strong>'},
-  {t:'10:30',i:'🏨',txt:'Check-in <strong>H10 Mediterranean Village</strong> — mesmo ao pé do parque!'},
-  {t:'11:00',i:'🎢',txt:'<strong>PortAventura Park</strong>! Dragon Khan, Shambhala (76m!) e SésamoAventura'},
-  {t:'14:00',i:'🌮',txt:'Almoço nos <strong>restaurantes temáticos</strong> do parque'},
-  {t:'18:00',i:'🎡',txt:'Mais atrações — explorar os <strong>6 mundos temáticos</strong>'},
-  {t:'22:00',i:'🔥',txt:'<strong>Espetáculo de fogo e pirotecnia</strong> — encerramento épico!'},
- ],
+  {t:'09:00',i:'🚗',x:'Partida de Barcelona — <strong>~1h até Salou</strong>'},
+  {t:'10:30',i:'🏨',x:'Check-in <strong>H10 Mediterranean Village</strong>'},
+  {t:'11:00',i:'🎢',x:'<strong>PortAventura Park</strong>! Dragon Khan, Shambhala (76m!), SésamoAventura'},
+  {t:'22:00',i:'🔥',x:'<strong>Espetáculo de fogo e pirotecnia</strong> — encerramento épico!'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/ShambhalaPortAventura.jpg/400px-ShambhalaPortAventura.jpg',c:'Shambhala — 76 metros!'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Dragon_Khan.jpg/400px-Dragon_Khan.jpg',c:'Dragon Khan — 8 loopings'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Costa_Daurada_Salou.jpg/400px-Costa_Daurada_Salou.jpg',c:'Costa Dourada — Salou'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/BCN_des_de_Sant_Pere_de_Rodes.jpg/400px-BCN_des_de_Sant_Pere_de_Rodes.jpg',c:'Costa Mediterrânea'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Paella_de_mariscos.jpg/400px-Paella_de_mariscos.jpg',c:'Paella valenciana'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/400px-Barceloneta_beach.jpg',c:'Mediterrâneo'}],
  food:[
-  {n:'Gelado no Parque',e:'🍦',d:'Obrigatório! Dezenas de sabores nos carritos pelo parque',w:'Pelo PortAventura Park',img:''},
-  {n:'Arroz Negro',e:'🦑',d:'Arroz com tinta de choco — especialidade da Costa Dourada!',w:'Restaurantes de Salou',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Arros_negre.jpg/300px-Arros_negre.jpg'},
-  {n:'Paella Valenciana',e:'🥘',d:'Paella original com frango e coelho — receita da Costa Dourada',w:'Restaurante H10 ou centro de Salou',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Paella_de_mariscos.jpg/300px-Paella_de_mariscos.jpg'},
-  {n:'Gazpacho Gelado',e:'🍅',d:'Sopa fria de tomate — perfeita para o calor de julho!',w:'Qualquer restaurante de Salou',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Gazpacho_ingredientes.jpg/300px-Gazpacho_ingredientes.jpg'},
- ]},
-{n:9,date:'2026-07-14',emoji:'🏎️',city:'Salou · Ferrari + Caribe',cityE:'🌊',
+  {n:'Arroz Negro',e:'🦑',d:'Arroz com tinta de choco — especialidade da Costa Dourada',w:'Restaurantes de Salou',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Arros_negre.jpg/300px-Arros_negre.jpg'},
+  {n:'Gelado no Parque',e:'🍦',d:'Obrigatório — dezenas de sabores pelo parque!',w:'Pelo PortAventura Park',img:''},
+  {n:'Gazpacho',e:'🍅',d:'Sopa fria de tomate — perfeita para o calor de julho',w:'Restaurantes de Salou',img:''},
+  {n:'Paella Valenciana',e:'🥘',d:'Frango e coelho — a paella original da região',w:'Restaurante H10 ou Salou centro',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Paella_de_mariscos.jpg/300px-Paella_de_mariscos.jpg'}]},
+
+{n:9,date:'2026-07-14',em:'🏎️',city:'Salou',
  title:'Ferrari Land ⚡ e Caribe Aquatic! 🌊',hotel:'H10 Mediterranean Village',
  grad:'linear-gradient(160deg,#1A0A0A,#DC143C 40%,#1A5276)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Costa_Daurada_Salou.jpg/1200px-Costa_Daurada_Salou.jpg',
  acts:[
-  {t:'11:00',i:'🏎️',txt:'<strong>Ferrari Land</strong> abre! Red Force — 0 a 180km/h em 5 segundos!'},
-  {t:'12:30',i:'🏁',txt:'Simuladores e exposição de <strong>Ferraris reais</strong>'},
-  {t:'14:00',i:'🌊',txt:'<strong>Caribe Aquatic Park</strong> — 50.000m² de diversão aquática!'},
-  {t:'15:30',i:'💦',txt:'Toboáguas radicais, piscinas de ondas e <strong>Splash Battle</strong>'},
-  {t:'19:00',i:'🌅',txt:'Regresso ao hotel — jantar <strong>Half Board</strong> incluído!'},
-  {t:'20:30',i:'🐟',txt:'Jantar no <strong>Passeig de Miramar</strong> com vista mar'},
- ],
+  {t:'11:00',i:'🏎️',x:'<strong>Ferrari Land</strong> — Red Force: 0→180km/h em 5 segundos!'},
+  {t:'14:00',i:'🌊',x:'<strong>Caribe Aquatic Park</strong> — 50.000m² de diversão aquática!'},
+  {t:'19:00',i:'🌅',x:'Regresso ao hotel — <strong>jantar Half Board incluído</strong>'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Costa_Daurada_Salou.jpg/400px-Costa_Daurada_Salou.jpg',c:'Costa Dourada'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Salou_beach_and_promenade.jpg/400px-Salou_beach_and_promenade.jpg',c:'Praia de Salou'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Dragon_Khan.jpg/400px-Dragon_Khan.jpg',c:'Dragon Khan — PortAventura'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/ShambhalaPortAventura.jpg/400px-ShambhalaPortAventura.jpg',c:'Shambhala'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Arros_negre.jpg/400px-Arros_negre.jpg',c:'Arroz Negro'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/ShambhalaPortAventura.jpg/400px-ShambhalaPortAventura.jpg',c:'PortAventura World'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Barceloneta_beach.jpg/400px-Barceloneta_beach.jpg',c:'Mediterrâneo'}],
  food:[
-  {n:'Marisco na Praia',e:'🦞',d:'Lagosta, gambas e mexilhão fresco — último jantar ao mar',w:'Passeig de Miramar, Salou',img:''},
-  {n:'Arròs Negre',e:'🦑',d:'Arroz negro com tinta de lula — cor impressionante, sabor incrível!',w:'Restaurantes do Passeig Miramar',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Arros_negre.jpg/300px-Arros_negre.jpg'},
-  {n:'Gelado no Caribe Park',e:'🍦',d:'Refrescante após horas nos toboáguas no calor catalonhês',w:'Caribe Aquatic Park',img:''},
-  {n:'Água de Coco',e:'🥥',d:'Hidratação tropical após dia intenso nos parques',w:'Pelo Caribe Aquatic Park',img:''},
- ]},
-{n:10,date:'2026-07-15',emoji:'🏰',city:'Salou → Toledo',cityE:'🏰',
+  {n:'Mariscos na Praia',e:'🦞',d:'Lagosta e gambas frescas — jantar à beira-mar',w:'Passeig de Miramar, Salou',img:''},
+  {n:'Arròs Negre',e:'🦑',d:'Arroz negro — cor impressionante, sabor incrível!',w:'Restaurantes do Miramar',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Arros_negre.jpg/300px-Arros_negre.jpg'},
+  {n:'Gelado no Caribe Park',e:'🍦',d:'Refrescante após horas nos toboáguas!',w:'Caribe Aquatic Park',img:''},
+  {n:'Sangria',e:'🍷',d:'Vinho com fruta — ideal ao fim do dia',w:'Passeig de Miramar',img:''}]},
+
+{n:10,date:'2026-07-15',em:'🏰',city:'Toledo',
  title:'Toledo — A Cidade Medieval! 🏰',hotel:'Beatriz Toledo Auditorium & Spa',
  grad:'linear-gradient(160deg,#2A0A4A,#6B2D8B 40%,#4A235A)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Toledo%2C_vista_del_Tajo.jpg/1200px-Toledo%2C_vista_del_Tajo.jpg',
  acts:[
-  {t:'08:30',i:'🚗',txt:'Partida cedo de Salou rumo a <strong>Toledo</strong> — ~5 horas'},
-  {t:'14:00',i:'📸',txt:'<strong>Mirador del Valle</strong> — a vista mais épica de Toledo! Paragem obrigatória'},
-  {t:'15:00',i:'🏨',txt:'Check-in <strong>Beatriz Toledo Auditorium & Spa</strong>'},
-  {t:'16:00',i:'⛩️',txt:'<strong>Catedral Primada</strong> — gótica do século XIII, majestosa!'},
-  {t:'17:30',i:'🏰',txt:'<strong>Alcázar de Toledo</strong> — museu de armaduras medievais (GRÁTIS)'},
-  {t:'20:00',i:'🍲',txt:'Jantar: <strong>Carcamusa</strong> e <strong>Mazapán</strong> de Toledo 🍬'},
- ],
+  {t:'08:30',i:'🚗',x:'Partida de Salou — <strong>~5h até Toledo</strong>'},
+  {t:'14:00',i:'📸',x:'<strong>Mirador del Valle</strong> — a vista mais épica de Toledo!'},
+  {t:'15:00',i:'🏨',x:'Check-in <strong>Beatriz Toledo Auditorium & Spa</strong>'},
+  {t:'16:00',i:'⛩️',x:'<strong>Catedral Primada</strong> e <strong>Alcázar</strong> (GRÁTIS)'},
+  {t:'20:00',i:'🍲',x:'Jantar: <strong>Carcamusa</strong> e <strong>Mazapán</strong> de Toledo!'}],
  photos:[
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Toledo%2C_vista_del_Tajo.jpg/400px-Toledo%2C_vista_del_Tajo.jpg',c:'Toledo e Rio Tejo'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Toledo_Primada.jpg/400px-Toledo_Primada.jpg',c:'Catedral Primada'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Toledo_-_Alc%C3%A1zar.jpg/400px-Toledo_-_Alc%C3%A1zar.jpg',c:'Alcázar de Toledo'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Toledo_panorama_desde_el_Mirador_del_Valle.jpg/400px-Toledo_panorama_desde_el_Mirador_del_Valle.jpg',c:'Vista do Mirador del Valle'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mazapan-toledo.jpg/400px-Mazapan-toledo.jpg',c:'Mazapán de Toledo'}],
  food:[
-  {n:'Carcamusa Toledana',e:'🍲',d:'Guisado de porco com legumes e vinho — O PRATO ÍCONE de Toledo!',w:'Taberna El Botero — o original',img:''},
-  {n:'Mazapán de Toledo',e:'🍬',d:'Doce de amêndoa e açúcar — a sobremesa mais famosa de Espanha',w:'Confitería Santo Tomé — desde 1856!',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mazapan-toledo.jpg/300px-Mazapan-toledo.jpg'},
-  {n:'Perdiz Estofada',e:'🐦',d:'Perdiz guisada com vinho branco e louro — caça típica de Toledo',w:'Restaurantes do centro histórico',img:''},
-  {n:'Vinho de La Mancha',e:'🍷',d:'Região de Don Quijote — vinho robusto e acessível',w:'Qualquer adega ou restaurante',img:''},
- ]},
-{n:11,date:'2026-07-16',emoji:'🏠',city:'Toledo → Casa!',cityE:'🇵🇹',
+  {n:'Carcamusa Toledana',e:'🍲',d:'Guisado de porco com legumes — O PRATO ÍCONE de Toledo!',w:'Taberna El Botero',img:''},
+  {n:'Mazapán de Toledo',e:'🍬',d:'Doce de amêndoa — a sobremesa mais famosa de Espanha',w:'Confitería Santo Tomé (1856!)',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mazapan-toledo.jpg/300px-Mazapan-toledo.jpg'},
+  {n:'Perdiz Estofada',e:'🐦',d:'Perdiz guisada com vinho branco — caça típica de Toledo',w:'Restaurante histórico',img:''},
+  {n:'Vinho de La Mancha',e:'🍷',d:'A região de Don Quijote — vinho robusto e acessível',w:'Qualquer adega ou restaurante',img:''}]},
+
+{n:11,date:'2026-07-16',em:'🏠',city:'Toledo→Casa!',
  title:'Regresso a Portugal! 🏠🎉',hotel:'Em casa 🏠',
  grad:'linear-gradient(160deg,#0A3C1A,#1A7A45 40%,#27AE60)',
  hero:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Toledo%2C_vista_del_Tajo.jpg/1200px-Toledo%2C_vista_del_Tajo.jpg',
  acts:[
-  {t:'09:00',i:'⛩️',txt:'Bairro Judeu e <strong>Sinagoga do Tránsito</strong> — última manhã em Toledo'},
-  {t:'10:00',i:'🍬',txt:'<strong>Mazapán Santo Tomé</strong> — comprar para trazer para o Brasil!'},
-  {t:'11:00',i:'🚗',txt:'Partida de Toledo rumo a <strong>Portugal</strong>'},
-  {t:'13:00',i:'🍽️',txt:'Almoço em <strong>Badajoz</strong> — última refeição em Espanha'},
-  {t:'14:00',i:'🇵🇹',txt:'Cruzar a fronteira — <strong>Portugal!</strong> 🥹'},
-  {t:'15:00',i:'🏠',txt:'<strong>CHEGÁMOS A MONTIJO!</strong> Viagem inesquecível concluída! 🎉🎉🎉'},
- ],
+  {t:'09:00',i:'🍬',x:'<strong>Mazapán Santo Tomé</strong> — comprar para o Brasil!'},
+  {t:'11:00',i:'🚗',x:'Partida de Toledo para <strong>Portugal</strong> via A-5'},
+  {t:'13:00',i:'🍽️',x:'Almoço em <strong>Badajoz</strong> — última refeição em Espanha'},
+  {t:'14:00',i:'🇵🇹',x:'Cruzar a fronteira — <strong>Portugal!</strong> 🥹'},
+  {t:'15:00',i:'🏠',x:'<strong>CHEGÁMOS A MONTIJO!</strong> Viagem concluída! 🎉🎉🎉'}],
  photos:[
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Toledo_panorama_desde_el_Mirador_del_Valle.jpg/400px-Toledo_panorama_desde_el_Mirador_del_Valle.jpg',c:'Toledo ao amanhecer'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Toledo%2C_vista_del_Tajo.jpg/400px-Toledo%2C_vista_del_Tajo.jpg',c:'Rio Tejo e Toledo'},
-  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Gran_V%C3%ADa_%28Madrid%29_1.jpg/400px-Gran_V%C3%ADa_%28Madrid%29_1.jpg',c:'Memórias de Madrid'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Toledo%2C_vista_del_Tajo.jpg/400px-Toledo%2C_vista_del_Tajo.jpg',c:'Toledo ao amanhecer'},
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mazapan-toledo.jpg/400px-Mazapan-toledo.jpg',c:'Mazapán para levar!'},
   {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Sagrada_Familia_01.jpg/400px-Sagrada_Familia_01.jpg',c:'Memórias de Barcelona'},
- ],
+  {u:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Estadio_Santiago_Bernab%C3%A9u_2022.jpg/400px-Estadio_Santiago_Bernab%C3%A9u_2022.jpg',c:'Memórias de Madrid'}],
  food:[
-  {n:'Mazapán para o Brasil',e:'🍬',d:'Levar caixas de mazapán para a família — o melhor souvenir comestível!',w:'Confitería Santo Tomé, Toledo',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mazapan-toledo.jpg/300px-Mazapan-toledo.jpg'},
-  {n:'Último café espanhol',e:'☕',d:'Café solo (expresso) — mais forte e mais barato que em Portugal!',w:'Cafetaria em Badajoz',img:''},
-  {n:'Pastéis de Belém',e:'🥐',d:'De volta a Portugal — celebrar com os nossos pastéis!',w:'Em casa ou padaria local',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Pastel_de_Nata.jpg/300px-Pastel_de_Nata.jpg'},
-  {n:'Sangria de Despedida',e:'🍹',d:'Última sangria espanhola antes de cruzar a fronteira',w:'Restaurante em Badajoz',img:''},
- ]},
+  {n:'Mazapán para o Brasil',e:'🍬',d:'O melhor souvenir comestível — levar caixas!',w:'Confitería Santo Tomé, Toledo',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Mazapan-toledo.jpg/300px-Mazapan-toledo.jpg'},
+  {n:'Último café espanhol',e:'☕',d:'Café solo — mais forte e barato que em Portugal!',w:'Cafetaria em Badajoz',img:''},
+  {n:'Pastel de Nata',e:'🥐',d:'De volta a Portugal — celebrar com os nossos pastéis!',w:'Padaria em Montijo',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Pastel_de_Nata.jpg/300px-Pastel_de_Nata.jpg'},
+  {n:'Sangria de Despedida',e:'🍹',d:'Última sangria antes da fronteira',w:'Restaurante em Badajoz',img:''}]}
 ];
 
-// ═══ DATE & PHASE ═══
-const START = new Date('2026-07-06T00:00:00');
-const END   = new Date('2026-07-17T00:00:00');
-
-function today(){ return new Date(); }
-function dayIdx(d){ const t=new Date(d); t.setHours(0,0,0,0); const s=new Date(START); s.setHours(0,0,0,0); return Math.floor((t-s)/86400000); }
-
-// ═══ TOP BAR ═══
-function tickTopBar(){
-  const now=new Date();
-  document.getElementById('top-dt').textContent=now.toLocaleString('pt-BR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' 🇧🇷';
+// ═══ HELPERS ═══
+function getDayIdx(){
+  var now=new Date(); now.setHours(0,0,0,0);
+  var s=new Date(TRIP_START); s.setHours(0,0,0,0);
+  return Math.floor((now-s)/86400000);
 }
 
-// ═══ COUNTDOWN ═══
-function tickCountdown(){
-  const diff=START-new Date();
-  if(diff<=0){init();return;}
-  const p=(n)=>String(Math.floor(n)).padStart(2,'0');
-  document.getElementById('cd-d').textContent=p(diff/86400000);
-  document.getElementById('cd-h').textContent=p((diff%86400000)/3600000);
-  document.getElementById('cd-m').textContent=p((diff%3600000)/60000);
-  document.getElementById('cd-s').textContent=p((diff%60000)/1000);
+function formatDate(str){
+  return new Date(str+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
 }
 
-// ═══ RENDER HERO ═══
-function renderHero(d){
-  document.getElementById('hero-bg').style.cssText=`background:url('${d.hero}') center/cover no-repeat,${d.grad};`;
-  document.getElementById('h-emoji').textContent=d.cityE;
-  document.getElementById('h-city').textContent=d.city;
-  document.getElementById('h-num').textContent=`DIA ${d.n} DE 11`;
-  document.getElementById('h-title').textContent=d.title;
-  document.getElementById('h-hotel').textContent=d.hotel;
-  document.getElementById('h-date').textContent=new Date(d.date+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-}
-
-// ═══ RENDER ACTIVITIES ═══
-function renderActs(d){
-  document.getElementById('h-acts').innerHTML=
-    `<div style="font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">📅 DIA ${d.n} — PROGRAMA</div>`+
-    d.acts.map(a=>`<div class="act-row"><span class="act-t">${a.t}</span><span class="act-i">${a.i}</span><span class="act-txt">${a.txt}</span></div>`).join('');
-}
-
-// ═══ RENDER PHOTOS ═══
-function renderPhotos(d){
-  document.getElementById('h-photos').innerHTML=d.photos.map(p=>
-    `<div class="ph-card"><img src="${p.u}" alt="${p.c}" onerror="this.parentNode.style.display='none'"><div class="ph-cap">${p.c}</div></div>`
-  ).join('');
-}
-
-// ═══ RENDER FOOD ═══
-function renderFood(d){
-  document.getElementById('h-food').innerHTML=d.food.map(f=>`
-    <div class="food-card">
-      ${f.img?`<img class="food-img" src="${f.img}" alt="${f.n}" onerror="this.outerHTML='<div class=food-emoji-fallback>${f.e}</div>'">`:`<div class="food-emoji-fallback">${f.e}</div>`}
-      <div class="food-body">
-        <div class="food-name">${f.n}</div>
-        <div class="food-desc">${f.d||f.txt||''}</div>
-        <div class="food-where">📍 ${f.w}</div>
-      </div>
-    </div>`).join('');
-}
-
-// ═══ TIMELINE & NAVIGATION ═══
-let selDay=-1;
-
-function showExplore(){
-  // Show live phase in preview/explore mode — start from day 1
-  show('live');
-  selDay=0;
-  const d=DAYS[0];
-  renderHero(d);
-  renderActs(d);
-  renderPhotos(d);
-  renderFood(d);
-  buildTL(-1); // -1 = no current day highlighted (preview mode)
-  document.getElementById('back-btn').style.display='block';
-  window.scrollTo(0,0);
-}
-
-function backToCountdown(){
-  show('countdown');
-  document.getElementById('back-btn').style.display='none';
-  window.scrollTo(0,0);
-}
-
-// Override buildTL to handle preview mode (cur=-1)
-function buildTL(cur){
-  const tl=document.getElementById('tl');
-  tl.innerHTML='';
-  DAYS.forEach((d,i)=>{
-    const state=cur<0?'future':i<cur?'past':i===cur?'current':'future';
-    const sel=i===selDay?'sel':'';
-    const btn=document.createElement('div');
-    btn.className=`tl-item ${state} ${sel}`;
-    btn.innerHTML=`<div class="tl-bubble">${d.emoji}</div><div class="tl-lbl">${d.city.split(' ')[0].replace('→','').trim()}</div>`;
-    btn.onclick=()=>clickDay(i,cur);
-    tl.appendChild(btn);
-    if(i<DAYS.length-1){const s=document.createElement('div');s.className='tl-sep';tl.appendChild(s);}
-  });
-  if(cur>=0){
-    const cur_el=tl.querySelectorAll('.tl-item')[cur];
-    if(cur_el) setTimeout(()=>cur_el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}),250);
+// ═══ RENDER BANNER ═══
+function renderBanner(){
+  var idx=getDayIdx();
+  var el=document.getElementById('banner');
+  if(idx<0){
+    // Countdown
+    var diff=TRIP_START-new Date();
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    el.innerHTML='<div class="cd-banner">'+
+      '<div class="cd-flag">🇵🇹✈️🇪🇸</div>'+
+      '<h1 class="cd-title">Família Santos<br><em>na Espanha!</em></h1>'+
+      '<p class="cd-sub">A viagem começa em breve — explore já os 11 dias abaixo!</p>'+
+      '<div class="cd-timer">'+
+        '<div class="cd-unit"><span class="cd-num" id="cd-d">'+pad(d)+'</span><span class="cd-lbl">Dias</span></div>'+
+        '<div class="cd-unit"><span class="cd-num" id="cd-h">'+pad(h)+'</span><span class="cd-lbl">Horas</span></div>'+
+        '<div class="cd-unit"><span class="cd-num" id="cd-m">'+pad(m)+'</span><span class="cd-lbl">Min</span></div>'+
+        '<div class="cd-unit"><span class="cd-num" id="cd-s">'+pad(s)+'</span><span class="cd-lbl">Seg</span></div>'+
+      '</div>'+
+      '<p class="cd-note">👇 Toque num dia abaixo para explorar!</p>'+
+    '</div>';
+  } else if(idx<DAYS.length){
+    el.innerHTML='<div class="live-banner">'+
+      '<div class="live-pill">🔴 AO VIVO</div>'+
+      '<div class="live-title">DIA '+DAYS[idx].n+' de 11 — '+DAYS[idx].city+'</div>'+
+      '<div class="live-sub">'+formatDate(DAYS[idx].date)+'</div>'+
+    '</div>';
   } else {
-    // Preview mode - scroll to start
-    tl.querySelector('.tl-item')?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'});
+    el.innerHTML='<div class="done-banner">'+
+      '<div class="done-trophy">🏆</div>'+
+      '<h1 class="done-title">Viagem<br><em>Concluída!</em></h1>'+
+      '<p style="font-size:13px;color:rgba(255,255,255,.7);margin-top:8px">Jefferson, Ana e Arthur regressaram com memórias incríveis!</p>'+
+    '</div>';
   }
 }
 
-// Override clickDay to handle preview mode
-function clickDay(idx,cur){
-  selDay=idx;
-  buildTL(cur);
-  // Update hero with selected day
-  const d=DAYS[idx];
-  renderHero(d);
-  renderActs(d);
-  renderPhotos(d);
-  renderFood(d);
-  // Show panel only if not current day during live trip
-  const panel=document.getElementById('day-panel');
-  if(cur>=0 && idx===cur){panel.innerHTML='';panel.className='day-panel';return;}
-  const isPast=cur>=0 && idx<cur;
-  panel.className='day-panel open';
-  panel.innerHTML=`
-    <div class="dp-head">
-      <div class="dp-emoji">${d.emoji}</div>
-      <div class="dp-meta">
-        <div class="dp-n">DIA ${d.n}</div>
-        <div class="dp-t">${d.title}</div>
-        <div class="dp-d">${new Date(d.date+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'short',day:'numeric',month:'short'})}</div>
-      </div>
-      ${cur>=0?`<span class="dp-badge ${isPast?'past':'future'}">${isPast?'✅ Visitado':'⏳ Em breve'}</span>`:'<span class="dp-badge future">🗺️ Explorar</span>'}
-    </div>
-    <div class="dp-hotel">🏨 ${d.hotel}</div>`;
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function showLive(){
-  const idx=dayIdx(today());
-  if(idx>=DAYS.length){show('complete');return;}
-  show('live');
-  selDay=idx;
-  const d=DAYS[idx];
-  renderHero(d);
-  renderActs(d);
-  renderPhotos(d);
-  renderFood(d);
-  buildTL(idx);
+function pad(n){return String(Math.floor(n)).padStart(2,'0');}
+
+function tickCd(){
+  var diff=TRIP_START-new Date();
+  if(diff<=0){renderBanner();return;}
+  var d=document.getElementById('cd-d');
+  if(d){
+    d.textContent=pad(diff/86400000);
+    document.getElementById('cd-h').textContent=pad((diff%86400000)/3600000);
+    document.getElementById('cd-m').textContent=pad((diff%3600000)/60000);
+    document.getElementById('cd-s').textContent=pad((diff%60000)/1000);
+  }
 }
 
-function show(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.getElementById('phase-'+n).classList.add('active');}
+// ═══ RENDER DAY SELECTOR ═══
+function renderSelector(){
+  var idx=getDayIdx();
+  var el=document.getElementById('ds');
+  el.innerHTML='';
+  DAYS.forEach(function(d,i){
+    var cls='ds-btn';
+    if(i===activeDay) cls+=' active';
+    else if(i<idx) cls+=' past';
+    else if(i===idx) cls+=' today';
+    var btn=document.createElement('button');
+    btn.className=cls;
+    btn.innerHTML='<div class="ds-circle">'+d.em+'</div><div class="ds-name">'+d.city.replace('→','→<br>').split(',')[0]+'</div>';
+    btn.dataset.idx=i;
+    el.appendChild(btn);
+    if(i<DAYS.length-1){
+      var sep=document.createElement('div');
+      sep.className='ds-sep';
+      el.appendChild(sep);
+    }
+  });
+  // Scroll active into view
+  var active=el.querySelector('.ds-btn.active');
+  if(active) setTimeout(function(){active.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},100);
+}
+
+// ═══ RENDER DAY CONTENT ═══
+function renderDay(i){
+  var d=DAYS[i];
+  var idx=getDayIdx();
+
+  // Hero
+  document.getElementById('d-bg').style.cssText='background:url(\''+d.hero+'\') center/cover no-repeat,'+d.grad+';';
+  document.getElementById('d-eyebrow').textContent='DIA '+d.n+' DE 11 — '+formatDate(d.date);
+  document.getElementById('d-title').textContent=d.title;
+  document.getElementById('d-hotel').innerHTML='🏨 '+d.hotel;
+
+  // Status badge
+  var status='';
+  if(i<idx) status='<span style="background:rgba(39,174,96,.2);color:#27AE60;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700">✅ Já visitaram</span>';
+  else if(i===idx) status='<span style="background:rgba(240,192,64,.2);color:var(--gold);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700">📍 HOJE</span>';
+  else status='<span style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700">⏳ Em breve</span>';
+
+  // Activities
+  var acts='';
+  d.acts.forEach(function(a){
+    acts+='<div class="act"><span class="act-t">'+a.t+'</span><span class="act-i">'+a.i+'</span><span class="act-x">'+a.x+'</span></div>';
+  });
+
+  // Photos
+  var photos='';
+  d.photos.forEach(function(p){
+    photos+='<div class="ph"><img src="'+p.u+'" alt="'+p.c+'" onerror="this.style.display=\'none\'"><div class="ph-cap">'+p.c+'</div></div>';
+  });
+
+  // Food
+  var food='';
+  d.food.forEach(function(f){
+    var img=f.img?'<img class="fc-img" src="'+f.img+'" alt="'+f.n+'" onerror="this.style.display=\'none\'">':'';
+    food+='<div class="fc">'+
+      (f.img?img:'')+'<div class="fc-em">'+f.e+'</div>'+
+      '<div class="fc-body"><div class="fc-name">'+f.n+'</div><div class="fc-desc">'+f.d+'</div><div class="fc-where">📍 '+f.w+'</div></div>'+
+    '</div>';
+  });
+
+  document.getElementById('d-content').innerHTML=
+    '<div class="section">'+status+'</div>'+
+    '<div class="section"><div class="sec-hd">📅 PROGRAMA DO DIA</div><div class="acts">'+acts+'</div></div>'+
+    '<div style="padding:0 0 4px"><div class="section" style="padding-bottom:8px"><div class="sec-hd silver">📸 O QUE VÃO VER</div></div><div class="xscroll"><div class="xinner">'+photos+'</div></div></div>'+
+    '<div style="padding:16px 0 4px"><div class="section" style="padding-bottom:8px"><div class="sec-hd silver">🍽️ O QUE VÃO COMER</div></div><div class="xscroll" style="padding-bottom:20px"><div class="xinner">'+food+'</div></div></div>';
+}
 
 // ═══ INIT ═══
 function init(){
-  tickTopBar();
-  // Wire up buttons via addEventListener (works in all environments)
-  document.getElementById('btn-explore')?.addEventListener('click', showExplore);
-  document.getElementById('btn-back')?.addEventListener('click', backToCountdown);
-  const idx=dayIdx(today());
-  if(idx<0){show('countdown');tickCountdown();setInterval(tickCountdown,1000);}
-  else if(idx>=DAYS.length){show('complete');}
-  else{showLive();}
+  // Top bar date
+  document.getElementById('top-dt').textContent=new Date().toLocaleString('pt-BR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  setInterval(function(){
+    document.getElementById('top-dt').textContent=new Date().toLocaleString('pt-BR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+  },30000);
+
+  // Set active day
+  var idx=getDayIdx();
+  activeDay=Math.max(0,Math.min(idx,DAYS.length-1));
+
+  // Render everything
+  renderBanner();
+  renderSelector();
+  renderDay(activeDay);
+
+  // Countdown tick
+  if(idx<0) setInterval(tickCd,1000);
+
+  // Day selector click — using event delegation (most reliable)
+  document.getElementById('ds').addEventListener('click',function(e){
+    var btn=e.target.closest('.ds-btn');
+    if(!btn) return;
+    var i=parseInt(btn.dataset.idx);
+    if(isNaN(i)) return;
+    activeDay=i;
+    renderSelector();
+    renderDay(i);
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
 }
-setInterval(tickTopBar,30000);
+
 init();
 </script>
 </body>

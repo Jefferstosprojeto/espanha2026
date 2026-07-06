@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🇪🇸 Road Trip Espanha 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Arial,sans-serif;background:#F5F5F0;color:#2C3E50;-webkit-text-size-adjust:100%}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#8B1A1A 0%,#B22222 28%,#1A3A5C 60%,#0E6655 82%,#6B2D8B 100%);color:#fff;padding:22px 14px 18px;text-align:center}
+.hero-flags{font-size:28px;margin-bottom:5px}
+.hero h1{font-size:19px;font-weight:900;margin-bottom:4px}
+.hero p{font-size:11px;opacity:.9;margin-bottom:11px}
+.badges{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.badge{background:rgba(255,255,255,.18);border-radius:20px;padding:3px 9px;font-size:10px;font-weight:700}
+
+/* ── MAIN TABS (pure CSS radio trick) ── */
+.app{position:relative}
+input.main-radio{display:none}
+input.sub-radio{display:none}
+
+.tab-nav{background:#fff;border-bottom:2px solid #EBEBEB;position:sticky;top:0;z-index:100;
+         box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab-nav label{display:inline-flex;align-items:center;padding:12px 13px;font-size:11.5px;font-weight:500;
+               color:#777;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all .15s}
+.tab-nav label:active{opacity:.7}
+
+/* ── PANELS ── */
+.panels .panel{display:none;padding:13px 12px 36px}
+
+/* ── ACTIVE TAB STYLES ── */
+#t1:checked~.tab-nav label[for=t1],
+#t2:checked~.tab-nav label[for=t2],
+#t3:checked~.tab-nav label[for=t3],
+#t4:checked~.tab-nav label[for=t4],
+#t5:checked~.tab-nav label[for=t5],
+#t6:checked~.tab-nav label[for=t6],
+#t7:checked~.tab-nav label[for=t7],
+#t8:checked~.tab-nav label[for=t8],
+#t9:checked~.tab-nav label[for=t9],
+#t10:checked~.tab-nav label[for=t10]{color:#B22222;border-bottom-color:#B22222;font-weight:800}
+#t11:checked~.tab-nav label[for=t11]{color:#B22222;border-bottom-color:#B22222;font-weight:800}
+#t12:checked~.tab-nav label[for=t12]{color:#B22222;border-bottom-color:#B22222;font-weight:800}
+
+/* ── SHOW ACTIVE PANEL ── */
+#t1:checked~.panels .p1{display:block}
+#t2:checked~.panels .p2{display:block}
+#t3:checked~.panels .p3{display:block}
+#t4:checked~.panels .p4{display:block}
+#t5:checked~.panels .p5{display:block}
+#t6:checked~.panels .p6{display:block}
+#t7:checked~.panels .p7{display:block}
+#t8:checked~.panels .p8{display:block}
+#t9:checked~.panels .p9{display:block}
+#t10:checked~.panels .p10{display:block}
+#t11:checked~.panels .p11{display:block}
+#t12:checked~.panels .p12{display:block}
+
+/* ── MAP LINKS ── */
+.map-city{font-weight:900;font-size:15px;margin:16px 0 10px;display:flex;align-items:center;gap:8px}
+.map-city:first-child{margin-top:0}
+.map-item{background:#fff;border-radius:11px;padding:11px 13px;margin-bottom:8px;box-shadow:0 2px 7px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.map-item-left{flex:1}
+.map-emoji{font-size:18px;margin-right:8px}
+.map-name{font-weight:800;font-size:13.5px;color:#2C3E50}
+.map-addr{font-size:11px;color:#888;margin-top:2px}
+.map-btn{background:#4285F4;color:#fff;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.map-btn:active{opacity:.8}
+.map-hotel-item{background:#fff;border-radius:11px;padding:11px 13px;margin-bottom:8px;box-shadow:0 2px 7px rgba(0,0,0,.08);border-left:4px solid var(--hc)}
+.map-hotel-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+.map-hotel-name{font-weight:900;font-size:13.5px}
+.map-hotel-dates{font-size:10px;font-weight:700;background:#F0F4F8;border-radius:5px;padding:2px 7px;white-space:nowrap}
+.map-hotel-addr{font-size:11px;color:#888;margin-bottom:7px}
+.map-nav-btn{background:#34A853;color:#fff;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent}
+.map-waze-btn{background:#05C8F7;color:#fff;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent}
+.map-btn-row{display:flex;gap:7px;flex-wrap:wrap}
+
+/* ── BOOKING CARDS ── */
+.bk-header{padding:13px 14px;display:flex;align-items:center;gap:11px;color:#fff;border-radius:12px 12px 0 0}
+.bk-icon{width:40px;height:40px;border-radius:9px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.bk-name{font-weight:900;font-size:14px;line-height:1.3}
+.bk-sub{font-size:11px;opacity:.88;margin-top:2px}
+.bk-nights{background:rgba(255,255,255,.2);border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;display:inline-block;margin-top:3px}
+.bk-body{padding:12px 13px 13px}
+.codes-wrap{display:flex;gap:8px;margin-bottom:11px}
+.code-b{flex:1;border-radius:9px;padding:9px 10px;text-align:center}
+.cb-label{font-size:9px;font-weight:800;margin-bottom:3px}
+.cb-val{font-size:19px;font-weight:900;letter-spacing:1px}
+.cb-sub{font-size:9px;opacity:.7;margin-top:2px}
+.bk-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.bk-cell{background:#F8F9FA;border-radius:8px;padding:7px 9px}
+.bk-cell-full{grid-column:1/-1}
+.bc-lbl{font-size:9px;font-weight:800;color:#999;text-transform:uppercase;margin-bottom:2px}
+.bc-val{font-size:12px;font-weight:700}
+.bc-sub{font-size:10px;color:#888;margin-top:1px}
+.bk-price{background:#F0F4F8;border-radius:9px;padding:9px 11px;margin-bottom:9px;font-size:12px}
+.bk-price-row{display:flex;justify-content:space-between;padding:2px 0}
+.bk-price-total{display:flex;justify-content:space-between;font-size:14px;font-weight:900;border-top:2px solid #DDD;margin-top:5px;padding-top:5px}
+.bk-alert{border-radius:8px;padding:7px 10px;margin-bottom:7px;font-size:11.5px;display:flex;gap:7px;align-items:flex-start}
+.bk-alert-w{background:#FFF3E0;border-left:3px solid #D35400;color:#7B3500}
+.bk-alert-i{background:#EBF5FB;border-left:3px solid #1A5276;color:#1A3A5C}
+.bk-alert-ok{background:#E8F8EF;border-left:3px solid #1A7A45;color:#0D5C35}
+.bk-alert-r{background:#FDEDEC;border-left:3px solid #C0392B;color:#7B0D0D}
+.bk-contact{display:flex;gap:7px;flex-wrap:wrap}
+.bk-ct{flex:1;min-width:130px;background:#F8F9FA;border-radius:7px;padding:6px 9px}
+.bk-ct .bc-val{font-size:11px;color:#1A5276}
+.chk-item{padding:8px 0;border-bottom:1px solid #F0F0F0;font-size:13px;display:flex;gap:9px;align-items:flex-start}
+.chk-box{width:18px;height:18px;border:2px solid #B22222;border-radius:4px;flex-shrink:0;margin-top:1px}
+
+/* ── DAYS (details/summary) ── */
+details{background:#fff;border-radius:12px;margin-bottom:9px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden}
+details summary{display:flex;align-items:center;gap:9px;padding:11px 13px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+details summary::-webkit-details-marker{display:none}
+.d-emoji{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;flex-shrink:0}
+.d-meta{flex:1}
+.d-num{font-weight:900;font-size:13px}
+.d-date{color:#AAA;font-size:10px;margin-left:5px}
+.d-city{font-weight:700;font-size:12px}
+.d-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+.sleep-tag{background:#E8F8EF;color:#1A7A45;border-radius:6px;padding:2px 7px;font-size:10px;font-weight:800}
+.km-tag{color:#CCC;font-size:9px}
+.chev{color:#CCC;font-size:13px;margin-left:4px;transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.d-body{padding:4px 13px 13px;border-top:1px solid #F0F0F0}
+.d-items{list-style:none;margin-top:9px}
+.d-items li{padding:5px 0;font-size:12.5px;border-bottom:1px solid #F6F6F6;display:flex;gap:7px}
+.arr{font-weight:800;flex-shrink:0}
+.tip{background:#FFF9E6;border:1px solid #F0C060;border-radius:8px;padding:8px 11px;font-size:12px;color:#6B4C00;margin-top:10px}
+
+/* ── SECTION TITLE ── */
+.sec-t{font-size:17px;font-weight:900;color:#B22222;margin-bottom:13px}
+
+/* ── FILTER ROWS (sub-radio) ── */
+.frow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.frow label{padding:6px 12px;border-radius:20px;border:2px solid #DDD;background:#fff;
+            color:#555;font-size:11px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s}
+
+/* Hotel city filters */
+.hg{display:none}
+#hc1:checked~.frow label[for=hc1],#hc2:checked~.frow label[for=hc2],
+#hc3:checked~.frow label[for=hc3],#hc4:checked~.frow label[for=hc4],
+#hc5:checked~.frow label[for=hc5]{background:#B22222;color:#fff;border-color:#B22222}
+#hc1:checked~.hg1,#hc2:checked~.hg2,#hc3:checked~.hg3,#hc4:checked~.hg4,#hc5:checked~.hg5{display:block}
+
+/* Attraction city filters */
+.ag{display:none}
+#ac1:checked~.frow label[for=ac1],#ac2:checked~.frow label[for=ac2],
+#ac3:checked~.frow label[for=ac3],#ac4:checked~.frow label[for=ac4],
+#ac5:checked~.frow label[for=ac5]{background:#B22222;color:#fff;border-color:#B22222}
+#ac1:checked~.ag1,#ac2:checked~.ag2,#ac3:checked~.ag3,#ac4:checked~.ag4,#ac5:checked~.ag5{display:block}
+
+/* Restaurant city filters */
+.rg{display:none}
+#rc1:checked~.frow label[for=rc1],#rc2:checked~.frow label[for=rc2],
+#rc3:checked~.frow label[for=rc3],#rc4:checked~.frow label[for=rc4],#rc5:checked~.frow label[for=rc5]{background:#B22222;color:#fff;border-color:#B22222}
+#rc1:checked~.rg1,#rc2:checked~.rg2,#rc3:checked~.rg3,#rc4:checked~.rg4,#rc5:checked~.rg5{display:block}
+
+/* Parking city filters */
+.pkg{display:none}
+#pkc1:checked~.frow label[for=pkc1],#pkc2:checked~.frow label[for=pkc2],
+#pkc3:checked~.frow label[for=pkc3],#pkc4:checked~.frow label[for=pkc4],
+#pkc5:checked~.frow label[for=pkc5]{background:#C0392B;color:#fff;border-color:#C0392B}
+#pkc1:checked~.pkg1,#pkc2:checked~.pkg2,#pkc3:checked~.pkg3,#pkc4:checked~.pkg4,#pkc5:checked~.pkg5{display:block}
+
+/* Return city filters */
+.retg{display:none}
+#ret1:checked~.frow label[for=ret1],#ret2:checked~.frow label[for=ret2],#ret3:checked~.frow label[for=ret3]{background:#6B2D8B;color:#fff;border-color:#6B2D8B}
+#ret1:checked~.retg1,#ret2:checked~.retg2,#ret3:checked~.retg3{display:block}
+
+/* ── CARDS ── */
+.card{background:#fff;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden;padding:13px}
+.card-top{border-top:4px solid var(--cc,#B22222)}
+.hotel-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px}
+.hotel-name{font-weight:900;font-size:13.5px;line-height:1.3}
+.hotel-note{font-size:11px;font-weight:700;margin-top:2px}
+.price-box{border-radius:9px;padding:7px 10px;text-align:center;flex-shrink:0}
+.price-big{font-weight:900;font-size:15px}
+.price-label{font-size:9px;color:#888}
+.two-col{display:flex;gap:8px;margin-bottom:8px}
+.col-g{flex:1;background:#E8F8EF;border-radius:8px;padding:7px 9px}
+.col-o{flex:1;background:#FFF3E0;border-radius:8px;padding:7px 9px}
+.col-t{font-size:10px;font-weight:800;margin-bottom:3px}
+.col-i{font-size:11px;margin-bottom:2px}
+.dist-box{background:#F8F9FA;border-radius:7px;padding:6px 9px;font-size:11px;color:#555;margin-bottom:5px}
+.book-box{font-size:10px;color:#AAA}
+.must-tag{background:#B22222;color:#fff;border-radius:4px;padding:1px 6px;font-size:9px;font-weight:800;margin-left:4px;vertical-align:middle}
+.free-tag{background:#E8F8EF;color:#1A7A45;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;display:inline-block;margin:4px 0 5px}
+.paid-tag{background:#FFF3E0;color:#D35400;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;display:inline-block;margin:4px 0 5px}
+.small-tip{font-size:11.5px;color:#777;margin-top:4px}
+
+/* ── STADIUM ── */
+.stadium{background:#fff;border-radius:13px;padding:14px;margin-bottom:12px;box-shadow:0 2px 9px rgba(0,0,0,.09);position:relative}
+.st-badge{position:absolute;top:12px;right:12px;background:#B22222;color:#fff;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:800}
+.st-head{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.st-name{font-weight:900;font-size:15px}
+.st-club{font-weight:700;font-size:12px}
+.st-hours{color:#888;font-size:11px}
+.st-tip{background:#F8F9FA;border-radius:8px;padding:7px 10px;font-size:12px;color:#444;margin-bottom:6px}
+.st-book{font-size:10px;color:#AAA}
+
+/* ── PARK ── */
+.park{background:#fff;border-radius:13px;padding:14px;margin-bottom:11px;box-shadow:0 2px 9px rgba(0,0,0,.09)}
+.pk-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px}
+.pk-emoji{font-size:26px}
+.pk-name{font-weight:900;font-size:15px}
+.pk-when{font-size:11px;font-weight:700}
+.pk-kid{background:#FFF3CD;color:#8B6914;border-radius:6px;padding:2px 7px;font-size:10px;font-weight:700;display:inline-block;margin-top:4px}
+.pk-pbox{background:#FFF3E0;border-radius:8px;padding:7px 9px;text-align:right;min-width:120px}
+.pk-pt{font-size:10px;font-weight:800;color:#D35400;margin-bottom:2px}
+.pk-pv{font-weight:800;font-size:13px}
+.pk-pn{font-size:9px;color:#888;margin-top:2px}
+.pk-hi{font-size:12px;color:#333;margin-bottom:3px;padding-left:7px}
+.pk-tip{background:#F8F9FA;border-radius:8px;padding:7px 10px;font-size:12px;margin-top:9px}
+
+/* ── REST CARD ── */
+.rest{background:#fff;border-radius:11px;padding:11px 13px;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,.07)}
+.rest-top{display:flex;justify-content:space-between;margin-bottom:4px;gap:8px}
+.rest-name{font-weight:800;font-size:13px}
+.rest-type{color:#AAA;font-size:10px}
+.rest-pr{text-align:right;flex-shrink:0}
+.rest-budget{font-weight:800;font-size:13px}
+.rest-price{font-size:10px;color:#AAA}
+.rest-hi{background:#F8F9FA;border-radius:6px;padding:5px 9px;font-size:12px;font-weight:600;color:#333;margin-bottom:4px}
+.rest-tip{font-size:11px;color:#777}
+
+/* ── PARKING ── */
+.alert-box{background:#FDEDEC;border:2px solid #C0392B;border-radius:12px;padding:14px;margin-bottom:14px}
+.alert-t{color:#C0392B;font-weight:900;font-size:14px;margin-bottom:8px}
+.alert-i{display:flex;gap:7px;margin-bottom:5px;font-size:12px}
+.alert-i span:first-child{color:#C0392B;font-weight:800;flex-shrink:0}
+.pk-city-card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.pk-title{font-weight:900;font-size:15px;margin-bottom:10px}
+.info-row{border-radius:8px;padding:7px 10px;font-size:12px;margin-bottom:6px}
+.pk-rec{background:#F8F9FA;border-radius:9px;padding:9px 11px;margin-bottom:7px}
+.pk-rn{font-weight:800;font-size:13px}
+.pk-rp{font-weight:900;color:#1A7A45;font-size:14px;float:right}
+.pk-rm{font-size:11px;color:#666;margin-top:2px}
+.pk-rnt{font-size:11px;color:#1A5276;font-weight:600;margin-top:2px}
+.multa{background:#FDEDEC;border-radius:8px;padding:7px 10px;font-size:12px;margin-bottom:6px}
+.app-info{background:#EBF5FB;border-radius:8px;padding:7px 10px;font-size:12px;margin-bottom:6px}
+.sign-r{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid #F0F0F0;font-size:12px}
+.sign-n{font-weight:800;min-width:130px;flex-shrink:0}
+
+/* ── BUDGET ── */
+.b-total{background:#fff;border-radius:13px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.b-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.b-total-label{font-weight:800;font-size:14px}
+.b-total-val{font-weight:900;font-size:26px;color:#B22222}
+.b-bar-wrap{height:14px;background:#F0F0F0;border-radius:7px;overflow:hidden;display:flex;margin-bottom:8px}
+.b-seg{height:100%}
+.b-warn{background:#FFF3E0;border:1px solid #D35400;border-radius:8px;padding:8px 11px;font-size:12px;color:#8B4500}
+.b-row{background:#fff;border-radius:11px;padding:11px 13px;margin-bottom:8px;box-shadow:0 2px 5px rgba(0,0,0,.06)}
+.b-row-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.b-cat{font-weight:700;font-size:13px}
+.b-val{font-weight:900;font-size:15px}
+.b-mini-bar{height:5px;background:#F0F0F0;border-radius:3px;margin-bottom:5px}
+.b-mini-fill{height:100%;border-radius:3px}
+.b-tip-t{font-size:11px;color:#888}
+.savings-box{background:#E8F8EF;border-radius:11px;padding:13px;border:2px solid #1A7A45;margin-top:4px}
+.sav-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #D5F5E3;font-size:12px}
+.sav-v{font-weight:800;color:#1A7A45;flex-shrink:0;margin-left:8px}
+
+/* ── RETURN COMPARE ── */
+.ret-card{background:#fff;border-radius:12px;padding:13px;margin-bottom:9px;box-shadow:0 2px 7px rgba(0,0,0,.08);position:relative}
+.rec-tag{position:absolute;top:10px;right:10px;background:#1A7A45;color:#fff;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:800}
+.ret-head{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.ret-city{font-weight:900;font-size:15px}
+.ret-stars{font-size:12px}
+.ret-dists{display:flex;gap:8px;margin-bottom:8px}
+.ret-db{flex:1;border-radius:7px;padding:6px 9px;font-size:11px}
+.ret-dl{font-weight:700;margin-bottom:2px}
+.ret-dv{font-weight:800}
+.ret-why{font-size:12px;color:#555;margin-bottom:7px}
+.ret-hi{display:flex;flex-wrap:wrap;gap:4px}
+.ret-hi span{background:#F8F9FA;border-radius:6px;padding:2px 8px;font-size:11px}
+
+/* ── GRADIENT BOX ── */
+.grad-box{border-radius:11px;padding:13px;color:#fff;margin-top:8px}
+
+/* ── DICAS ── */
+.dica-row{padding:8px 0;border-bottom:1px solid #F0F0F0;font-size:13px;display:flex;gap:8px;align-items:flex-start}
+.dica-arr{flex-shrink:0;color:#B22222;font-weight:800}
+
+/* ── KID / ROAD TIPS ── */
+.tip-section{border-radius:12px;padding:14px;margin-top:10px}
+.tip-title{font-weight:800;font-size:14px;margin-bottom:10px}
+.t-row{display:flex;gap:8px;margin-bottom:8px;font-size:12.5px;align-items:flex-start}
+.t-arr{font-weight:900;flex-shrink:0}
+
+@media(max-width:380px){.two-col{flex-direction:column}.ret-dists{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-flags">🇵🇹 → ⚽🏰🎢🏟️🏖️ → 🏠</div>
+  <h1>Road Trip Espanha 2026 — 11 Dias</h1>
+  <p>Montijo · Madrid · Zaragoza (almoço) · Barcelona · Salou · Toledo · Casa 🏠</p>
+  <div class="badges">
+    <span class="badge">📅 6–16 Julho</span><span class="badge">🚗 ~2.400km</span>
+    <span class="badge">👨‍👩‍👦 2A+1C (10a)</span><span class="badge">💶 ~€3.079</span>
+    <span class="badge">🏟️ 3 Estádios</span><span class="badge">🎢 3 Parques</span>
+  </div>
+</div>
+
+<!-- ══ APP WRAPPER ══ -->
+<div class="app">
+
+<!-- Main tab radio inputs (MUST be first children of .app) -->
+<input class="main-radio" type="radio" name="main" id="t1" checked>
+<input class="main-radio" type="radio" name="main" id="t2">
+<input class="main-radio" type="radio" name="main" id="t3">
+<input class="main-radio" type="radio" name="main" id="t4">
+<input class="main-radio" type="radio" name="main" id="t5">
+<input class="main-radio" type="radio" name="main" id="t6">
+<input class="main-radio" type="radio" name="main" id="t7">
+<input class="main-radio" type="radio" name="main" id="t8">
+<input class="main-radio" type="radio" name="main" id="t9">
+<input class="main-radio" type="radio" name="main" id="t10">
+<input class="main-radio" type="radio" name="main" id="t11">
+<input class="main-radio" type="radio" name="main" id="t12">
+
+<!-- STICKY TAB NAV -->
+<nav class="tab-nav">
+  <label for="t1">🗺️ Roteiro</label>
+  <label for="t2">🏰 Toledo</label>
+  <label for="t3">🏟️ Estádios</label>
+  <label for="t4">🎡 Salou</label>
+  <label for="t5">🎟️ Atrações</label>
+  <label for="t6">🍽️ Restaurantes</label>
+  <label for="t7">🏨 Hotéis</label>
+  <label for="t8">🚗 Estacion.</label>
+  <label for="t9">💰 Orçamento</label>
+  <label for="t10">💡 Dicas</label>
+  <label for="t11">📋 Reservas</label>
+  <label for="t12">📍 Mapas</label>
+</nav>
+
+<!-- PANELS -->
+<div class="panels">
+
+<!-- ══════════ P1: ROTEIRO ══════════ -->
+<div class="panel p1">
+  <div class="sec-t">🗺️ Itinerário — 11 Dias</div>
+  <p style="font-size:11px;color:#888;margin-bottom:12px">Toque em cada dia para expandir ▼</p>
+
+  <details><summary style="border-left:5px solid #8B4513">
+    <div class="d-emoji" style="background:#8B4513">🚗</div>
+    <div class="d-meta"><div><span class="d-num">Dia 1</span><span class="d-date">6 Jul Seg</span></div><div class="d-city" style="color:#8B4513">Montijo → Madrid</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Madrid</span><span class="km-tag">~560km · 5h30</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#8B4513">→</span>Saída 7h00 via A6/E-80 por Badajoz</li>
+      <li><span class="arr" style="color:#8B4513">→</span>Paragem Badajoz ~12h30 para almoço (~€10-12/pp)</li>
+      <li><span class="arr" style="color:#8B4513">→</span>Chegada Madrid ~14h30 — check-in e descanso</li>
+      <li><span class="arr" style="color:#8B4513">→</span>Plaza Mayor à tarde (gratuita)</li>
+      <li><span class="arr" style="color:#8B4513">→</span>Jantar: El Tigre — bebida + tapas GRÁTIS!</li>
+    </ul><div class="tip">⛽ Encha combustível sempre em Espanha — mais barato! 🚗 Use sempre Park &amp; Ride ou parques públicos em Madrid. Placa PT não isenta de multa ZBE.</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #B22222">
+    <div class="d-emoji" style="background:#B22222">🏛️</div>
+    <div class="d-meta"><div><span class="d-num">Dia 2</span><span class="d-date">7 Jul Ter</span></div><div class="d-city" style="color:#B22222">Madrid — Cultura &amp; Museus</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Madrid</span><span class="km-tag">A pé / metro</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#B22222">→</span>10h: Parque del Retiro (GRÁTIS) — bote no lago 🚣 €6/45min</li>
+      <li><span class="arr" style="color:#B22222">→</span>Palácio de Cristal — foto obrigatória!</li>
+      <li><span class="arr" style="color:#B22222">→</span>Almoço: El Tigre ou Mercado San Miguel</li>
+      <li><span class="arr" style="color:#B22222">→</span>18h: Museo del Prado — GRÁTIS a partir das 18h ✅</li>
+      <li><span class="arr" style="color:#B22222">→</span>19h: Museo Reina Sofía — GRÁTIS a partir das 19h (Guernica!)</li>
+      <li><span class="arr" style="color:#B22222">→</span>Jantar no bairro Huertas</li>
+    </ul><div class="tip">💡 Prado (18h) + Reina Sofía (19h) GRÁTIS = €54 poupados para 2 adultos! Criança &lt;18 anos SEMPRE GRÁTIS nos dois museus.</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #B22222">
+    <div class="d-emoji" style="background:#B22222">⚽</div>
+    <div class="d-meta"><div><span class="d-num">Dia 3</span><span class="d-date">8 Jul Qua</span></div><div class="d-city" style="color:#B22222">Madrid — Bernabéu 🏟️</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Madrid</span><span class="km-tag">Metro + a pé</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#B22222">→</span>10h: Santiago Bernabéu Tour — RESERVAR em realmadrid.com</li>
+      <li><span class="arr" style="color:#B22222">→</span>Campo retrátil LED 360°, 15 Champions, Museu Real Madrid</li>
+      <li><span class="arr" style="color:#B22222">→</span>Vestiários + túnel dos jogadores</li>
+      <li><span class="arr" style="color:#B22222">→</span>Almoço: bairro Chamartín</li>
+      <li><span class="arr" style="color:#B22222">→</span>Tarde: Palácio Real (exterior GRÁTIS) + Gran Vía</li>
+      <li><span class="arr" style="color:#B22222">→</span>Loja oficial Real Madrid — o miúdo vai querer tudo 😄</li>
+    </ul><div class="tip">⚽ Bernabéu: €30/adulto · €20/criança (5-14a). Duração ~1h30. Metropolitano (Atlético) como backup se Bernabéu fechado.</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #1A5276">
+    <div class="d-emoji" style="background:#1A5276">🗺️</div>
+    <div class="d-meta"><div><span class="d-num">Dia 4</span><span class="d-date">9 Jul Qui</span></div><div class="d-city" style="color:#1A5276">Madrid → Zaragoza (almoço) → Barcelona</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Barcelona</span><span class="km-tag">~625km · ~6h (c/ pausa)</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#1A5276">→</span>Saída cedo de Madrid ~8h30 — essencial não atrasar!</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Chegada Zaragoza ~11h30 — paragem de ~2h</li>
+      <li><span class="arr" style="color:#1A5276">→</span>📸 Basílica del Pilar (GRÁTIS, ~45min) — imperdível mesmo de passagem!</li>
+      <li><span class="arr" style="color:#1A5276">→</span>🍢 Almoço: Calle del Temple — pintxos €1.50-2 (o melhor de Zaragoza!)</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Saída Zaragoza ~14h via A-2 para Barcelona</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Chegada Barcelona ~17h-17h30 — check-in</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Park &amp; Ride Glòries (~€4/dia) logo ao chegar</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Passeio leve ao Barri Gòtic ao fim da tarde</li>
+    </ul><div class="tip">🗺️ Dia mais longo: 3h Madrid→Zaragoza + pausa 2h + 3h Zaragoza→Barcelona. Saída às 8h30 é chave! A criança descansa no carro. Sem hotel em Zaragoza = poupa ~€65! 🎉</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #1A7A45">
+    <div class="d-emoji" style="background:#1A7A45">🌆</div>
+    <div class="d-meta"><div><span class="d-num">Dia 5</span><span class="d-date">10 Jul Sex</span></div><div class="d-city" style="color:#1A7A45">Barcelona — Primeiro Dia &amp; Descoberta</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Barcelona</span><span class="km-tag">Metro + a pé</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#1A7A45">→</span>Manhã tranquila — descanso após dia longo de ontem</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>La Rambla + La Boqueria 🛒 (gratuito entrar, provar frutas frescas)</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Barri Gòtic + Catedral — ruelas medievais (GRÁTIS) ⛩️</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Almoço: Carrer de Blai — pintxos €1-1.50 🍢 (criança vai adorar!)</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Tarde: Barceloneta 🏖️ — primeiro mergulho no Mediterrâneo!</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>⚠️ ZBE activa (Sex) — use sempre o metro</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Jantar: Cervecería Catalana ou El Xampanyet</li>
+    </ul><div class="tip">💡 Dia mais leve após a condução de ontem. Aproveite para explorar o centro histórico e apanhar o ritmo de Barcelona!</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #7D3C98">
+    <div class="d-emoji" style="background:#7D3C98">⛪</div>
+    <div class="d-meta"><div><span class="d-num">Dia 6</span><span class="d-date">11 Jul Sáb</span></div><div class="d-city" style="color:#7D3C98">Barcelona — Gaudí Dia 🎨</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Barcelona</span><span class="km-tag">Metro + a pé</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#7D3C98">→</span>9h: Sagrada Família — RESERVAR em sagradafamilia.org ⚠️</li>
+      <li><span class="arr" style="color:#7D3C98">→</span>Torre Natividade: subir é inesquecível!</li>
+      <li><span class="arr" style="color:#7D3C98">→</span>Almoço no Eixample</li>
+      <li><span class="arr" style="color:#7D3C98">→</span>15h: Park Güell — exterior GRATUITO 🌿</li>
+      <li><span class="arr" style="color:#7D3C98">→</span>Pôr do sol: Bunkers del Carmel (GRÁTIS) — melhor vista de BCN!</li>
+      <li><span class="arr" style="color:#7D3C98">→</span>Jantar: Bar del Pla</li>
+    </ul><div class="tip">⚠️ Sagrada Família: Reserve MESES antes — julho esgota! Criança 6-17a: €20. Torre +€6.</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #1A5276">
+    <div class="d-emoji" style="background:#1A5276">🔵</div>
+    <div class="d-meta"><div><span class="d-num">Dia 7</span><span class="d-date">12 Jul Dom</span></div><div class="d-city" style="color:#1A5276">Barcelona — Camp Nou + Praia</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Barcelona</span><span class="km-tag">Metro + a pé</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#1A5276">→</span>9h30: Camp Nou Barça Immersive Tour (€29/adulto · €21/criança)</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Museu FCB + sala imersiva 360° + galeria troféus</li>
+      <li><span class="arr" style="color:#1A5276">→</span>⚠️ Obras Espai Barça — só museu+imersivo disponível</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Tarde: Barceloneta 🏖️ — tarde inteira na praia!</li>
+      <li><span class="arr" style="color:#1A5276">→</span>🎉 Domingo = ZBE inactiva — mais liberdade!</li>
+      <li><span class="arr" style="color:#1A5276">→</span>Jantar: chiringuito na Barceloneta</li>
+    </ul><div class="tip">⚽ Reserve em fcbarcelona.com. Dom = ZBE inactiva — pode circular mais livremente!</div></div>
+  </details>
+  <details><summary style="border-left:5px solid #0E6655">
+    <div class="d-emoji" style="background:#0E6655">🎡</div>
+    <div class="d-meta"><div><span class="d-num">Dia 8</span><span class="d-date">13 Jul Seg</span></div><div class="d-city" style="color:#0E6655">Barcelona → Salou + PortAventura 🎢</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Salou</span><span class="km-tag">~100km · ~1h</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#0E6655">→</span>Saída ~9h30 de Barcelona</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Chegada Salou ~10h30 — guardar malas no hotel</li>
+      <li><span class="arr" style="color:#0E6655">→</span>11h: PortAventura Park ABRE! 🎢</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Dragon Khan 🐉, Shambhala (76m!), SésamoAventura</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Almoço dentro do parque — restaurantes temáticos</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Espetáculo noturno de fogo ~22h! 🔥</li>
+    </ul><div class="tip">🎢 Tickets ONLINE em portaventuraworld.com — até 40% mais barato! Dragon Khan e Shambhala logo a abrir.</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #0E6655">
+    <div class="d-emoji" style="background:#0E6655">🌊</div>
+    <div class="d-meta"><div><span class="d-num">Dia 9</span><span class="d-date">14 Jul Ter</span></div><div class="d-city" style="color:#0E6655">Salou — Ferrari Land ⚡ + Caribe 🌊</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Salou</span><span class="km-tag">Dentro do resort</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#0E6655">→</span>Manhã: Ferrari Land ⚡ — Red Force 0→180km/h em 5s!</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Altura mínima Red Force: 1.40m — verificar criança</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Simuladores + exposição Ferrari</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Tarde: Caribe Aquatic Park 🌊 — toboáguas, piscinas de ondas</li>
+      <li><span class="arr" style="color:#0E6655">→</span>Jantar: Passeig de Miramar ao pôr do sol 🌅</li>
+    </ul><div class="tip">💡 Combo 3 parques em portaventuraworld.com = mais económico! Protetor solar alto fator — imprescindível em julho!</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #6B2D8B">
+    <div class="d-emoji" style="background:#6B2D8B">🏰</div>
+    <div class="d-meta"><div><span class="d-num">Dia 10</span><span class="d-date">15 Jul Qua</span></div><div class="d-city" style="color:#6B2D8B">Salou → Toledo 🏰</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Toledo</span><span class="km-tag">~555km · ~5h</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#6B2D8B">→</span>Saída cedo ~8h30 de Salou</li>
+      <li><span class="arr" style="color:#6B2D8B">→</span>Via AP-7 → A-2 → A-42 Toledo</li>
+      <li><span class="arr" style="color:#6B2D8B">→</span>Chegada Toledo ~14h — check-in e almoço</li>
+      <li><span class="arr" style="color:#6B2D8B">→</span>16h: Mirador del Valle — vista IMPERDÍVEL (GRÁTIS) 📸</li>
+      <li><span class="arr" style="color:#6B2D8B">→</span>17h30: Catedral Primada (€12/adulto)</li>
+      <li><span class="arr" style="color:#6B2D8B">→</span>Alcázar de Toledo (GRÁTIS) — armaduras medievais!</li>
+      <li><span class="arr" style="color:#6B2D8B">→</span>Jantar: carcamusa + mazapán de Toledo 🍬</li>
+    </ul><div class="tip">🏰 Toledo = 2.500 anos de história. Criança vai adorar o Alcázar GRÁTIS! Mazapán para trazer para Portugal.</div></div>
+  </details>
+
+  <details><summary style="border-left:5px solid #1A7A45">
+    <div class="d-emoji" style="background:#1A7A45">🎉</div>
+    <div class="d-meta"><div><span class="d-num">Dia 11</span><span class="d-date">16 Jul Qui</span></div><div class="d-city" style="color:#1A7A45">Toledo → Montijo 🏠🎉</div></div>
+    <div class="d-right"><span class="sleep-tag">🛏 Montijo 🏠</span><span class="km-tag">~310km · ~3h</span></div>
+    <span class="chev">▼</span></summary>
+    <div class="d-body"><ul class="d-items">
+      <li><span class="arr" style="color:#1A7A45">→</span>Manhã: Bairro Judeu + Sinagoga (exterior GRÁTIS)</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Comprar mazapán Santo Tomé para Portugal! 🍬</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Saída Toledo ~11h via A-5 direct a Portugal</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Paragem Badajoz ~13h para almoço</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Cruzar fronteira Portugal ~14h 🇵🇹</li>
+      <li><span class="arr" style="color:#1A7A45">→</span>Montijo antes das 15h — CHEGÁMOS! 🎉</li>
+    </ul><div class="tip">🏠 Toledo → Montijo: apenas 310km, 3h pela A-5. Chegam a casa antes do almoço — o regresso mais confortável da viagem!</div></div>
+  </details>
+</div><!-- /p1 -->
+
+<!-- ══════════ P2: TOLEDO ══════════ -->
+<div class="panel p2">
+  <div class="sec-t">🏰 Toledo — Cidade das 3 Culturas</div>
+  <p style="font-size:13px;color:#777;margin-bottom:13px">Rota de regresso perfeita: Salou → Toledo (5h) → Montijo (3h)</p>
+
+  <!-- Sub-radios for return city compare -->
+  <input class="sub-radio" type="radio" name="ret" id="ret1" checked>
+  <input class="sub-radio" type="radio" name="ret" id="ret2">
+  <input class="sub-radio" type="radio" name="ret" id="ret3">
+  <div class="frow">
+    <label for="ret1" style="border-color:#6B2D8B">🏰 Toledo</label>
+    <label for="ret2" style="border-color:#D35400">🍊 Valencia</label>
+    <label for="ret3" style="border-color:#1A5276">📚 Salamanca</label>
+  </div>
+
+  <div class="retg retg1">
+    <div class="ret-card" style="border-left:5px solid #6B2D8B">
+      <span class="rec-tag">✅ RECOMENDADO</span>
+      <div class="ret-head"><span style="font-size:24px">🏰</span><div><div class="ret-city">Toledo</div><div class="ret-stars">⭐⭐⭐⭐⭐ · 8h condução em 2 dias</div></div></div>
+      <div class="ret-dists">
+        <div class="ret-db" style="background:#FFF3E0"><div class="ret-dl" style="color:#D35400">DE SALOU</div><div class="ret-dv">~555km · ~5h via A-2</div></div>
+        <div class="ret-db" style="background:#E8F8EF"><div class="ret-dl" style="color:#1A7A45">PARA CASA</div><div class="ret-dv">~310km · ~3h via A-5</div></div>
+      </div>
+      <div class="ret-why">Cidade das 3 Culturas (UNESCO) literalmente no caminho de regresso! Via A-2 direction Madrid já vai para Toledo. Regresso a casa fica a só 3h — o mais confortável de toda a viagem.</div>
+      <div class="ret-hi"><span>🌅 Mirador del Valle</span><span>⛩️ Catedral Primada</span><span>🏰 Alcázar GRÁTIS</span><span>🍬 Mazapán para trazer</span><span>2.500 anos de história</span></div>
+      <div style="font-size:11px;color:#888;margin-top:7px">🏨 Hotel: €65-195/noite · Parador com vista deslumbrante!</div>
+    </div>
+    <div class="grad-box" style="background:linear-gradient(135deg,#6B2D8B,#1A5276)">
+      <div style="font-weight:900;font-size:14px;margin-bottom:9px">🏰 Porquê Toledo é a Escolha Certa</div>
+      <div style="font-size:12.5px;line-height:1.7">
+        <div>📍 <strong>Na rota natural:</strong> Via A-2 → A-42. Zero desvio!</div>
+        <div>⏱️ <strong>Regresso fácil:</strong> 310km, 3h pela A-5. Casa antes do almoço!</div>
+        <div>🏛️ <strong>UNESCO espetacular:</strong> Romanos, árabes, judeus, cristãos — tudo preservado!</div>
+        <div>👦 <strong>Criança adora:</strong> Alcázar GRÁTIS com armaduras medievais!</div>
+        <div>🍬 <strong>Mazapán:</strong> Sobremesa típica para trazer para Portugal!</div>
+        <div>📸 <strong>Mirador del Valle:</strong> Vista de postal — foto obrigatória!</div>
+      </div>
+    </div>
+    <div style="background:#FFF9E6;border-radius:12px;padding:13px;border:1px solid #F0C060;margin-top:10px">
+      <div style="font-weight:800;color:#8B6000;font-size:13px;margin-bottom:6px">🏆 Dica Premium: Parador de Toledo</div>
+      <div style="font-size:12.5px;color:#5C4200;line-height:1.6">O Parador fica <strong>mesmo no Mirador del Valle</strong> — acordar com a vista de Toledo é uma experiência inesquecível. €130-195/noite. Para a última noite da viagem, vale cada euro! Reservar em <strong>parador.es</strong>.</div>
+    </div>
+  </div>
+
+  <div class="retg retg2">
+    <div class="ret-card" style="border-left:5px solid #D35400">
+      <div class="ret-head"><span style="font-size:24px">🍊</span><div><div class="ret-city">Valencia</div><div class="ret-stars">⭐⭐⭐⭐ · 9.5h condução (regresso longo!)</div></div></div>
+      <div class="ret-dists">
+        <div class="ret-db" style="background:#FFF3E0"><div class="ret-dl" style="color:#D35400">DE SALOU</div><div class="ret-dv">~260km · ~2.5h</div></div>
+        <div class="ret-db" style="background:#FDEDEC"><div class="ret-dl" style="color:#C0392B">PARA CASA</div><div class="ret-dv">~730km · ~7h (longo!)</div></div>
+      </div>
+      <div class="ret-why">A mais animada para família! City of Arts &amp; Sciences e Oceanografic são incríveis. Mas o regresso de Valencia a Portugal (7h) é muito longo com criança após dias intensos nos parques.</div>
+      <div class="ret-hi"><span>🤩 City of Arts &amp; Sciences</span><span>🐠 Oceanografic (maior aquário Europa)</span><span>🥘 Paella original</span><span>🏖️ Praia + centro histórico</span></div>
+      <div style="background:#FDEDEC;border-radius:8px;padding:8px 10px;font-size:12px;color:#8B0000;margin-top:8px">⚠️ Regresso Valencia→Montijo: 730km, 7h — muito longo após dias nos parques.</div>
+    </div>
+  </div>
+
+  <div class="retg retg3">
+    <div class="ret-card" style="border-left:5px solid #1A5276">
+      <div class="ret-head"><span style="font-size:24px">📚</span><div><div class="ret-city">Salamanca</div><div class="ret-stars">⭐⭐⭐ · 9.5h condução</div></div></div>
+      <div class="ret-dists">
+        <div class="ret-db" style="background:#FDEDEC"><div class="ret-dl" style="color:#C0392B">DE SALOU</div><div class="ret-dv">~670km · ~7h (muito longo!)</div></div>
+        <div class="ret-db" style="background:#E8F8EF"><div class="ret-dl" style="color:#1A7A45">PARA CASA</div><div class="ret-dv">~250km · ~2.5h via A-66</div></div>
+      </div>
+      <div class="ret-why">Cidade universitária UNESCO lindíssima, mas 7h de Salou num só dia é muito. Vai para norte (sentido contrário a Portugal), tornando a rota menos eficiente.</div>
+      <div class="ret-hi"><span>🏛️ Plaza Mayor belíssima</span><span>📚 Universidade séc XII</span><span>🔍 Jogo da rã na fachada</span></div>
+      <div style="background:#FDEDEC;border-radius:8px;padding:8px 10px;font-size:12px;color:#8B0000;margin-top:8px">⚠️ 7h de condução de Salou num só dia — demasiado cansativo com criança.</div>
+    </div>
+  </div>
+</div><!-- /p2 -->
+
+<!-- ══════════ P3: ESTÁDIOS ══════════ -->
+<div class="panel p3">
+  <div class="sec-t">🏟️ Visitas aos Estádios</div>
+  <div class="tip" style="margin-bottom:14px">⚽ <strong>Prioridade:</strong> Real Madrid (Dia 3) · Camp Nou (Dia 7) · Metropolitano como backup</div>
+
+  <div class="stadium" style="border-top:4px solid #B22222">
+    <span class="st-badge">✅ NO ROTEIRO</span>
+    <div class="st-head"><span style="font-size:30px">🏟️</span><div><div class="st-name">Santiago Bernabéu</div><div class="st-club" style="color:#B22222">Real Madrid · Madrid</div><div class="st-hours">⏱ ~1h30 · 🕐 9h30-20h30 (exceto dias de jogo)</div></div></div>
+    <div class="two-col">
+      <div style="background:#FFF3E0;border-radius:8px;padding:8px 10px">
+        <div style="font-size:11px;font-weight:800;color:#D35400;margin-bottom:3px">💶 PREÇOS</div>
+        <div style="font-size:14px;font-weight:800">Adulto: €30</div>
+        <div style="font-size:14px;font-weight:800">Criança: €20</div>
+        <div style="font-size:10px;color:#888;margin-top:2px">5-14 anos · &lt;5 GRÁTIS</div>
+      </div>
+      <div style="background:#E8F8EF;border-radius:8px;padding:8px 10px">
+        <div style="font-size:11px;font-weight:800;color:#1A7A45;margin-bottom:3px">✅ INCLUI</div>
+        <div style="font-size:11px;margin-bottom:2px">• Museu Real Madrid + 15 Champions</div>
+        <div style="font-size:11px;margin-bottom:2px">• Campo LED 360° (único no mundo!)</div>
+        <div style="font-size:11px;margin-bottom:2px">• Campo retrátil em 6 bandejas</div>
+        <div style="font-size:11px;margin-bottom:2px">• Vestiários + túnel dos jogadores</div>
+      </div>
+    </div>
+    <div class="st-tip">💡 Reserve em realmadrid.com. Metro L10: Santiago Bernabéu. Evitar dias antes de jogo.</div>
+    <div class="st-book">🌐 realmadrid.com ⭐⭐⭐⭐⭐</div>
+  </div>
+
+  <div class="stadium" style="border-top:4px solid #D35400">
+    <div class="st-head"><span style="font-size:30px">🏟️</span><div><div class="st-name">Cívitas Metropolitano</div><div class="st-club" style="color:#D35400">Atlético de Madrid · Madrid</div><div class="st-hours">⏱ ~1h15 · 🕐 Ter-Dom 10h-19h</div></div></div>
+    <div class="two-col">
+      <div style="background:#FFF3E0;border-radius:8px;padding:8px 10px">
+        <div style="font-size:11px;font-weight:800;color:#D35400;margin-bottom:3px">💶 PREÇOS</div>
+        <div style="font-size:14px;font-weight:800">Adulto: €17</div>
+        <div style="font-size:14px;font-weight:800">Criança: €12</div>
+        <div style="font-size:10px;color:#888;margin-top:2px">Alternativa se Bernabéu fechado</div>
+      </div>
+      <div style="background:#E8F8EF;border-radius:8px;padding:8px 10px">
+        <div style="font-size:11px;font-weight:800;color:#1A7A45;margin-bottom:3px">✅ INCLUI</div>
+        <div style="font-size:11px;margin-bottom:2px">• Museu Atlético de Madrid</div>
+        <div style="font-size:11px;margin-bottom:2px">• Troféus e história</div>
+        <div style="font-size:11px;margin-bottom:2px">• Stadium moderno (2017)</div>
+      </div>
+    </div>
+    <div class="st-tip">💡 Excelente backup se Bernabéu fechar por evento desportivo.</div>
+    <div class="st-book">🌐 atleticodemadrid.com ⭐⭐⭐⭐</div>
+  </div>
+
+  <div class="stadium" style="border-top:4px solid #1A5276">
+    <span class="st-badge">✅ NO ROTEIRO</span>
+    <div class="st-head"><span style="font-size:30px">🏟️</span><div><div class="st-name">Camp Nou (Barça Immersive)</div><div class="st-club" style="color:#1A5276">FC Barcelona · Barcelona</div><div class="st-hours">⏱ ~1h30 · 🕐 10h-18h30 diário</div></div></div>
+    <div class="two-col">
+      <div style="background:#FFF3E0;border-radius:8px;padding:8px 10px">
+        <div style="font-size:11px;font-weight:800;color:#D35400;margin-bottom:3px">💶 PREÇOS</div>
+        <div style="font-size:14px;font-weight:800">Adulto: €29</div>
+        <div style="font-size:14px;font-weight:800">Criança: €21</div>
+        <div style="font-size:10px;color:#888;margin-top:2px">6-13 anos · &lt;5 GRÁTIS</div>
+      </div>
+      <div style="background:#E8F8EF;border-radius:8px;padding:8px 10px">
+        <div style="font-size:11px;font-weight:800;color:#1A7A45;margin-bottom:3px">✅ INCLUI</div>
+        <div style="font-size:11px;margin-bottom:2px">• Museu FCB (mais visitado de BCN!)</div>
+        <div style="font-size:11px;margin-bottom:2px">• Barça Immersive Room 360°</div>
+        <div style="font-size:11px;margin-bottom:2px">• Galeria troféus + área Messi</div>
+      </div>
+    </div>
+    <div class="st-tip">⚠️ Obras em curso julho 2026 — só museu+imersivo (sem vestiários/relvado). Reserve em fcbarcelona.com.</div>
+    <div class="st-book">🌐 fcbarcelona.com ⭐⭐⭐⭐</div>
+  </div>
+
+  <div class="grad-box" style="background:linear-gradient(135deg,#B22222,#1A5276)">
+    <div style="font-weight:900;font-size:14px;margin-bottom:6px">💶 Total 2 Estádios (2 Adultos + 1 Criança)</div>
+    <div style="font-size:13px;line-height:1.8">Bernabéu: €30×2 + €20 = <strong>€80</strong><br>Camp Nou: €29×2 + €21 = <strong>€79</strong><br><strong>Total família: €159 🏆</strong></div>
+  </div>
+</div><!-- /p3 -->
+
+<!-- ══════════ P4: SALOU ══════════ -->
+<div class="panel p4">
+  <div class="sec-t">🎡 PortAventura World — Salou</div>
+  <div style="background:#E8F8EF;border-radius:9px;padding:9px 12px;margin-bottom:14px;border:1px solid #1A7A45;font-size:12px">
+    📅 <strong>Dias 8-9 (13-14 Jul)</strong> · ~100km de Barcelona · 3 parques num resort · Criança de 10 anos vai adorar! 🎢
+  </div>
+
+  <div class="park" style="border-left:5px solid #0E6655">
+    <div class="pk-head">
+      <div><div class="pk-emoji">🎢</div><div class="pk-name">PortAventura Park</div><div class="pk-when" style="color:#0E6655">Dia 8 · 13 Jul · 10h-22h</div><span class="pk-kid">👦 Todas as idades</span></div>
+      <div class="pk-pbox"><div class="pk-pt">💶 ONLINE</div><div class="pk-pv">Adulto: €45-55</div><div class="pk-pv">Júnior: €38-47</div><div class="pk-pn">Bilheteria: até 40% mais caro!</div></div>
+    </div>
+    <div class="pk-hi" style="border-left:2px solid #0E6655">• Dragon Khan — 8 loopings! 🐉</div>
+    <div class="pk-hi" style="border-left:2px solid #0E6655">• Shambhala — 76m, mais alto da Europa!</div>
+    <div class="pk-hi" style="border-left:2px solid #0E6655">• SésamoAventura — área para crianças ⭐</div>
+    <div class="pk-hi" style="border-left:2px solid #0E6655">• 40+ atrações · 6 mundos temáticos</div>
+    <div class="pk-hi" style="border-left:2px solid #0E6655">• Espetáculo noturno de fogo e pirotecnia 🔥</div>
+    <div class="pk-tip">💡 Chegue à abertura: Dragon Khan e Shambhala primeiro. Chapéu + protetor solar + água!</div>
+  </div>
+
+  <div class="park" style="border-left:5px solid #DC143C">
+    <div class="pk-head">
+      <div><div class="pk-emoji">🏎️</div><div class="pk-name">Ferrari Land</div><div class="pk-when" style="color:#DC143C">Dia 9 · 14 Jul · 11h-20h</div><span class="pk-kid">👦 10 anos: 90% das atrações ✅</span></div>
+      <div class="pk-pbox"><div class="pk-pt">💶 ADD-ON</div><div class="pk-pv">Adulto: €25</div><div class="pk-pv">Júnior: €20</div><div class="pk-pn">Ou combo 3 parques</div></div>
+    </div>
+    <div class="pk-hi" style="border-left:2px solid #DC143C">• Red Force: 0→180km/h em 5 segundos! ⚡</div>
+    <div class="pk-hi" style="border-left:2px solid #DC143C">• Mais rápido e alto da Europa (112m)</div>
+    <div class="pk-hi" style="border-left:2px solid #DC143C">• Altura mínima: 1.40m — verificar criança!</div>
+    <div class="pk-hi" style="border-left:2px solid #DC143C">• Simuladores + carros Ferrari reais</div>
+    <div class="pk-tip">💡 Parque mais pequeno: 3-4h suficientes. Combine com Caribe à tarde!</div>
+  </div>
+
+  <div class="park" style="border-left:5px solid #1A5276">
+    <div class="pk-head">
+      <div><div class="pk-emoji">🌊</div><div class="pk-name">Caribe Aquatic Park</div><div class="pk-when" style="color:#1A5276">Dia 9 · 14 Jul · 10h-19h</div><span class="pk-kid">👦 PERFEITO para 10 anos! ⭐</span></div>
+      <div class="pk-pbox"><div class="pk-pt">💶 ONLINE</div><div class="pk-pv">Adulto: €35-40</div><div class="pk-pv">Júnior: €28-33</div><div class="pk-pn">Combo = mais económico</div></div>
+    </div>
+    <div class="pk-hi" style="border-left:2px solid #1A5276">• 50.000 m² de parque aquático!</div>
+    <div class="pk-hi" style="border-left:2px solid #1A5276">• Toboáguas de alta velocidade</div>
+    <div class="pk-hi" style="border-left:2px solid #1A5276">• Piscinas de ondas + rios preguiçosos</div>
+    <div class="pk-hi" style="border-left:2px solid #1A5276">• Splash Battle — batalha de água 💦</div>
+    <div class="pk-tip">💡 Tarde de julho = sol máximo! Protetor solar alto fator. Criança vai adorar!</div>
+  </div>
+
+  <div class="grad-box" style="background:linear-gradient(135deg,#0E6655,#1A5276)">
+    <div style="font-weight:900;font-size:14px;margin-bottom:8px">🏨 H10 Mediterranean vs Hotel PortAventura</div>
+    <div style="font-size:12.5px;line-height:1.8">
+      H10 (€120×2) + tickets família (~€297) = <strong>€537</strong><br>
+      Hotel PA (€180×2 com tickets incluídos) = <strong>€360</strong><br>
+      <span style="background:rgba(255,255,255,.2);border-radius:6px;padding:2px 8px;display:inline-block;margin-top:4px">🎉 Hotel PortAventura: €177 mais barato + mais cómodo!</span>
+    </div>
+  </div>
+</div><!-- /p4 -->
+
+<!-- ══════════ P5: ATRAÇÕES ══════════ -->
+<div class="panel p5">
+  <div class="sec-t">🎟️ Atrações &amp; Museus</div>
+  <input class="sub-radio" type="radio" name="ac" id="ac1" checked>
+  <input class="sub-radio" type="radio" name="ac" id="ac2">
+  <input class="sub-radio" type="radio" name="ac" id="ac3">
+  <input class="sub-radio" type="radio" name="ac" id="ac4">
+  <input class="sub-radio" type="radio" name="ac" id="ac5">
+  <div class="frow">
+    <label for="ac1">Madrid</label><label for="ac2">Zaragoza</label><label for="ac3">Barcelona</label><label for="ac4">Toledo</label><label for="ac5">🎢 Salou</label>
+  </div>
+  <div class="ag1 ag">
+    <div class="atrac-row card"><span style="font-size:22px">🖼️</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Museo del Prado<span class="must-tag">MUST</span></div><span class="free-tag">GRÁTIS 18h-20h (Seg-Sáb)</span><div style="background:#E8F8EF;border-radius:6px;padding:2px 8px;font-size:11px;color:#1A7A45;font-weight:700;display:inline-block;margin-left:5px">Criança &lt;18 SEMPRE GRÁTIS</div><div class="small-tip">💡 Adultos nos horários gratuitos poupam €15 cada.</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🎨</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Museo Reina Sofía<span class="must-tag">MUST</span></div><span class="free-tag">GRÁTIS 19h-21h (Seg/Qua-Sáb)</span><div class="small-tip">💡 Guernica de Picasso. Criança &lt;18 GRÁTIS sempre!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🌳</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Parque del Retiro<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITO</span><div class="small-tip">💡 Bote no lago — criança vai adorar! €6/45min.</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">⚽</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Bernabéu Tour<span class="must-tag">MUST</span></div><span class="paid-tag">💶 €30/adulto · €20/criança (5-14a)</span><div class="small-tip">💡 RESERVAR em realmadrid.com. ~1h30.</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">⛲</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Plaza Mayor<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITA</span><div class="small-tip">💡 Animação de rua frequente!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">👑</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Palácio Real</div><span class="free-tag">Exterior GRÁTIS</span><span class="paid-tag" style="margin-left:5px">Interior €14/adulto</span><div class="small-tip">💡 Troca da guarda Qua/Sáb 11h — GRÁTIS!</div></div></div>
+  </div>
+  <div class="ag2 ag">
+    <div class="atrac-row card"><span style="font-size:22px">🕌</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Basílica del Pilar<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITA</span><div class="small-tip">💡 Subida cúpula €5 — vista 360°!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🏯</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Aljafería — UNESCO<span class="must-tag">MUST</span></div><span class="paid-tag">💶 €5/adulto</span><div style="background:#E8F8EF;border-radius:6px;padding:2px 8px;font-size:11px;color:#1A7A45;font-weight:700;display:inline-block;margin-left:5px">GRÁTIS &lt;14 anos</div><div class="small-tip">💡 Criança de 10 anos entra GRÁTIS! Arquitetura árabe do séc X.</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🍷</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Calle del Temple<span class="must-tag">MUST</span></div><span class="free-tag">GRÁTIS entrar</span><div class="small-tip">💡 Happy hour 19h-21h — pintxos a €2!</div></div></div>
+  </div>
+  <div class="ag3 ag">
+    <div class="atrac-row card"><span style="font-size:22px">⛪</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Sagrada Família<span class="must-tag">MUST</span></div><span class="paid-tag">💶 €26/adulto · €20/criança</span><div class="small-tip">⚠️ RESERVAR em sagradafamilia.org — MESES antes!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🌿</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Park Güell (exterior)<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITO</span><div class="small-tip">💡 Mosaicos + vistas — criança vai adorar!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🌅</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Bunkers del Carmel<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITO</span><div class="small-tip">💡 Melhor pôr do sol de Barcelona — inesquecível!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">⚽</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Camp Nou Immersive<span class="must-tag">MUST</span></div><span class="paid-tag">💶 €29/adulto · €21/criança</span><div class="small-tip">💡 Reserve em fcbarcelona.com. Obras em curso.</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🏖️</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Barceloneta (praia)<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITA</span><div class="small-tip">💡 Chegue antes das 10h no verão!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🦎</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Casa Batlló OU La Pedrera</div><span class="paid-tag">💶 €22-35/adulto</span><div class="small-tip">💡 Escolha APENAS UMA!</div></div></div>
+  </div>
+  <div class="ag4 ag">
+    <div class="atrac-row card"><span style="font-size:22px">🌅</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Mirador del Valle<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITO</span><div class="small-tip">💡 1ª paragem ao chegar — vista panorâmica de Toledo + Rio Tejo!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">⛩️</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Catedral Primada<span class="must-tag">MUST</span></div><span class="paid-tag">💶 €12/adulto</span><div class="small-tip">💡 Uma das mais belas catedrais góticas do mundo!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🏰</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Alcázar de Toledo<span class="must-tag">MUST</span></div><span class="free-tag">SEMPRE GRATUITO</span><div class="small-tip">💡 Armaduras medievais — criança vai adorar!</div></div></div>
+    <div class="atrac-row card"><span style="font-size:22px">🍬</span><div style="flex:1;margin-left:9px"><div style="font-weight:800;font-size:13.5px">Mazapán de Toledo<span class="must-tag">MUST</span></div><span class="free-tag">Provar grátis nas lojas</span><div class="small-tip">💡 Trazer para Portugal — sobremesa típica!</div></div></div>
+  </div>
+
+  <!-- SALOU PARKS -->
+  <div class="ag5 ag">
+    <div style="background:#E8F8EF;border-radius:10px;padding:10px 12px;margin-bottom:12px;border:1px solid #1A7A45;font-size:12px">
+      📅 <strong>Dia 8 (13 Jul)</strong> — PortAventura Park · <strong>Dia 9 (14 Jul)</strong> — Ferrari Land + Caribe · Comprar <strong>SEMPRE online</strong> — até 40% mais barato!
+    </div>
+
+    <!-- PORTAVENTURA -->
+    <div class="atrac-row card" style="border-left:4px solid #0E6655;flex-direction:column;align-items:flex-start">
+      <div style="display:flex;gap:9px;width:100%;margin-bottom:10px">
+        <span style="font-size:26px">🎢</span>
+        <div style="flex:1">
+          <div style="font-weight:800;font-size:14px">PortAventura Park<span class="must-tag">DIA 8</span></div>
+          <div style="font-size:11px;color:#0E6655;font-weight:700">13 Jul (Dom) · Abre 10h · Fecha ~22h</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px">
+        <span class="paid-tag">💶 Adulto €45-55</span>
+        <span class="paid-tag">💶 Júnior €38-47</span>
+        <span style="background:#FDEDEC;color:#B22222;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700">🎟️ Bilheteria: até 40% mais caro!</span>
+      </div>
+      <div style="font-size:12px;color:#333;margin-bottom:4px">• Dragon Khan — 8 loopings 🐉 · Shambhala — 76m (mais alto Europa!)</div>
+      <div style="font-size:12px;color:#333;margin-bottom:10px">• SésamoAventura (crianças) · 40+ atrações · 6 mundos temáticos</div>
+      <div style="background:#1A7A45;border-radius:9px;padding:10px 13px;width:100%">
+        <div style="color:#fff;font-weight:900;font-size:13px;margin-bottom:8px">🎟️ Onde Comprar — ONLINE (mais barato!)</div>
+        <a href="https://www.portaventuraworld.com/comprar/entradas" target="_blank" style="background:#fff;color:#1A7A45;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:800;text-decoration:none;display:block;text-align:center;margin-bottom:7px">🌐 portaventuraworld.com → Comprar Entradas</a>
+        <div style="color:rgba(255,255,255,.85);font-size:11px">Escolher: <strong>Combo 3 Parques 2 Dias</strong> = PortAventura + Ferrari Land + Caribe (mais económico para 2 dias!)</div>
+      </div>
+    </div>
+
+    <!-- FERRARI LAND -->
+    <div class="atrac-row card" style="border-left:4px solid #DC143C;flex-direction:column;align-items:flex-start">
+      <div style="display:flex;gap:9px;width:100%;margin-bottom:10px">
+        <span style="font-size:26px">🏎️</span>
+        <div style="flex:1">
+          <div style="font-weight:800;font-size:14px">Ferrari Land<span class="must-tag">DIA 9</span></div>
+          <div style="font-size:11px;color:#DC143C;font-weight:700">14 Jul (Seg) · Abre 11h · Fecha ~20h</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px">
+        <span class="paid-tag">💶 Add-on Adulto €25</span>
+        <span class="paid-tag">💶 Add-on Júnior €20</span>
+        <span style="background:#E8F8EF;color:#1A7A45;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700">✅ Incluído no Combo 3 Parques</span>
+      </div>
+      <div style="background:#FDEDEC;border-radius:8px;padding:7px 10px;font-size:12px;color:#8B0000;margin-bottom:9px">
+        ⚠️ <strong>Red Force:</strong> 0→180km/h em 5s! Altura mínima <strong>1,40m</strong> — verificar criança antes!
+      </div>
+      <div style="font-size:12px;color:#333;margin-bottom:10px">• Simuladores + carros Ferrari reais · Shows · Exposição Ferrari</div>
+      <div style="background:#DC143C;border-radius:9px;padding:10px 13px;width:100%">
+        <div style="color:#fff;font-weight:900;font-size:13px;margin-bottom:8px">🎟️ Onde Comprar</div>
+        <a href="https://www.portaventuraworld.com/comprar/entradas" target="_blank" style="background:#fff;color:#DC143C;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:800;text-decoration:none;display:block;text-align:center;margin-bottom:7px">🌐 portaventuraworld.com → Ferrari Land</a>
+        <div style="color:rgba(255,255,255,.85);font-size:11px">💡 Se comprar o <strong>Combo 3 Parques 2 Dias</strong>, Ferrari Land já está incluído!</div>
+      </div>
+    </div>
+
+    <!-- CARIBE -->
+    <div class="atrac-row card" style="border-left:4px solid #1A5276;flex-direction:column;align-items:flex-start">
+      <div style="display:flex;gap:9px;width:100%;margin-bottom:10px">
+        <span style="font-size:26px">🌊</span>
+        <div style="flex:1">
+          <div style="font-weight:800;font-size:14px">Caribe Aquatic Park<span class="must-tag">DIA 9</span></div>
+          <div style="font-size:11px;color:#1A5276;font-weight:700">14 Jul (Seg) · Abre 10h · Fecha ~19h</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:9px">
+        <span class="paid-tag">💶 Adulto €35-40</span>
+        <span class="paid-tag">💶 Júnior €28-33</span>
+        <span style="background:#E8F8EF;color:#1A7A45;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700">✅ Incluído no Combo 3 Parques</span>
+      </div>
+      <div style="font-size:12px;color:#333;margin-bottom:10px">• 50.000m² · Toboáguas alta velocidade · Piscinas de ondas · Splash Battle 💦</div>
+      <div style="background:#1A5276;border-radius:9px;padding:10px 13px;width:100%">
+        <div style="color:#fff;font-weight:900;font-size:13px;margin-bottom:8px">🎟️ Onde Comprar</div>
+        <a href="https://www.portaventuraworld.com/comprar/entradas" target="_blank" style="background:#fff;color:#1A5276;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:800;text-decoration:none;display:block;text-align:center;margin-bottom:7px">🌐 portaventuraworld.com → Caribe Aquatic</a>
+        <div style="color:rgba(255,255,255,.85);font-size:11px">💡 Se comprar o <strong>Combo 3 Parques 2 Dias</strong>, Caribe já está incluído!</div>
+      </div>
+    </div>
+
+    <!-- COMBO BOX -->
+    <div style="background:linear-gradient(135deg,#0E6655,#1A5276);border-radius:12px;padding:14px;color:#fff">
+      <div style="font-weight:900;font-size:15px;margin-bottom:10px">💰 Resumo — Combo 3 Parques 2 Dias (RECOMENDADO)</div>
+      <div style="font-size:12.5px;line-height:1.9">
+        Inclui: <strong>PortAventura + Ferrari Land + Caribe Aquatic Park</strong><br>
+        Dia 8 (13 Jul): PortAventura · Dia 9 (14 Jul): Ferrari Land + Caribe<br>
+        Comprar em: <strong>portaventuraworld.com</strong><br>
+        Poupança vs bilheteria: <strong>até 40% mais barato online!</strong>
+      </div>
+      <a href="https://www.portaventuraworld.com/comprar/entradas" target="_blank" style="background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.5);border-radius:9px;padding:10px 14px;font-size:13px;font-weight:800;text-decoration:none;display:block;text-align:center;margin-top:10px">🎢 Abrir portaventuraworld.com → Comprar Agora</a>
+    </div>
+  </div>
+</div><!-- /p5 -->
+
+<!-- ══════════ P6: RESTAURANTES ══════════ -->
+<div class="panel p6">
+  <div class="sec-t">🍽️ Onde Comer</div>
+  <input class="sub-radio" type="radio" name="rc" id="rc1" checked>
+  <input class="sub-radio" type="radio" name="rc" id="rc2">
+  <input class="sub-radio" type="radio" name="rc" id="rc3">
+  <input class="sub-radio" type="radio" name="rc" id="rc4">
+  <input class="sub-radio" type="radio" name="rc" id="rc5">
+  <div class="frow">
+    <label for="rc1">Madrid</label><label for="rc2">Zaragoza</label><label for="rc3">Barcelona</label><label for="rc4">Salou</label><label for="rc5">Toledo</label>
+  </div>
+
+  <div class="rg rg1">
+    <div class="rest" style="border-left:4px solid #1A7A45"><div class="rest-top"><div><span style="font-size:18px">🍺</span><span class="rest-name"> El Tigre</span><div class="rest-type">Bar de Tapas</div></div><div class="rest-pr"><div class="rest-budget" style="color:#1A7A45">€</div><div class="rest-price">€8-12/pp</div></div></div><div class="rest-hi">⭐ Bebida + MONTÃO de tapas GRÁTIS incluídas!</div><div class="rest-tip">💡 Rua Infantas — melhor deal de Madrid.</div></div>
+    <div class="rest" style="border-left:4px solid #1A7A45"><div class="rest-top"><div><span style="font-size:18px">🛒</span><span class="rest-name"> Mercado de San Miguel</span><div class="rest-type">Mercado Gourmet</div></div><div class="rest-pr"><div class="rest-budget" style="color:#1A7A45">€</div><div class="rest-price">€2-5/tapa</div></div></div><div class="rest-hi">⭐ Cada um escolhe o que quer — ótimo para crianças!</div><div class="rest-tip">💡 Junto à Plaza Mayor.</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🦐</span><span class="rest-name"> La Casa del Abuelo</span><div class="rest-type">Taberna (1906)</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€15-25/pp</div></div></div><div class="rest-hi">⭐ Gambas al ajillo lendárias</div><div class="rest-tip">💡 Plaza Santa Ana — vinho tinto doce da casa.</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🍻</span><span class="rest-name"> Cervecería Alemana</span><div class="rest-type">Bar histórico</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€15-25/pp</div></div></div><div class="rest-hi">⭐ Lugar favorito de Hemingway em Madrid!</div><div class="rest-tip">💡 Plaza Santa Ana.</div></div>
+    <div class="rest" style="border-left:4px solid #B22222"><div class="rest-top"><div><span style="font-size:18px">🥩</span><span class="rest-name"> Sobrino de Botín</span><div class="rest-type">Histórico (1725!)</div></div><div class="rest-pr"><div class="rest-budget" style="color:#B22222">€€€</div><div class="rest-price">€40-50/pp</div></div></div><div class="rest-hi">🏆 Guinness: restaurante mais antigo do mundo!</div><div class="rest-tip">💡 Cochinillo assado. Reserve com meses de antecedência!</div></div>
+  </div>
+
+  <div class="rg rg2">
+    <div class="rest" style="border-left:4px solid #1A7A45"><div class="rest-top"><div><span style="font-size:18px">🍷</span><span class="rest-name"> Calle del Temple</span><div class="rest-type">Rua de Pintxos</div></div><div class="rest-pr"><div class="rest-budget" style="color:#1A7A45">€</div><div class="rest-price">€1.50-2.50</div></div></div><div class="rest-hi">⭐ Happy hour 19h-21h — bebida + pintxo €2!</div><div class="rest-tip">💡 Criança vai adorar escolher os pintxos!</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🍽️</span><span class="rest-name"> El Tubo (bairro)</span><div class="rest-type">Bairro gastronómico</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€15-25/pp</div></div></div><div class="rest-hi">⭐ Concentração de bares e menus locais</div><div class="rest-tip">💡 Junto à Basílica del Pilar.</div></div>
+  </div>
+
+  <div class="rg rg3">
+    <div class="rest" style="border-left:4px solid #1A7A45"><div class="rest-top"><div><span style="font-size:18px">🍢</span><span class="rest-name"> Carrer de Blai ⭐</span><div class="rest-type">Rua de Pintxos</div></div><div class="rest-pr"><div class="rest-budget" style="color:#1A7A45">€</div><div class="rest-price">€1-1.50</div></div></div><div class="rest-hi">⭐ OBRIGATÓRIO — melhor de Barcelona para família!</div><div class="rest-tip">💡 Criança escolhe os pintxos preferidos — divertidíssimo!</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🥘</span><span class="rest-name"> Can Culleretes (1786)</span><div class="rest-type">Restaurante histórico</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€18-28/pp</div></div></div><div class="rest-hi">⭐ Cozinha catalana autêntica — menu completo</div><div class="rest-tip">💡 Criança pode pedir escudella ou pasta.</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🍻</span><span class="rest-name"> Cervecería Catalana</span><div class="rest-type">Tapas e cerveja</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€20-30/pp</div></div></div><div class="rest-hi">⭐ Tapas criativas, ambiente animado</div><div class="rest-tip">💡 Vá antes das 13h — fila à porta.</div></div>
+    <div class="rest" style="border-left:4px solid #B22222"><div class="rest-top"><div><span style="font-size:18px">🦞</span><span class="rest-name"> Els Pescadors</span><div class="rest-type">Frutos do Mar</div></div><div class="rest-pr"><div class="rest-budget" style="color:#B22222">€€€</div><div class="rest-price">€40-60/pp</div></div></div><div class="rest-hi">⭐ Paella e arroz de gambas excepcional</div><div class="rest-tip">💡 Refeição de despedida de Barcelona — reserve!</div></div>
+  </div>
+
+  <div class="rg rg4">
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🍽️</span><span class="rest-name"> Restaurantes Resort PA</span><div class="rest-type">Temáticos</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€15-25/pp</div></div></div><div class="rest-hi">⭐ Mexicano, americano, mediterrâneo</div><div class="rest-tip">💡 Criança adora o ambiente temático!</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🐟</span><span class="rest-name"> Passeig de Miramar</span><div class="rest-type">Junto ao mar</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€15-25/pp</div></div></div><div class="rest-hi">⭐ Frutos do mar com vista para o Mediterrâneo</div><div class="rest-tip">💡 Perfeito para jantar após dia nos parques.</div></div>
+    <div class="rest" style="border-left:4px solid #D35400"><div class="rest-top"><div><span style="font-size:18px">🎸</span><span class="rest-name"> Hard Rock Café Salou</span><div class="rest-type">Americano</div></div><div class="rest-pr"><div class="rest-budget" style="color:#D35400">€€</div><div class="rest-price">€20-30/pp</div></div></div><div class="rest-hi">⭐ Criança de 10 anos vai AMAR!</div><div class="rest-tip">💡 Hambúrgueres, nachos, ambiente rock &amp; roll.</div></div>
+  </div>
+
+  <div class="rg rg5">
+    <div class="rest" style="border-left:4px solid #1A7A45"><div class="rest-top"><div><span style="font-size:18px">🍲</span><span class="rest-name"> Carcamusa (bares locais)</span><div class="rest-type">Cozinha castellana</div></div><div class="rest-pr"><div class="rest-budget" style="color:#1A7A45">€</div><div class="rest-price">€10-15/pp</div></div></div><div class="rest-hi">⭐ Carcamusa — prato típico de Toledo!</div><div class="rest-tip">💡 Prato típico imperdível. Versão menos picante para criança.</div></div>
+    <div class="rest" style="border-left:4px solid #1A7A45"><div class="rest-top"><div><span style="font-size:18px">🍬</span><span class="rest-name"> Mazapán Santo Tomé (1856)</span><div class="rest-type">Pastelaria histórica</div></div><div class="rest-pr"><div class="rest-budget" style="color:#1A7A45">€</div><div class="rest-price">€3-8/pp</div></div></div><div class="rest-hi">⭐ Mazapán de Toledo — obrigatório levar para Portugal!</div><div class="rest-tip">💡 Criança vai adorar as diferentes formas e sabores.</div></div>
+  </div>
+</div><!-- /p6 -->
+
+<!-- ══════════ P7: HOTÉIS ══════════ -->
+<div class="panel p7">
+  <div class="sec-t">🏨 Sugestões de Hospedagem</div>
+  <input class="sub-radio" type="radio" name="hc" id="hc1" checked>
+  <input class="sub-radio" type="radio" name="hc" id="hc2">
+  <input class="sub-radio" type="radio" name="hc" id="hc3">
+  <input class="sub-radio" type="radio" name="hc" id="hc4">
+  <input class="sub-radio" type="radio" name="hc" id="hc5">
+  <div class="frow">
+    <label for="hc1">Madrid</label><label for="hc2">Zaragoza</label><label for="hc3">Barcelona</label><label for="hc4">Salou</label><label for="hc5">Toledo</label>
+  </div>
+
+  <!-- MADRID -->
+  <div class="hg hg1">
+    <p style="font-size:11px;color:#888;margin-bottom:10px">5 opções · 3 noites (6-9 Jul) · Check-in: 6 Jul Seg · Check-out: 9 Jul Qui manhã</p>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Petit Palace Posada del Peine ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Hotel mais antigo de Madrid (1610!)</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€85-110</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅ PONTOS FORTES</div><div class="col-i">• Plaza Mayor — tudo 5min a pé!</div><div class="col-i">• Quartos modernos em edifício 1610</div><div class="col-i">• Criança adora a história</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️ A SABER</div><div class="col-i">• Zona muito turística</div><div class="col-i">• Pode ser ruidoso</div></div></div><div class="dist-box">📍 Plaza Mayor — Prado 15min · Gran Vía 5min</div><div class="book-box">🌐 petitpalacehotels.com</div></div>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Ibis Madrid Norte Las Tablas ⭐⭐ 🅿️</div><div class="hotel-note" style="color:#1A7A45">⭐ RECOMENDADO · Estacionamento grátis! Hotel novo (2025)</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€55-75</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• 79 lugares de estacionamento GRÁTIS 🅿️</div><div class="col-i">• Postos carregamento híbrido/EV ⚡</div><div class="col-i">• 10min de carro ao Bernabéu</div><div class="col-i">• Metro L10 a 5min a pé</div><div class="col-i">• Hotel novo (Set. 2025) — moderno</div><div class="col-i">• Restaurante + ginásio + terraço</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• 11km do centro histórico</div><div class="col-i">• 30-35min de metro ao Prado</div><div class="col-i">• Bairro de negócios (Las Tablas)</div></div></div><div class="dist-box">📍 Las Tablas · 6km Bernabéu (10min carro) · Metro L10 → 30min ao centro</div><div class="book-box">🌐 all.accor.com ou booking.com</div></div>
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Senator Gran Vía ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · Localização premium Gran Vía</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€100-135</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Localização Gran Vía</div><div class="col-i">• Quartos espaçosos</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Zona movimentada</div></div></div><div class="dist-box">📍 Gran Vía — 10min metro Bernabéu</div><div class="book-box">🌐 senatorhotels.com</div></div>
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Meliá Madrid Princesa ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · Zona tranquila, quartos amplos</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€95-130</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Zona Princesa — tranquila</div><div class="col-i">• Quartos confortáveis</div><div class="col-i">• Boa qualidade-preço</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Ligeiramente afastado</div></div></div><div class="dist-box">📍 Princesa — 10min metro Prado</div><div class="book-box">🌐 melia.com</div></div>
+    <div class="card card-top" style="--cc:#C0392B"><div class="hotel-top"><div><div class="hotel-name">Vincci The Mint ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#C0392B">€€€ Premium · Design contemporâneo</div></div><div class="price-box" style="background:#FDEDEC"><div class="price-big" style="color:#C0392B">€115-155</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Centro histórico — tudo a pé</div><div class="col-i">• Design moderno</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Estacionamento €25/dia extra</div></div></div><div class="dist-box">📍 Malasaña — 15min Prado · 5min Gran Vía</div><div class="book-box">🌐 vinccihoteles.com</div></div>
+  </div>
+
+  <!-- ZARAGOZA -->
+  <div class="hg hg2">
+    <p style="font-size:11px;color:#888;margin-bottom:8px">⚠️ Zaragoza = apenas paragem de almoço (~2h). Sem hotel! Hotéis abaixo são apenas referência caso queiram fazer uma visita mais demorada no futuro.</p>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Catalonia El Pilar ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Mesmo ao pé da Basílica!</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€70-95</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• 50m da Basílica del Pilar!</div><div class="col-i">• Quartos modernos</div><div class="col-i">• Bufê de qualidade</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Pode estar cheio em julho</div></div></div><div class="dist-box">📍 50m Basílica del Pilar — localização perfeita!</div><div class="book-box">🌐 cataloniahotels.com</div></div>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Hotel Ibis Zaragoza Centro ⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Funcional para 1 noite</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€50-70</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Localização centro</div><div class="col-i">• 10min à Basílica</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Básico, sem extras</div></div></div><div class="dist-box">📍 5min à Basílica del Pilar</div><div class="book-box">🌐 ibis.com</div></div>
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Hotel NH Zaragoza ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · Quartos espaçosos</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€80-105</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Quartos espaçosos</div><div class="col-i">• Bufê de qualidade</div><div class="col-i">• Parque próprio</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Preço acima da média</div></div></div><div class="dist-box">📍 Centro — 10min à Basílica</div><div class="book-box">🌐 nh-hotels.com</div></div>
+    <div class="card card-top" style="--cc:#C0392B"><div class="hotel-top"><div><div class="hotel-name">Hotel Hiberus ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#C0392B">€€€ Premium · Beira-rio, moderno</div></div><div class="price-box" style="background:#FDEDEC"><div class="price-big" style="color:#C0392B">€85-115</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Vista Rio Ebro</div><div class="col-i">• Piscina exterior (verão)</div><div class="col-i">• Design moderno</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• 15min centro histórico</div></div></div><div class="dist-box">📍 Ribeira do Ebro</div><div class="book-box">🌐 hotelhiberus.com</div></div>
+  </div>
+
+  <!-- BARCELONA -->
+  <div class="hg hg3">
+    <p style="font-size:11px;color:#888;margin-bottom:10px">5 opções · 4 noites (9-13 Jul) · Check-in: 9 Jul Qui tarde · Check-out: 13 Jul Seg manhã</p>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Hotel SB Glow ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Piscina no terraço! Melhor preço 4*</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€90-125</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Piscina terraço com vista!</div><div class="col-i">• Design contemporâneo</div><div class="col-i">• Eixample central</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• 20min metro Camp Nou</div></div></div><div class="dist-box">📍 Eixample — 10min Sagrada Família</div><div class="book-box">🌐 sbhotels.com</div></div>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Hotel Ibis Barcelona Pla de l'Os ⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Localização imbatível La Rambla</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€85-115</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• La Rambla — tudo a pé</div><div class="col-i">• Metro a 2 passos</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Quartos pequenos</div><div class="col-i">• Pode ser barulhento</div></div></div><div class="dist-box">📍 La Rambla — Boqueria 2min · Barri Gòtic 5min</div><div class="book-box">🌐 ibis.com</div></div>
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Hotel NH Barcelona Centro ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · Quartos amplos, excelente bufê</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€110-145</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Quartos amplos</div><div class="col-i">• Bufê excelente</div><div class="col-i">• Familiar</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• 30min a pé da praia</div></div></div><div class="dist-box">📍 Eixample — 15min metro Sagrada Família</div><div class="book-box">🌐 nh-hotels.com</div></div>
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Catalonia Ramblas ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · La Rambla + piscina no terraço 🏊</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€125-170</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• La Rambla — perfeita</div><div class="col-i">• Piscina terraço com vista</div><div class="col-i">• Quartos com varanda</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Zona muito turística</div></div></div><div class="dist-box">📍 La Rambla — Camp Nou 20min metro</div><div class="book-box">🌐 cataloniahotels.com</div></div>
+    <div class="card card-top" style="--cc:#C0392B"><div class="hotel-top"><div><div class="hotel-name">Barceló Raval ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#C0392B">€€€ Premium · Terraço 360° — Instagram!</div></div><div class="price-box" style="background:#FDEDEC"><div class="price-big" style="color:#C0392B">€130-175</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Terraço panorâmico 360°!</div><div class="col-i">• Design ultra-moderno</div><div class="col-i">• Bar no terraço</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• El Raval pode ser ruidoso</div></div></div><div class="dist-box">📍 El Raval — Boqueria 5min</div><div class="book-box">🌐 barcelo.com</div></div>
+  </div>
+
+  <!-- SALOU -->
+  <div class="hg hg4">
+    <p style="font-size:11px;color:#888;margin-bottom:10px">5 opções · 2 noites (13-15 Jul) · Check-in: 13 Jul Seg · Check-out: 15 Jul Qua manhã</p>
+    <div class="card card-top" style="--cc:#0E6655"><div class="hotel-top"><div><div class="hotel-name">H10 Mediterranean Village ⭐⭐⭐⭐ 🏖️</div><div class="hotel-note" style="color:#0E6655">⭐ Excelente família! #7 Salou TripAdv. (4.4★)</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#0E6655">€95-140</div><div class="price-label">/noite</div></div></div>
+    <div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• 200m Praia Cap Salou 🏖️</div><div class="col-i">• AquaPark Splash (novo!)</div><div class="col-i">• Daisy Club (animação)</div><div class="col-i">• Bufê show cooking</div><div class="col-i">• Spa, spa, fitness, pizzaria</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• 1.9km PortAventura (táxi €5)</div><div class="col-i">• Tickets NÃO incluídos</div></div></div>
+    <div class="dist-box">📍 200m Praia Cap Salou · 1.9km PortAventura · h10hotels.com</div></div>
+
+    <div class="card card-top" style="--cc:#C0392B"><div class="hotel-top"><div><div class="hotel-name">Hotel PortAventura ⭐⭐⭐⭐ 🏆</div><div class="hotel-note" style="color:#C0392B">⭐ TICKETS INCLUÍDOS — melhor custo real!</div></div><div class="price-box" style="background:#FDEDEC"><div class="price-big" style="color:#C0392B">€150-210</div><div class="price-label">/noite c/ tickets</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• DENTRO do resort!</div><div class="col-i">• Tickets INCLUÍDOS (€80-90 p.)</div><div class="col-i">• Entrada antecipada 1h</div><div class="col-i">• 4 restaurantes temáticos</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Longe da praia (~5km)</div></div></div>
+    <div style="background:#E8F8EF;border-radius:8px;padding:6px 9px;font-size:11px;color:#1A7A45;font-weight:700;margin-bottom:5px">✅ H10 (€120×2)+tickets(€297)=€537 vs PA(€180×2)=€360 → POUPA €177!</div>
+    <div class="dist-box">📍 DENTRO resort — 2min PortAventura · portaventuraworld.com</div></div>
+
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Gold River Hotel ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · Tema Far West, tickets incluídos</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€140-185</div><div class="price-label">/noite c/ tickets</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Tema Far West p/ crianças</div><div class="col-i">• Tickets incluídos</div><div class="col-i">• Dentro do resort</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Longe da praia</div></div></div><div class="dist-box">📍 DENTRO resort PortAventura · portaventuraworld.com</div></div>
+
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Hotel SH Vendôme ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Junto à praia, 1km PortAventura</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€80-115</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Junto à praia Salou</div><div class="col-i">• Piscina e animação</div><div class="col-i">• 1km PortAventura a pé</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Tickets não incluídos</div></div></div><div class="dist-box">📍 Praia Salou · 1km PortAventura · sh-hoteles.com</div></div>
+
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Hotel Estival Park Salou ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · 5min PortAventura, 4 piscinas</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€90-120</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• 5min PortAventura a pé</div><div class="col-i">• 4 piscinas!</div><div class="col-i">• Animação infantil verão</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Tickets não incluídos</div></div></div><div class="dist-box">📍 5min PortAventura · 15min praia Salou · estival.com</div></div>
+  </div>
+
+  <!-- TOLEDO -->
+  <div class="hg hg5">
+    <p style="font-size:11px;color:#888;margin-bottom:10px">3 opções · 1 noite (15-16 Jul) · Check-in: 15 Jul Qua · Check-out: 16 Jul Qui manhã</p>
+    <div class="card card-top" style="--cc:#1A7A45"><div class="hotel-top"><div><div class="hotel-name">Hotel Abad Toledo ⭐⭐⭐</div><div class="hotel-note" style="color:#1A7A45">€ Económico · Centro histórico medieval</div></div><div class="price-box" style="background:#E8F8EF"><div class="price-big" style="color:#1A7A45">€65-90</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Centro histórico medieval</div><div class="col-i">• Tudo a pé</div><div class="col-i">• Bem avaliado</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Ruas estreitas (carro ao parque)</div></div></div><div class="dist-box">📍 Catedral 5min · Alcázar 5min · hotelabad.com</div></div>
+    <div class="card card-top" style="--cc:#D35400"><div class="hotel-top"><div><div class="hotel-name">Hotel Casa de Cisneros ⭐⭐⭐⭐</div><div class="hotel-note" style="color:#D35400">€€ Conforto · Histórico séc XV, junto à Catedral!</div></div><div class="price-box" style="background:#FFF3E0"><div class="price-big" style="color:#D35400">€80-115</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• Mesmo ao lado da Catedral!</div><div class="col-i">• Edifício histórico séc XV</div><div class="col-i">• Pátio medieval encantador</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• Ruas estreitas — carro ao parque</div></div></div><div class="dist-box">📍 Mesma praça da Catedral! · hostalcasadecisneros.com</div></div>
+    <div class="card card-top" style="--cc:#C0392B"><div class="hotel-top"><div><div class="hotel-name">Parador de Toledo ⭐⭐⭐⭐⭐ 🌅</div><div class="hotel-note" style="color:#C0392B">€€€ Premium · Vista deslumbrante — despedida perfeita!</div></div><div class="price-box" style="background:#FDEDEC"><div class="price-big" style="color:#C0392B">€130-195</div><div class="price-label">/noite</div></div></div><div class="two-col"><div class="col-g"><div class="col-t" style="color:#1A7A45">✅</div><div class="col-i">• NO Mirador del Valle!</div><div class="col-i">• Acordar com Toledo ao pôr do sol</div><div class="col-i">• Piscina com vista panorâmica</div><div class="col-i">• Jantar no terraço — magia!</div></div><div class="col-o"><div class="col-t" style="color:#D35400">⚠️</div><div class="col-i">• O mais caro</div><div class="col-i">• 5min de carro do centro</div></div></div><div class="dist-box">📍 Mirador del Valle — a vista mais bonita de Toledo! · parador.es</div></div>
+  </div>
+</div><!-- /p7 -->
+
+<!-- ══════════ P8: ESTACIONAMENTO ══════════ -->
+<div class="panel p8">
+  <div class="sec-t" style="color:#C0392B">🚗 Guia de Estacionamento</div>
+
+  <div class="alert-box">
+    <div class="alert-t">⚠️ Carro Híbrido com Matrícula Portuguesa</div>
+    <div class="alert-i"><span>!</span><span>Câmaras identificam matrícula PT automaticamente — não há exceção para turistas</span></div>
+    <div class="alert-i"><span>!</span><span>Multa ZBE: <strong>€200</strong> (€100 se pagar em 15 dias)</span></div>
+    <div class="alert-i"><span>!</span><span>Híbrido não-enchufável: pode circular mas Distrito Centro Madrid = max 2h em zona SER</span></div>
+    <div class="alert-i"><span>!</span><span>Barcelona ZBE activa APENAS Seg-Sex 7h-20h — fins de semana (11-12 Jul) LIVRES! 🎉</span></div>
+    <div class="alert-i"><span>!</span><span>NUNCA estacionar em Zona Verde (residentes) — multa imediata €80-200</span></div>
+    <div style="background:#E8F8EF;border-radius:8px;padding:9px 12px;margin-top:10px;border:1px solid #1A7A45;font-size:12px;font-weight:700;color:#1A7A45">
+      ✅ ANTES DE PARTIR: Registar em <strong>sede.madrid.es</strong> (Madrid ZBE) e <strong>ajuntament.barcelona.cat</strong> (Barcelona ZBE)
+    </div>
+  </div>
+
+  <input class="sub-radio" type="radio" name="pkc" id="pkc1" checked>
+  <input class="sub-radio" type="radio" name="pkc" id="pkc2">
+  <input class="sub-radio" type="radio" name="pkc" id="pkc3">
+  <input class="sub-radio" type="radio" name="pkc" id="pkc4">
+  <input class="sub-radio" type="radio" name="pkc" id="pkc5">
+  <div class="frow">
+    <label for="pkc1">Madrid</label><label for="pkc2">Barcelona</label><label for="pkc3">Zaragoza</label><label for="pkc4">Salou</label><label for="pkc5">Toledo</label>
+  </div>
+
+  <div class="pkg pkg1">
+    <div class="pk-city-card" style="border-top:4px solid #B22222">
+      <div class="pk-title" style="color:#B22222">Madrid 🏛️</div>
+      <div class="info-row" style="background:#FDEDEC"><strong>🏭 ZBE:</strong> Activa 24h/7 — todo o município</div>
+      <div class="info-row" style="background:#FFF3E0"><strong>🔋 Híbrido PT:</strong> Pode circular mas Distrito Centro = max 2h em zona SER</div>
+      <div class="info-row" style="background:#FDEDEC"><strong>🔴 Zona Verde:</strong> APENAS residentes. Multa €100-200. PROIBIDO.</div>
+      <div class="info-row" style="background:#EBF5FB"><strong>🔵 Zona Azul:</strong> Max 2h não-residentes. Pagar em parquímetro.</div>
+      <p style="font-weight:800;font-size:13px;color:#2C3E50;margin:10px 0 8px">✅ Parques Recomendados</p>
+      <div class="pk-rec"><span class="pk-rp">€3-4/dia</span><div class="pk-rn">✅ Park &amp; Ride Príncipe Pío</div><div class="pk-rm">🚇 L6/L10/L11 — 15min ao centro</div><div class="pk-rnt">RECOMENDADO — enorme, seguro, barato</div></div>
+      <div class="pk-rec"><span class="pk-rp">€2-3/dia</span><div class="pk-rn">Park &amp; Ride Aluche</div><div class="pk-rm">🚇 L5 — 20min ao centro</div><div class="pk-rnt">Mais económico da cidade</div></div>
+      <div class="pk-rec"><span class="pk-rp">€3/dia</span><div class="pk-rn">Park &amp; Ride Mar de Cristal</div><div class="pk-rm">🚇 L4 — 2 paragens ao Bernabéu</div><div class="pk-rnt">Ideal para visitar zona norte</div></div>
+      <div class="multa"><strong>🚨 Multas:</strong> Zona residentes €80-200 · ZBE sem registo €200 · Linha amarela: reboque + €150</div>
+      <div class="app-info">📱 Apps: <strong>ElParking · EasyPark · MiParking</strong> para pagar zona azul</div>
+      <div class="tip">💡 Pergunte ao hotel o parque mais próximo — normalmente têm protocolo com parque vizinho a €15-20/dia.</div>
+    </div>
+  </div>
+
+  <div class="pkg pkg2">
+    <div class="pk-city-card" style="border-top:4px solid #1A5276">
+      <div class="pk-title" style="color:#1A5276">Barcelona 🌊</div>
+      <div class="info-row" style="background:#FFF3E0"><strong>🏭 ZBE:</strong> Activa Seg-Sex 7h-20h — fins de semana LIVRES! 🎉</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🔋 Híbrido PT:</strong> Sáb 11 e Dom 12 Jul: ZBE inactiva — pode circular livremente!</div>
+      <div class="info-row" style="background:#FDEDEC"><strong>🟢 Zona Verde:</strong> APENAS residentes. Multa €100-200. NUNCA estacionar.</div>
+      <div class="info-row" style="background:#EBF5FB"><strong>🔵 Zona Azul:</strong> Max 2h não-residentes. App SMOU ou parquímetro.</div>
+      <p style="font-weight:800;font-size:13px;color:#2C3E50;margin:10px 0 8px">✅ Parques Recomendados</p>
+      <div class="pk-rec"><span class="pk-rp">€4/dia</span><div class="pk-rn">✅ Park &amp; Ride Glòries</div><div class="pk-rm">🚇 L1 — 20min ao centro</div><div class="pk-rnt">RECOMENDADO — conveniente, barato, seguro</div></div>
+      <div class="pk-rec"><span class="pk-rp">€3.50/dia</span><div class="pk-rn">Parking Zona Franca</div><div class="pk-rm">🚇 L10S — 25min</div><div class="pk-rnt">Mais económico para estadias longas</div></div>
+      <div class="pk-rec"><span class="pk-rp">€4/dia</span><div class="pk-rn">Park &amp; Ride Trinitat Nova</div><div class="pk-rm">🚇 L1/L11 — entrada pela A-2</div><div class="pk-rnt">Se chegar de Zaragoza</div></div>
+      <div class="multa"><strong>🚨 Multas:</strong> Zona verde €100-200 · ZBE infração €200 · Linha amarela: reboque + €150</div>
+      <div class="app-info">📱 App <strong>SMOU</strong> (oficial Barcelona) para pagar zona azul e encontrar parques</div>
+      <div class="tip">💡 Sáb 12 e Dom 13 Jul: ZBE inactiva — pode circular livremente pelo centro! Aproveite.</div>
+    </div>
+  </div>
+
+  <div class="pkg pkg3">
+    <div class="pk-city-card" style="border-top:4px solid #0E6655">
+      <div class="pk-title" style="color:#0E6655">Zaragoza 🕌</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🏭 ZBE:</strong> Menos restritiva — circulação geralmente livre para turistas</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🔋 Híbrido PT:</strong> Circulação livre em Zaragoza ✅</div>
+      <div class="info-row" style="background:#EBF5FB"><strong>🔵 Zona Azul:</strong> Pagar parquímetro max 2h no centro</div>
+      <p style="font-weight:800;font-size:13px;color:#2C3E50;margin:10px 0 8px">✅ Parques Recomendados</p>
+      <div class="pk-rec"><span class="pk-rp">€15/dia</span><div class="pk-rn">✅ Parking Basílica del Pilar</div><div class="pk-rm">🚶 A pé — mesmo ao pé do Pilar!</div><div class="pk-rnt">Mais conveniente para visitar</div></div>
+      <div class="pk-rec"><span class="pk-rp">€18/dia</span><div class="pk-rn">Parking Palafox Centro</div><div class="pk-rm">📍 Centro histórico</div><div class="pk-rnt">Acesso fácil, seguro</div></div>
+      <div class="multa"><strong>🚨 Multas:</strong> Zona azul sem pagar: €80-100 · Linha amarela: €100-200</div>
+      <div class="app-info">📱 App: <strong>ElParking</strong> para Zaragoza</div>
+      <div class="tip">💡 Hotel NH Zaragoza tem parque próprio — se ficar lá, economize!</div>
+    </div>
+  </div>
+
+  <div class="pkg pkg4">
+    <div class="pk-city-card" style="border-top:4px solid #0E6655">
+      <div class="pk-title" style="color:#0E6655">Salou 🎢</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🏭 ZBE:</strong> Sem ZBE em Salou — circulação completamente livre! ✅</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🔋 Híbrido PT:</strong> Sem restrições em Salou ✅</div>
+      <p style="font-weight:800;font-size:13px;color:#2C3E50;margin:10px 0 8px">✅ Parques Recomendados</p>
+      <div class="pk-rec"><span class="pk-rp">€5/dia</span><div class="pk-rn">✅ Parking PortAventura (oficial)</div><div class="pk-rm">📍 Dentro do resort</div><div class="pk-rnt">Gratuito para hóspedes hotéis PortAventura</div></div>
+      <div class="pk-rec"><span class="pk-rp">€5-10/dia</span><div class="pk-rn">Parque do hotel (H10 / Estival)</div><div class="pk-rm">📍 No hotel</div><div class="pk-rnt">H10 tem parque — confirmar ao reservar</div></div>
+      <div class="pk-rec"><span class="pk-rp">€1-2/h ou grátis</span><div class="pk-rn">Zonas públicas Salou</div><div class="pk-rm">📍 Zona turística</div><div class="pk-rnt">Fácil encontrar estacionamento em Salou</div></div>
+      <div class="tip">💡 Em Salou não há grandes problemas para turistas. Se ficar no H10, confirme parque ao reservar.</div>
+    </div>
+  </div>
+
+  <div class="pkg pkg5">
+    <div class="pk-city-card" style="border-top:4px solid #6B2D8B">
+      <div class="pk-title" style="color:#6B2D8B">Toledo 🏰</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🏭 ZBE:</strong> Toledo: sem ZBE. Circulação livre! ✅</div>
+      <div class="info-row" style="background:#E8F8EF"><strong>🔋 Híbrido PT:</strong> Sem restrições em Toledo ✅</div>
+      <div class="info-row" style="background:#EBF5FB"><strong>ℹ️ Casco histórico:</strong> Ruas muito estreitas — preferir parques exteriores</div>
+      <p style="font-weight:800;font-size:13px;color:#2C3E50;margin:10px 0 8px">✅ Parques Recomendados</p>
+      <div class="pk-rec"><span class="pk-rp">€12/dia</span><div class="pk-rn">✅ Parking Alfonso VI</div><div class="pk-rm">🚶 Escaleras mecánicas GRATUITAS ao centro!</div><div class="pk-rnt">Melhor parque de Toledo</div></div>
+      <div class="pk-rec"><span class="pk-rp">€12/dia</span><div class="pk-rn">Parking Safont (Zocodover)</div><div class="pk-rm">📍 Praça central — escaleras mecánicas</div><div class="pk-rnt">Centro histórico acessível</div></div>
+      <div class="pk-rec"><span class="pk-rp">Incluído</span><div class="pk-rn">Parador de Toledo (hóspedes)</div><div class="pk-rm">📍 Mirador del Valle</div><div class="pk-rnt">Se ficar no Parador</div></div>
+      <div class="tip">💡 Toledo tem escaleras mecánicas (escadas rolantes) GRATUITAS! Deixe o carro em baixo e suba comodamente ao centro histórico.</div>
+    </div>
+  </div>
+
+  <!-- SIGNS TABLE -->
+  <div class="card" style="padding:14px;margin-top:10px">
+    <p style="font-weight:800;font-size:13px;margin-bottom:10px">🚦 Guia de Linhas de Estacionamento</p>
+    <div class="sign-r"><span class="sign-n">🟡 Linha Amarela</span><span>Proibido sempre. Risco de reboque (€150-200 + multa)</span></div>
+    <div class="sign-r"><span class="sign-n">🔵 Linha Azul</span><span>Zona paga. Max 2h não-residentes. Pagar parquímetro ou app</span></div>
+    <div class="sign-r"><span class="sign-n">🟢 Linha Verde</span><span>RESIDENTES apenas. Multa garantida. Nunca estacionar</span></div>
+    <div class="sign-r"><span class="sign-n">🔴 Linha Vermelha</span><span>Bombeiros/urgências. Reboque imediato</span></div>
+    <div class="sign-r"><span class="sign-n">'Reservado Residentes'</span><span>Placa no poste = zona residentes. Nunca estacionar</span></div>
+    <div class="sign-r" style="border:none"><span class="sign-n">'ORA' / 'ÁREA'</span><span>Sistema pago. Verificar horários no parquímetro</span></div>
+  </div>
+</div><!-- /p8 -->
+
+<!-- ══════════ P9: ORÇAMENTO ══════════ -->
+<div class="panel p9">
+  <div class="sec-t">💰 Orçamento Estimado</div>
+  <p style="font-size:12px;color:#888;margin-bottom:12px">2 adultos + 1 criança (10 anos) · 11 dias · 6–16 Julho 2026 · 10 noites</p>
+
+  <div class="b-total">
+    <div class="b-total-row"><span class="b-total-label">Previsão Total (3 pessoas)</span><span class="b-total-val">€3.079</span></div>
+    <div class="b-bar-wrap">
+      <div class="b-seg" style="background:#E74C3C;width:20.3%"></div>
+      <div class="b-seg" style="background:#8E44AD;width:44.5%"></div>
+      <div class="b-seg" style="background:#E67E22;width:33.8%"></div>
+      <div class="b-seg" style="background:#C0392B;width:7.7%"></div>
+      <div class="b-seg" style="background:#0E6655;width:15%"></div>
+      <div class="b-seg" style="background:#2980B9;width:9.7%"></div>
+      <div class="b-seg" style="background:#16A085;width:6.3%"></div>
+      <div class="b-seg" style="background:#7F8C8D;width:11.1%"></div>
+    </div>
+    <div class="b-warn">⚠️ Recomendo orçamento total de <strong>€3.500</strong> para conforto (buffer €421 sobre a previsão de €3.079).</div>
+  </div>
+
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">⛽ Combustível + Portagens</span><span class="b-val" style="color:#E74C3C">€420</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#E74C3C;width:20.3%"></div></div><div class="b-tip-t">~2.500km total. Via Verde + Telepeaje. Encher sempre em Espanha.</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🏨 Hospedagem (10 noites)</span><span class="b-val" style="color:#8E44AD">€930</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#8E44AD;width:30%"></div></div><div class="b-tip-t">3n Madrid 6-9 Jul + 4n Barcelona 9-13 Jul + 2n Salou 13-15 Jul + 1n Toledo 15-16 Jul · Zaragoza = só almoço</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🍽️ Alimentação (3 pessoas)</span><span class="b-val" style="color:#E67E22">€700</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#E67E22;width:33.8%"></div></div><div class="b-tip-t">~€60-70/dia para 2A+1C. Pintxos e mercados poupam muito!</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🏟️ Estádios (família)</span><span class="b-val" style="color:#C0392B">€159</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#C0392B;width:7.7%"></div></div><div class="b-tip-t">Bernabéu €80 + Camp Nou €79 = €159 para 3 pessoas</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🎡 Parques Salou (família)</span><span class="b-val" style="color:#0E6655">€310</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#0E6655;width:15%"></div></div><div class="b-tip-t">Combo 3 parques 2 dias online: ~€100×2A + €80 criança</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🎟️ Museus e Atrações</span><span class="b-val" style="color:#2980B9">€200</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#2980B9;width:9.7%"></div></div><div class="b-tip-t">Sagrada Família + Toledo Catedral + Aljafería + Casa Batlló + Picasso</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🅿️ Estacionamento</span><span class="b-val" style="color:#16A085">€130</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#16A085;width:6.3%"></div></div><div class="b-tip-t">Park &amp; Ride Madrid + Barcelona + Salou + Toledo</div></div>
+  <div class="b-row"><div class="b-row-top"><span class="b-cat">🎒 Imprevistos + Mazapán</span><span class="b-val" style="color:#7F8C8D">€230</span></div><div class="b-mini-bar"><div class="b-mini-fill" style="background:#7F8C8D;width:11.1%"></div></div><div class="b-tip-t">Lembranças, mazapán Toledo, t-shirt Real Madrid, farmácia 😄</div></div>
+
+  <div class="savings-box">
+    <div style="font-weight:800;color:#1A7A45;font-size:14px;margin-bottom:10px">💡 Potencial de poupança extra</div>
+    <div class="sav-row"><span>🖼️ Prado + Reina Sofía GRÁTIS</span><span class="sav-v">-€54</span></div>
+    <div class="sav-row"><span>🌅 Bunkers del Carmel vs mirador pago</span><span class="sav-v">-€30</span></div>
+    <div class="sav-row"><span>🍢 Pintxos vs restaurante (família)</span><span class="sav-v">-€60</span></div>
+    <div class="sav-row"><span>🎢 Tickets PortAventura online</span><span class="sav-v">-€90</span></div>
+    <div class="sav-row"><span>🏨 Hotel PA (tickets incluídos)</span><span class="sav-v">-€177</span></div>
+    <div class="sav-row"><span>🚗 Park &amp; Ride 3 cidades</span><span class="sav-v">-€60</span></div>
+    <div class="sav-row" style="border:none"><span>🛒 Supermercado (3-4 refeições)</span><span class="sav-v">-€80</span></div>
+  </div>
+</div><!-- /p9 -->
+
+<!-- ══════════ P10: DICAS ══════════ -->
+<div class="panel p10">
+  <div class="sec-t">💡 Dicas Essenciais</div>
+  <div class="card" style="padding:14px">
+    <div class="dica-row"><span class="dica-arr">→</span><span>🎟️ <strong>Sagrada Família:</strong> Reservar MESES antes em sagradafamilia.org — julho esgota!</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>⚽ <strong>Bernabéu:</strong> Reservar em realmadrid.com ou GetYourGuide</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>⚽ <strong>Camp Nou:</strong> Reservar em fcbarcelona.com</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>🎢 <strong>PortAventura:</strong> Tickets online em portaventuraworld.com — 40% desconto!</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>🚗 <strong>ZBE:</strong> Registar carro ANTES de partir — sede.madrid.es e ajuntament.barcelona.cat</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>📱 <strong>Apps úteis:</strong> Waze (trânsito), ElParking/SMOU (estacionar), Google Maps mapas offline</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>🏥 <strong>Cartão Europeu de Saúde (CESD)</strong> para toda a família — cuidados grátis em Espanha</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>⛽ <strong>Combustível:</strong> Sempre encher em Espanha — mais barato que Portugal</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>🏰 <strong>Toledo:</strong> Escaleras mecánicas gratuitas ligam o parque ao centro!</span></div>
+    <div class="dica-row"><span class="dica-arr">→</span><span>🌡️ <strong>Julho em Espanha:</strong> Chapéu, protetor solar alto fator e muita água para toda a família</span></div>
+  </div>
+
+  <div class="tip-section" style="background:#EBF5FB;border:1px solid #AED6F1">
+    <div class="tip-title" style="color:#1A5276">👦 Dicas para Criança de 10 Anos</div>
+    <div class="t-row"><span class="t-arr" style="color:#1A5276">→</span><div><strong>Museus gratuitos:</strong> Prado e Reina Sofía — menores de 18 SEMPRE GRÁTIS!</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#1A5276">→</span><div><strong>PortAventura cedo:</strong> Dragon Khan e Shambhala logo a abrir — filas de 60+ min depois!</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#1A5276">→</span><div><strong>Red Force (Ferrari Land):</strong> Altura mínima 1.40m — medir antes de partir!</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#1A5276">→</span><div><strong>Dias de condução longa:</strong> Tablet + headphones + jogos. Audiobooks divertidos!</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#1A5276">→</span><div><strong>Bernabéu — pisar o relvado:</strong> Criança pode entrar no campo retrátil — experiência incrível!</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#1A5276">→</span><div><strong>Alcázar Toledo GRÁTIS:</strong> Armaduras medievais — vai adorar!</div></div>
+    <div class="t-row" style="border:none"><span class="t-arr" style="color:#1A5276">→</span><div><strong>Mazapán em Toledo:</strong> Deixar a criança escolher as formas — experiência gastronómica única!</div></div>
+  </div>
+
+  <div class="tip-section" style="background:#FFF9E6;border:1px solid #F0C060">
+    <div class="tip-title" style="color:#8B6000">🚗 Dicas de Estrada</div>
+    <div class="t-row"><span class="t-arr" style="color:#8B6000">→</span><div><strong>Via Verde / Telepeaje:</strong> Tenha a Via Verde activa — sistema espanhol sem paragem</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#8B6000">→</span><div><strong>Combustível:</strong> Sempre encher em Espanha. App para comparar preços.</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#8B6000">→</span><div><strong>GPS offline:</strong> Download mapas Google Maps antes de partir — economize em roaming</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#8B6000">→</span><div><strong>Park &amp; Ride Madrid:</strong> Príncipe Pío ou Aluche — €3-4/dia + metro</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#8B6000">→</span><div><strong>Park &amp; Ride Barcelona:</strong> Glòries — €4/dia + metro</div></div>
+    <div class="t-row"><span class="t-arr" style="color:#8B6000">→</span><div><strong>ZBE — registar antes de partir:</strong> sede.madrid.es e ajuntament.barcelona.cat</div></div>
+    <div class="t-row" style="border:none"><span class="t-arr" style="color:#8B6000">→</span><div><strong>CESD:</strong> Cartão Europeu de Saúde para toda a família</div></div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#8B1A1A,#1A3A5C);border-radius:12px;padding:16px;color:#fff;text-align:center;margin-top:12px">
+    <div style="font-size:24px;margin-bottom:6px">🇪🇸 Boa Viagem, família! 🇵🇹</div>
+    <div style="font-size:13px;opacity:.9">Road Trip Espanha 2026 · 6–16 Julho · 11 dias inesquecíveis</div>
+    <div style="font-size:10px;opacity:.6;margin-top:6px">Preços estimados — verificar ao reservar · Criado com ❤️</div>
+  </div>
+</div><!-- /p10 -->
+
+<!-- ══════════ P11: RESERVAS ══════════ -->
+<div class="panel p11">
+  <div class="sec-t">📋 Reservas Confirmadas</div>
+  <p style="font-size:12px;color:#777;margin-bottom:13px">Jefferson Souza Santos · jefferstos@hotmail.com · (351) 935583934</p>
+
+  <!-- RESUMO RÁPIDO -->
+  <div class="card" style="padding:13px;margin-bottom:13px">
+    <div style="font-weight:900;font-size:13px;margin-bottom:10px">📊 Resumo — 4 Hotéis Reservados</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:11px">
+        <tr style="background:#F0F4F8"><th style="padding:7px 8px;text-align:left">Hotel</th><th style="padding:7px 8px">Datas</th><th style="padding:7px 8px">Confirm.</th><th style="padding:7px 8px">PIN</th><th style="padding:7px 8px">Pago</th></tr>
+        <tr><td style="padding:7px 8px"><strong>ibis Madrid Norte LT</strong><br><span style="color:#888;font-size:10px">Madrid</span></td><td style="padding:7px 8px;text-align:center">6–9 Jul<br><span style="color:#888;font-size:10px">3 noites</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">6650298767</td><td style="padding:7px 8px;font-weight:900;font-size:16px;color:#B22222;text-align:center">5136</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€307,50 ✅</span></td></tr>
+        <tr style="background:#FAFAFA"><td style="padding:7px 8px"><strong>Attica 21 Barcelona Mar</strong><br><span style="color:#888;font-size:10px">Barcelona</span></td><td style="padding:7px 8px;text-align:center">9–13 Jul<br><span style="color:#888;font-size:10px">4 noites</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">5001670603</td><td style="padding:7px 8px;font-weight:900;font-size:16px;color:#B22222;text-align:center">3240</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€745,74 ✅</span></td></tr>
+        <tr><td style="padding:7px 8px"><strong>H10 Mediterranean Village</strong><br><span style="color:#888;font-size:10px">Salou</span></td><td style="padding:7px 8px;text-align:center">13–15 Jul<br><span style="color:#888;font-size:10px">2 noites</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">3701-008162</td><td style="padding:7px 8px;text-align:center;color:#888;font-size:10px">—</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€396,00 ✅</span></td></tr>
+        <tr style="background:#FAFAFA"><td style="padding:7px 8px"><strong>Beatriz Toledo Auditorium &amp; Spa</strong><br><span style="color:#888;font-size:10px">Toledo</span></td><td style="padding:7px 8px;text-align:center">15–16 Jul<br><span style="color:#888;font-size:10px">1 noite</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">5431964829</td><td style="padding:7px 8px;font-weight:900;font-size:16px;color:#B22222;text-align:center">2182</td><td style="padding:7px 8px;text-align:center"><span class="tag-r">€123,80 ⏳</span></td></tr>
+        <tr><td style="padding:7px 8px"><strong>PortAventura 2 Dias / 3 Parques</strong><br><span style="color:#888;font-size:10px">Caribe + Ferrari Land + PortAventura</span></td><td style="padding:7px 8px;text-align:center">13–16 Jul<br><span style="color:#888;font-size:10px">2 dias</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">6a3e5e76c7926</td><td style="padding:7px 8px;text-align:center;color:#888;font-size:10px">—</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€180 ✅</span></td></tr>
+        <tr><td style="padding:7px 8px"><strong>Classic Tour Bernabéu</strong><br><span style="color:#888;font-size:10px">Real Madrid · 3 bilhetes</span></td><td style="padding:7px 8px;text-align:center">8 Jul<br><span style="color:#888;font-size:10px">10:00h</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">R: 101952752</td><td style="padding:7px 8px;text-align:center;color:#888;font-size:10px">—</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€117 ✅</span></td></tr>
+        <tr style="background:#FAFAFA"><td style="padding:7px 8px"><strong>Seguro Viagem AXA — Arthur</strong><br><span style="color:#888;font-size:10px">Inter Partner Assistance · Classic</span></td><td style="padding:7px 8px;text-align:center">6–16 Jul<br><span style="color:#888;font-size:10px">11 dias</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">1.15.18.101951<br><span style="font-size:10px">Adesão: 0006721</span></td><td style="padding:7px 8px;text-align:center;color:#888;font-size:10px">—</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€22,55 ✅</span></td></tr>
+        <tr style="background:#FAFAFA"><td style="padding:7px 8px"><strong>Camp Nou — Barça Immersive Museum</strong><br><span style="color:#888;font-size:10px">FC Barcelona · 3 bilhetes</span></td><td style="padding:7px 8px;text-align:center">12 Jul<br><span style="color:#888;font-size:10px">10:00h</span></td><td style="padding:7px 8px;font-weight:800;color:#1A5276;text-align:center">WX5ECA7W29MX</td><td style="padding:7px 8px;text-align:center;color:#888;font-size:10px">—</td><td style="padding:7px 8px;text-align:center"><span class="tag-g">€92,30 ✅</span></td></tr>
+      </table>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <div style="background:#E8F8EF;border-radius:8px;padding:7px 10px;font-size:12px;color:#0D5C35;font-weight:700;flex:1">✅ Pago: €1.913,09</div>
+      <div style="background:#FFF3E0;border-radius:8px;padding:7px 10px;font-size:12px;color:#8B4500;font-weight:700;flex:1">⏳ Pendente: €123,80 (Toledo)</div>
+    </div>
+    <div style="background:#FDEDEC;border-radius:8px;padding:8px 11px;margin-top:8px;font-size:12px;color:#8B4500;border-left:3px solid #D35400">
+      ⚠️ <strong>A pagar nos hotéis:</strong> BCN imposto €73,92 + caução €150 (reembolsável) + Salou taxa €7,92 = <strong>~€232 em cartão</strong>
+    </div>
+  </div>
+
+  <!-- ── HOTEL 1: MADRID ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#1A3A5C,#1A5276)">
+      <div class="bk-icon">🏙️</div>
+      <div>
+        <div class="bk-name">ibis Madrid Norte Las Tablas</div>
+        <div class="bk-sub">📍 Calle Sauceda 14, Fuencarral-El Pardo, Madrid</div>
+        <span class="bk-nights">Dia 1–4 · 3 noites · 6 a 9 de Julho 2026</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#EBF5FB">
+          <div class="cb-label" style="color:#1A5276">🔑 CONFIRMAÇÃO</div>
+          <div class="cb-val" style="color:#1A5276">6650298767</div>
+          <div class="cb-sub">Booking.com</div>
+        </div>
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">🔒 CÓDIGO PIN</div>
+          <div class="cb-val" style="color:#C0392B">5136</div>
+          <div class="cb-sub">Confidencial</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">✅ Check-in</div><div class="bc-val">6 Jul (Seg)</div><div class="bc-sub">A partir das 14:00</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🚪 Check-out</div><div class="bc-val">9 Jul (Qui)</div><div class="bc-sub">Até às 12:00</div></div>
+        <div class="bk-cell bk-cell-full"><div class="bc-lbl">🛏️ Quarto</div><div class="bc-val">Duplo Standard com Cama Individual para Criança</div><div class="bc-sub">2 adultos + 1 criança (10 anos)</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>Quarto Duplo Standard (3 noites)</span><span>€307,50</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅</span><span style="color:#1A7A45">€307,50</span></div>
+      </div>
+      <div class="bk-alert bk-alert-w"><span>☕</span><div><strong>Pequeno-almoço NÃO incluído.</strong> €13/pessoa/noite extra. Para 3 pessoas × 3 noites = €117 se quiser adicionar.</div></div>
+      <div class="bk-alert bk-alert-i"><span>🚗</span><div><strong>79 lugares de estacionamento grátis</strong> com postos de carregamento para híbrido/EV. Perfeito para o Peugeot!</div></div>
+      <div class="bk-alert bk-alert-r"><span>❌</span><div><strong>Não reembolsável.</strong> Cancelamento = perda total de €307,50.</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">📞</div><div class="bc-val">+34 910 771 144</div></div>
+        <div class="bk-ct"><div class="bc-lbl">📍 Metro</div><div class="bc-val">L10 Las Tablas · 5min a pé</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOTEL 2: BARCELONA ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#7D3C98,#1A5276)">
+      <div class="bk-icon">🌊</div>
+      <div>
+        <div class="bk-name">Attica 21 Barcelona Mar</div>
+        <div class="bk-sub">📍 Provençals, 10, Sant Marti, 08019 Barcelona</div>
+        <span class="bk-nights">Dia 4–8 · 4 noites · 9 a 13 de Julho 2026</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#EBF5FB">
+          <div class="cb-label" style="color:#1A5276">🔑 CONFIRMAÇÃO</div>
+          <div class="cb-val" style="color:#1A5276">5001670603</div>
+          <div class="cb-sub">Booking.com</div>
+        </div>
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">🔒 CÓDIGO PIN</div>
+          <div class="cb-val" style="color:#C0392B">3240</div>
+          <div class="cb-sub">Confidencial</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">✅ Check-in</div><div class="bc-val">9 Jul (Qui)</div><div class="bc-sub">A partir das 14:00</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🚪 Check-out</div><div class="bc-val">13 Jul (Seg)</div><div class="bc-sub">Até às 12:00</div></div>
+        <div class="bk-cell bk-cell-full"><div class="bc-lbl">🛏️ Quarto</div><div class="bc-val">Duplo com Cama Extra (2 Adultos + 1 Criança)</div><div class="bc-sub">Pequeno-almoço incluído ☕✅</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>Quarto Duplo c/ Cama Extra (4 noites)</span><span>€731,12</span></div>
+        <div class="bk-price-row"><span>IVA</span><span>€73,11</span></div>
+        <div class="bk-price-row" style="color:#D35400"><span>⚠️ Imposto municipal (pagar no hotel)</span><span>€73,92</span></div>
+        <div class="bk-price-row" style="color:#1A7A45"><span>Desconto Booking.com</span><span>-€58,49</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅</span><span style="color:#1A7A45">€745,74</span></div>
+      </div>
+      <div class="bk-alert bk-alert-ok"><span>☕</span><div><strong>Pequeno-almoço incluído</strong> para os 3 nas 4 noites.</div></div>
+      <div class="bk-alert bk-alert-w"><span>💶</span><div><strong>Imposto municipal a pagar no hotel:</strong> €9,24/adulto/noite × 2A × 4 noites = <strong>€73,92</strong>. Criança isenta.</div></div>
+      <div class="bk-alert bk-alert-w"><span>💳</span><div><strong>Caução de €150</strong> cobrada no check-in por cartão. Devolvida em 7 dias após check-out.</div></div>
+      <div class="bk-alert bk-alert-r"><span>❌</span><div><strong>Não reembolsável e não alterável.</strong> Cancelamento = perda total.</div></div>
+      <div class="bk-alert bk-alert-i"><span>📍</span><div><strong>Sant Marti/Poblenou</strong> — Metro L4 (~5min a pé). ~20min ao centro. Perto da Barceloneta!</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">📞</div><div class="bc-val">+34 932 665 200</div></div>
+        <div class="bk-ct"><div class="bc-lbl">📍 Metro</div><div class="bc-val">L4 Poblenou · 5min</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOTEL 3: SALOU ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#0E6655,#1A7A45)">
+      <div class="bk-icon">🏖️</div>
+      <div>
+        <div class="bk-name">H10 Mediterranean Village ⭐⭐⭐⭐</div>
+        <div class="bk-sub">📍 C/ Ginesta, s/n, Cap Salou, Salou</div>
+        <span class="bk-nights">Dia 8–10 · 2 noites · 13 a 15 de Julho 2026 · Half Board</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#E8F8EF">
+          <div class="cb-label" style="color:#1A7A45">🔑 REFERÊNCIA RESERVA</div>
+          <div class="cb-val" style="color:#0E6655;font-size:16px">3701-008162</div>
+          <div class="cb-sub">H10 Hotels (direto)</div>
+        </div>
+        <div class="code-b" style="background:#E8F8EF">
+          <div class="cb-label" style="color:#1A7A45">🎁 H10 REWARDS</div>
+          <div class="cb-val" style="color:#0E6655;font-size:13px">247945280000</div>
+          <div class="cb-sub">Express Sign-up</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">✅ Check-in</div><div class="bc-val">13 Jul (Dom)</div><div class="bc-sub">A partir das 15:00</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🚪 Check-out</div><div class="bc-val">15 Jul (Ter)</div><div class="bc-sub">Até às 12:00</div></div>
+        <div class="bk-cell bk-cell-full"><div class="bc-lbl">🛏️ Quarto + Regime</div><div class="bc-val">Quarto Duplo · Half Board (Meia Pensão)</div><div class="bc-sub">2A + 1C (10 anos) · Pequeno-almoço + Jantar ✅ · Bebidas não incluídas</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>13 Jul (Dom) — Half Board</span><span>€220,00</span></div>
+        <div class="bk-price-row"><span>14 Jul (Seg) — Half Board</span><span>€220,00</span></div>
+        <div class="bk-price-row" style="color:#1A7A45"><span>Desconto H10ESCAPE (5%)</span><span>-€22,00</span></div>
+        <div class="bk-price-row" style="color:#1A7A45"><span>Desconto H10 REWARDS (5%)</span><span>-€22,00</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅ (cartão)</span><span style="color:#1A7A45">€396,00</span></div>
+      </div>
+      <div class="bk-alert bk-alert-ok"><span>🍽️</span><div><strong>Half Board:</strong> Pequeno-almoço bufê + Jantar bufê (show cooking). Bebidas pagas à parte.</div></div>
+      <div class="bk-alert bk-alert-w"><span>💶</span><div><strong>Taxa turística Salou a pagar no hotel:</strong> €1,98 × 2A × 2 noites = <strong>€7,92</strong>. Criança isenta.</div></div>
+      <div class="bk-alert bk-alert-i"><span>📱</span><div><strong>Check-in Online disponível!</strong> Fazer scan do QR Code no email de confirmação para evitar filas.</div></div>
+      <div class="bk-alert bk-alert-w"><span>🔄</span><div><strong>1 Mudança de Data grátis</strong> até <strong>28 Jun 2026</strong> (15 dias antes). Após = 100% custos.</div></div>
+      <div class="bk-alert bk-alert-r"><span>💳</span><div><strong>Apresentar o cartão terminado em 2599</strong> no check-in. Obrigatório.</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">📞</div><div class="bc-val">+34 977 37 30 11</div></div>
+        <div class="bk-ct"><div class="bc-lbl">✉️</div><div class="bc-val" style="font-size:10px">h10.mediterranean.village@h10hotels.com</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOTEL 4: TOLEDO ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#6B2D8B,#4A235A)">
+      <div class="bk-icon">🏰</div>
+      <div>
+        <div class="bk-name">Beatriz Toledo Auditorium &amp; Spa</div>
+        <div class="bk-sub">📍 Concilios de Toledo s/n, 45005 Toledo, Espanha</div>
+        <span class="bk-nights">Dia 10–11 · 1 noite · 15 a 16 de Julho 2026</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#EBF5FB">
+          <div class="cb-label" style="color:#1A5276">🔑 CONFIRMAÇÃO</div>
+          <div class="cb-val" style="color:#1A5276">5431964829</div>
+          <div class="cb-sub">Booking.com</div>
+        </div>
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">🔒 CÓDIGO PIN</div>
+          <div class="cb-val" style="color:#C0392B">2182</div>
+          <div class="cb-sub">Confidencial</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">✅ Check-in</div><div class="bc-val">15 Jul (Qua)</div><div class="bc-sub">15:00 – 23:30</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🚪 Check-out</div><div class="bc-val">16 Jul (Qui)</div><div class="bc-sub">07:30 – 12:00</div></div>
+        <div class="bk-cell bk-cell-full"><div class="bc-lbl">🛏️ Quarto</div><div class="bc-val">Quarto Familiar (2 Adultos + 2 Crianças)</div><div class="bc-sub">Reservado para: 2 adultos + 1 criança (10 anos)</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>Quarto Familiar (1 noite)</span><span>€112,55</span></div>
+        <div class="bk-price-row"><span>IVA</span><span>€11,25</span></div>
+        <div class="bk-price-total" style="color:#D35400"><span>⏳ A COBRAR (Booking.com) — NÃO PAGO AINDA</span><span>€123,80</span></div>
+      </div>
+      <div class="bk-alert bk-alert-ok"><span>✅</span><div><strong>Cancelamento GRATUITO até 13 Jul 2026 às 23:59!</strong> Ainda tem tempo para cancelar sem custos se precisar.</div></div>
+      <div class="bk-alert bk-alert-w"><span>⏳</span><div><strong>Pagamento ainda não efectuado.</strong> O Booking.com cobrará automaticamente o cartão. Confirme que o cartão está activo.</div></div>
+      <div class="bk-alert bk-alert-i"><span>🚗</span><div><strong>Estacionamento incluído no preço</strong> — mas descoberto e sujeito a disponibilidade (lugares limitados). Chegar a tempo para garantir lugar.</div></div>
+      <div class="bk-alert bk-alert-w"><span>☕</span><div><strong>Pequeno-almoço NÃO incluído.</strong> €16,50/pessoa/noite extra. Almoço €25/pp. Jantar €25/pp.</div></div>
+      <div class="bk-alert bk-alert-i"><span>🏊</span><div>Spa aberto segunda a domingo 10h-21h. <strong>Crianças &lt;16 anos não podem usar piscina interior nem spa.</strong></div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">📞</div><div class="bc-val">+34 925 26 91 00</div></div>
+        <div class="bk-ct"><div class="bc-lbl">📍 Localização</div><div class="bc-val">45005 Toledo, Espanha</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BILHETES: PORTAVENTURA ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#0E6655,#0E6655)">
+      <div class="bk-icon">🎢</div>
+      <div>
+        <div class="bk-name">PortAventura World — 2 Dias / 3 Parques</div>
+        <div class="bk-sub">PortAventura Park + Ferrari Land + Caribe Aquatic Park</div>
+        <span class="bk-nights">Dia 8–9 · 13 e 14 Jul 2026 · Entrada directa nos torniquetes!</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#E8F8EF">
+          <div class="cb-label" style="color:#1A7A45">🔑 REFERÊNCIA</div>
+          <div class="cb-val" style="color:#0E6655;font-size:15px">6a3e5e76c7926</div>
+          <div class="cb-sub">portaventuraworld.com</div>
+        </div>
+        <div class="code-b" style="background:#E8F8EF">
+          <div class="cb-label" style="color:#1A7A45">📅 VÁLIDO</div>
+          <div class="cb-val" style="color:#0E6655;font-size:15px">13–16 Jul</div>
+          <div class="cb-sub">Usar em 2 dias dentro deste período</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">🎢 Dia 8 (13 Jul)</div><div class="bc-val">PortAventura Park</div><div class="bc-sub">Abre 10h · Espetáculo fogo 22h</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🏎️🌊 Dia 9 (14 Jul)</div><div class="bc-val">Ferrari Land + Caribe</div><div class="bc-sub">Ferrari 11h · Caribe 10h</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🧑 Adulto ×2</div><div class="bc-val">€75 × 2 = €150 (preço tabela)</div><div class="bc-sub">Bilhetes: ...578946 / ...578947</div></div>
+        <div class="bk-cell"><div class="bc-lbl">👦 Júnior ×1</div><div class="bc-val">€66 × 1 = €66</div><div class="bc-sub">Bilhete: ...578948</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>2× Adulto 2 Dias 3 Parques</span><span>€150,00</span></div>
+        <div class="bk-price-row"><span>1× Júnior 2 Dias 3 Parques</span><span>€66,00</span></div>
+        <div class="bk-price-row" style="color:#1A7A45"><span>Desconto 20%</span><span>-€36,00</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅</span><span style="color:#1A7A45">€180,00</span></div>
+      </div>
+      <div class="bk-alert bk-alert-ok"><span>✅</span><div><strong>Entrada directa nos torniquetes!</strong> Não é necessário trocar na bilheteira. Mostrar o bilhete no ecrã ou impresso.</div></div>
+      <div class="bk-alert bk-alert-i"><span>📅</span><div><strong>1º dia obrigatoriamente 13 Jul.</strong> Os 2 dias de acesso devem ser usados dentro do período de 4 dias (13–16 Jul).</div></div>
+      <div class="bk-alert bk-alert-w"><span>⚠️</span><div>Cancelamento gratuito até <strong>3 dias antes da chegada (10 Jul)</strong>. Após essa data sem reembolso.</div></div>
+      <div class="bk-alert bk-alert-i"><span>⚡</span><div>Considere o <strong>Express Pass</strong> para acesso prioritário às principais atrações — evita filas em época alta! Disponível via QR Code no bilhete.</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">🌐 Site</div><div class="bc-val">portaventuraworld.com</div></div>
+        <div class="bk-ct"><div class="bc-lbl">📍 Morada</div><div class="bc-val">Avda. Alcalde Pere Molas km 2, 43480 Vila-seca</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BILHETES: BERNABÉU ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#C0392B,#6E0000)">
+      <div class="bk-icon">🏟️</div>
+      <div>
+        <div class="bk-name">Classic Tour Bernabéu — Real Madrid</div>
+        <div class="bk-sub">Museu · Vestiários · Bancos · Vista Panorâmica · Loja Oficial</div>
+        <span class="bk-nights">Dia 3 · 8 Jul 2026 (Qua) · 10:00h · Av. Concha Espina 1, Madrid</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">🔑 RESERVA</div>
+          <div class="cb-val" style="color:#C0392B">101952752</div>
+          <div class="cb-sub">realmadrid.com</div>
+        </div>
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">📅 DATA E HORA</div>
+          <div class="cb-val" style="color:#C0392B">8 Jul · 10h</div>
+          <div class="cb-sub">Quarta-feira · pontual!</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">🧑 Adulto T:303338013</div><div class="bc-val">€41,00</div><div class="bc-sub">Bilhete 1/3</div></div>
+        <div class="bk-cell"><div class="bc-lbl">👦 Infantil T:303338014</div><div class="bc-val">€35,00</div><div class="bc-sub">Bilhete 2/3 · 5-14 anos</div></div>
+        <div class="bk-cell bk-cell-full"><div class="bc-lbl">🧑 Adulto T:303338015</div><div class="bc-val">€41,00</div><div class="bc-sub">Bilhete 3/3</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>2× Adulto (+14 anos)</span><span>€82,00</span></div>
+        <div class="bk-price-row"><span>1× Infantil (5-14 anos)</span><span>€35,00</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅</span><span style="color:#1A7A45">€117,00</span></div>
+      </div>
+      <div class="bk-alert bk-alert-r"><span>⏰</span><div><strong>Chegada OBRIGATÓRIA às 10:00h!</strong> Entrada apenas válida para a data e hora reservada. Chegar antes ou depois não garante entrada.</div></div>
+      <div class="bk-alert bk-alert-ok"><span>🚇</span><div><strong>Metro L10 directo!</strong> O ibis Las Tablas está na L10 — apanhar o metro até à paragem <strong>Santiago Bernabéu</strong>. Comodíssimo!</div></div>
+      <div class="bk-alert bk-alert-w"><span>🎽</span><div>O tour inclui: Museu 15 Champions · Vestiários 1º equipa · Bancos de suplentes · Vista panorâmica · Fotomontagens · Loja oficial.</div></div>
+      <div class="bk-alert bk-alert-w"><span>⚽</span><div>Se houver jogo no dia anterior ou no próprio dia, <strong>vestiários e bancos estarão fechados</strong>. Verifique em realmadrid.com secção "Avisos" antes de ir.</div></div>
+      <div class="bk-alert bk-alert-i"><span>🎒</span><div>Não há depósito de bagagem. O percurso tem muitas escadas — não levar malas ou carrinhos.</div></div>
+      <div class="bk-alert bk-alert-r"><span>❌</span><div><strong>Não reembolsável.</strong> Guardar os bilhetes durante todo o percurso — solicitados à saída.</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">📍 Morada</div><div class="bc-val">Av. Concha Espina 1, 28036 Madrid</div></div>
+        <div class="bk-ct"><div class="bc-lbl">🚇 Metro / Email</div><div class="bc-val">L10 Santiago Bernabéu · tour@corp.realmadrid.com</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BILHETES: CAMP NOU ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#1A3A5C,#A50044)">
+      <div class="bk-icon">⚽</div>
+      <div>
+        <div class="bk-name">Camp Nou — Barça Immersive Museum</div>
+        <div class="bk-sub">FC Barcelona · Museu + Audioguia Digital + Espaço Imersivo 360°</div>
+        <span class="bk-nights">Dia 7 · 12 Jul 2026 (Dom) · 10:00h · Levar auscultadores!</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#EBF5FB">
+          <div class="cb-label" style="color:#1A5276">🔑 LOCATOR</div>
+          <div class="cb-val" style="color:#1A5276;font-size:14px">WX5ECA7W29MX</div>
+          <div class="cb-sub">fcbarcelona.com</div>
+        </div>
+        <div class="code-b" style="background:#EBF5FB">
+          <div class="cb-label" style="color:#1A5276">📅 DATA E HORA</div>
+          <div class="cb-val" style="color:#1A5276">12 Jul · 10h</div>
+          <div class="cb-sub">Domingo · entrada até 10:30h!</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">🧑 Adulto GY48D</div><div class="bc-val">€31 + €2,10 = €33,10</div></div>
+        <div class="bk-cell"><div class="bc-lbl">🧑 Adulto GZ43X</div><div class="bc-val">€31 + €2,10 = €33,10</div></div>
+        <div class="bk-cell bk-cell-full"><div class="bc-lbl">👦 Children GZ439 (4-10 anos)</div><div class="bc-val">€24 + €2,10 = €26,10</div><div class="bc-sub">Arthur (10 anos) — qualifica na categoria Children ✅</div></div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>2× Adulto General</span><span>€66,20</span></div>
+        <div class="bk-price-row"><span>1× Children (4-10)</span><span>€26,10</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅</span><span style="color:#1A7A45">€92,30</span></div>
+      </div>
+      <div class="bk-alert bk-alert-r"><span>⏰</span><div><strong>Chegada OBRIGATÓRIA até 10:30h!</strong> Entrada válida até 30 minutos após as 10:00h. Sair do hotel antes das 09:00h para garantir.</div></div>
+      <div class="bk-alert bk-alert-w"><span>🎧</span><div><strong>LEVAR AUSCULTADORES!</strong> O audioguia é digital — sem auscultadores a experiência fica limitada. Não esquecer!</div></div>
+      <div class="bk-alert bk-alert-i"><span>📍</span><div>Ir directamente à entrada do <strong>Barça Immersive Tour</strong> (Acesso 9, Taquillas). O audioguia digital é entregue à entrada em formato digital.</div></div>
+      <div class="bk-alert bk-alert-r"><span>❌</span><div><strong>Não reembolsável.</strong> Em caso de atraso acima de 30 min, mudança de bilhete custa €10 extra/bilhete.</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">🌐 Site</div><div class="bc-val">fcbarcelona.com</div></div>
+        <div class="bk-ct"><div class="bc-lbl">📍 Acesso</div><div class="bc-val">Avda. Arístides Maillol, Barcelona</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SEGURO DE VIAGEM: ARTHUR ── -->
+  <div class="card" style="margin-bottom:13px;overflow:hidden">
+    <div class="bk-header" style="background:linear-gradient(135deg,#C0392B,#922B21)">
+      <div class="bk-icon">🛡️</div>
+      <div>
+        <div class="bk-name">Seguro de Viagem AXA — Arthur Santos</div>
+        <div class="bk-sub">Inter Partner Assistance S.A. · Opção Classic · Portugal → Espanha</div>
+        <span class="bk-nights">6–16 Jul 2026 · 11 dias · Segurado: Arthur Santos (10 anos)</span>
+      </div>
+    </div>
+    <div class="bk-body">
+      <div class="codes-wrap">
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">📋 APÓLICE</div>
+          <div class="cb-val" style="color:#C0392B;font-size:13px">1.15.18.101951.0357010</div>
+          <div class="cb-sub">Adesão N.º 0006721</div>
+        </div>
+        <div class="code-b" style="background:#FDEDEC">
+          <div class="cb-label" style="color:#C0392B">🆘 EMERGÊNCIA 24H</div>
+          <div class="cb-val" style="color:#C0392B;font-size:15px">+351 21 032 18 18</div>
+          <div class="cb-sub">AXA Partners · chamada rede fixa</div>
+        </div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-cell"><div class="bc-lbl">👦 Segurado</div><div class="bc-val">Arthur Santos</div><div class="bc-sub">Nascido 25/02/2016 · CC: 53679t99g</div></div>
+        <div class="bk-cell"><div class="bc-lbl">📅 Cobertura</div><div class="bc-val">6–16 Jul 2026</div><div class="bc-sub">Origem: Portugal · Destino: Espanha</div></div>
+      </div>
+      <div style="background:#F8F9FA;border-radius:9px;padding:10px 12px;margin-bottom:9px">
+        <div style="font-weight:800;font-size:12px;color:#2C3E50;margin-bottom:8px">🛡️ Coberturas Principais</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px">
+          <div style="background:#fff;border-radius:7px;padding:6px 8px"><div style="font-weight:700;color:#B22222">🏥 Despesas Médicas</div><div>€3.500 (franquia €50)</div></div>
+          <div style="background:#fff;border-radius:7px;padding:6px 8px"><div style="font-weight:700;color:#B22222">🚁 Repatriamento</div><div>Custos reais</div></div>
+          <div style="background:#fff;border-radius:7px;padding:6px 8px"><div style="font-weight:700;color:#B22222">💊 Medicamentos urgentes</div><div>Custos reais</div></div>
+          <div style="background:#fff;border-radius:7px;padding:6px 8px"><div style="font-weight:700;color:#B22222">💶 Adiantamento fundos</div><div>€500</div></div>
+          <div style="background:#fff;border-radius:7px;padding:6px 8px"><div style="font-weight:700;color:#B22222">🏨 Hotel prolongado</div><div>€75/dia · max €750</div></div>
+          <div style="background:#fff;border-radius:7px;padding:6px 8px"><div style="font-weight:700;color:#B22222">✈️ Atraso voo (+12h)</div><div>€75/dia · max €450</div></div>
+        </div>
+      </div>
+      <div class="bk-price">
+        <div class="bk-price-row"><span>Seguro Viagem Classic — Arthur Santos</span><span>€22,55</span></div>
+        <div class="bk-price-total"><span>TOTAL PAGO ✅</span><span style="color:#1A7A45">€22,55</span></div>
+      </div>
+      <div class="bk-alert bk-alert-r"><span>⚠️</span><div><strong>Seguro apenas para o Arthur!</strong> Jefferson e a sua esposa não estão cobertos. Considere contratar seguro também para os 2 adultos em viagemsegura.pt</div></div>
+      <div class="bk-alert bk-alert-i"><span>📋</span><div>Condições gerais disponíveis em <strong>viagemsegura.pt</strong>. Levar este documento impresso ou no telemóvel durante a viagem.</div></div>
+      <div class="bk-contact">
+        <div class="bk-ct"><div class="bc-lbl">🆘 Emergência 24h</div><div class="bc-val">+351 21 032 18 18</div></div>
+        <div class="bk-ct"><div class="bc-lbl">🌐 Site</div><div class="bc-val">viagemsegura.pt</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A PAGAR NOS HOTÉIS -->
+  <div class="card" style="padding:13px;margin-bottom:13px">
+    <div style="font-weight:900;font-size:13px;margin-bottom:10px">💶 A Pagar Diretamente nos Hotéis</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <tr style="background:#F0F4F8"><th style="padding:7px 9px;text-align:left">Hotel</th><th style="padding:7px 9px;text-align:right">Valor</th><th style="padding:7px 9px;text-align:left">Motivo</th></tr>
+      <tr><td style="padding:7px 9px"><strong>Attica 21 Barcelona</strong></td><td style="padding:7px 9px;text-align:right;font-weight:800;color:#D35400">€73,92</td><td style="padding:7px 9px;font-size:11px">Imposto municipal (€9,24 × 2A × 4 noites)</td></tr>
+      <tr style="background:#FAFAFA"><td style="padding:7px 9px"><strong>Attica 21 Barcelona</strong></td><td style="padding:7px 9px;text-align:right;font-weight:800;color:#D35400">€120,00</td><td style="padding:7px 9px;font-size:11px">Caução (reembolsada em 7 dias após saída)</td></tr>
+      <tr><td style="padding:7px 9px"><strong>H10 Mediterranean Village</strong></td><td style="padding:7px 9px;text-align:right;font-weight:800;color:#D35400">€7,92</td><td style="padding:7px 9px;font-size:11px">Taxa turística Salou (€1,98 × 2A × 2 noites)</td></tr>
+    </table>
+    <div style="background:#E8F8EF;border-radius:8px;padding:8px 11px;margin-top:9px;font-size:12px;color:#0D5C35;font-weight:700;border-left:3px solid #1A7A45">
+      Total extras: €81,84 + €150 caução reembolsável = <strong>~€232 em cartão</strong>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="card" style="padding:13px">
+    <div style="font-weight:900;font-size:13px;margin-bottom:10px">✅ Checklist — Levar na Viagem</div>
+    <div class="chk-item"><div class="chk-box"></div><span>Este guia com todas as confirmações e PINs</span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>Cartão de crédito terminado em <strong>2599</strong> (H10 exige o mesmo cartão do pagamento)</span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>Documentos de identificação (CC ou passaporte) para todos</span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>~€232 em cartão para impostos + caução BCN (€73,92 + €150 + €7,92)</span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>Fazer check-in online H10 antes de chegar (QR Code no email)</span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>Informar ibis Madrid hora de chegada: <strong>+34 910 771 144</strong></span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>Verificar que cartão Booking.com está activo para cobrança do Toledo (€123,80 pendente)</span></div>
+    <div class="chk-item"><div class="chk-box"></div><span>Cancelamento gratuito Toledo possível até <strong>13 Jul 2026 às 23:59</strong> se necessário</span></div>
+    <div class="chk-item" style="border:none"><div class="chk-box"></div><span>Mudança gratuita H10 Salou possível até <strong>28 Jun 2026</strong> se precisar alterar datas</span></div>
+  </div>
+</div><!-- /p11 -->
+
+</div><!-- /panels -->
+<!-- ══════════ P12: MAPAS ══════════ -->
+<div class="panel p12">
+  <div class="sec-t">📍 Mapas — Abrir no Google Maps</div>
+  <p style="font-size:12px;color:#777;margin-bottom:14px">Toque em <strong>📍 Maps</strong> para abrir o Google Maps ou <strong>🚗 Navegar</strong> para iniciar a navegação directamente!</p>
+
+  <!-- HOTÉIS -->
+  <div class="map-city">🏨 Hotéis — Alojamentos</div>
+
+  <div class="map-hotel-item" style="--hc:#1A5276">
+    <div class="map-hotel-top">
+      <div class="map-hotel-name">🏙️ ibis Madrid Norte Las Tablas</div>
+      <span class="map-hotel-dates">6–9 Jul</span>
+    </div>
+    <div class="map-hotel-addr">📍 Calle Sauceda 14, Fuencarral-El Pardo, 28050 Madrid</div>
+    <div class="map-btn-row">
+      <a href="https://maps.google.com/?q=ibis+Madrid+Norte+Las+Tablas,+Calle+Sauceda+14,+Madrid" target="_blank" class="map-btn">📍 Maps</a>
+      <a href="https://maps.google.com/?daddr=Calle+Sauceda+14,+Fuencarral+El+Pardo,+28050+Madrid" target="_blank" class="map-nav-btn">🚗 Navegar</a>
+      <a href="https://waze.com/ul?q=ibis+Madrid+Norte+Las+Tablas&navigate=yes" target="_blank" class="map-waze-btn">🔵 Waze</a>
+    </div>
+  </div>
+
+  <div class="map-hotel-item" style="--hc:#7D3C98">
+    <div class="map-hotel-top">
+      <div class="map-hotel-name">🌊 Attica 21 Barcelona Mar</div>
+      <span class="map-hotel-dates">9–13 Jul</span>
+    </div>
+    <div class="map-hotel-addr">📍 Provençals 10, Sant Marti, 08019 Barcelona</div>
+    <div class="map-btn-row">
+      <a href="https://maps.google.com/?q=Attica+21+Barcelona+Mar,+Provencals+10,+Barcelona" target="_blank" class="map-btn">📍 Maps</a>
+      <a href="https://maps.google.com/?daddr=Provencals+10,+Sant+Marti,+08019+Barcelona" target="_blank" class="map-nav-btn">🚗 Navegar</a>
+      <a href="https://waze.com/ul?q=Attica+21+Barcelona+Mar&navigate=yes" target="_blank" class="map-waze-btn">🔵 Waze</a>
+    </div>
+  </div>
+
+  <div class="map-hotel-item" style="--hc:#0E6655">
+    <div class="map-hotel-top">
+      <div class="map-hotel-name">🏖️ H10 Mediterranean Village</div>
+      <span class="map-hotel-dates">13–15 Jul</span>
+    </div>
+    <div class="map-hotel-addr">📍 C/ Ginesta s/n, Cap Salou, 43840 Salou</div>
+    <div class="map-btn-row">
+      <a href="https://maps.google.com/?q=H10+Mediterranean+Village,+Cap+Salou,+Salou" target="_blank" class="map-btn">📍 Maps</a>
+      <a href="https://maps.google.com/?daddr=H10+Mediterranean+Village,+Calle+Ginesta,+43840+Salou" target="_blank" class="map-nav-btn">🚗 Navegar</a>
+      <a href="https://waze.com/ul?q=H10+Mediterranean+Village+Salou&navigate=yes" target="_blank" class="map-waze-btn">🔵 Waze</a>
+    </div>
+  </div>
+
+  <div class="map-hotel-item" style="--hc:#6B2D8B">
+    <div class="map-hotel-top">
+      <div class="map-hotel-name">🏰 Beatriz Toledo Auditorium &amp; Spa</div>
+      <span class="map-hotel-dates">15–16 Jul</span>
+    </div>
+    <div class="map-hotel-addr">📍 Concilios de Toledo s/n, 45005 Toledo</div>
+    <div class="map-btn-row">
+      <a href="https://maps.google.com/?q=Beatriz+Toledo+Auditorium+Spa,+Concilios+de+Toledo,+Toledo" target="_blank" class="map-btn">📍 Maps</a>
+      <a href="https://maps.google.com/?daddr=Concilios+de+Toledo+s/n,+45005+Toledo" target="_blank" class="map-nav-btn">🚗 Navegar</a>
+      <a href="https://waze.com/ul?q=Beatriz+Toledo+Auditorium+Spa&navigate=yes" target="_blank" class="map-waze-btn">🔵 Waze</a>
+    </div>
+  </div>
+
+  <!-- PARK & RIDE -->
+  <div class="map-city">🅿️ Park &amp; Ride — Estacionamentos</div>
+
+  <div class="map-item">
+    <div class="map-item-left"><span class="map-emoji">🅿️</span><span class="map-name">Park &amp; Ride Príncipe Pío — Madrid</span><div class="map-addr">Metro L6/L10/L11 · 15min ao centro</div></div>
+    <a href="https://maps.google.com/?q=Parking+Principe+Pio,+Madrid" target="_blank" class="map-btn">📍 Maps</a>
+  </div>
+  <div class="map-item">
+    <div class="map-item-left"><span class="map-emoji">🅿️</span><span class="map-name">Park &amp; Ride Glòries — Barcelona</span><div class="map-addr">Metro L1 · 20min ao centro</div></div>
+    <a href="https://maps.google.com/?q=Parking+Glories,+Avinguda+Diagonal,+Barcelona" target="_blank" class="map-btn">📍 Maps</a>
+  </div>
+  <div class="map-item">
+    <div class="map-item-left"><span class="map-emoji">🅿️</span><span class="map-name">Parking Alfonso VI — Toledo</span><div class="map-addr">Escaleras mecánicas gratuitas ao centro</div></div>
+    <a href="https://maps.google.com/?q=Parking+Alfonso+VI,+Toledo" target="_blank" class="map-btn">📍 Maps</a>
+  </div>
+
+  <!-- MADRID -->
+  <div class="map-city" style="color:#B22222">🏛️ Madrid — Atrações</div>
+
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">⚽</span><span class="map-name">Santiago Bernabéu</span><div class="map-addr">Av. de Concha Espina 1, Chamartín, Madrid</div></div><a href="https://maps.google.com/?q=Santiago+Bernabeu,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🌳</span><span class="map-name">Parque del Retiro</span><div class="map-addr">Plaza de la Independencia 7, Madrid</div></div><a href="https://maps.google.com/?q=Parque+del+Retiro,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🖼️</span><span class="map-name">Museo del Prado</span><div class="map-addr">Paseo del Prado s/n, Madrid · GRÁTIS 18h-20h</div></div><a href="https://maps.google.com/?q=Museo+del+Prado,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🎨</span><span class="map-name">Museo Reina Sofía</span><div class="map-addr">Calle Santa Isabel 52, Madrid · GRÁTIS 19h-21h</div></div><a href="https://maps.google.com/?q=Museo+Reina+Sofia,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">⛲</span><span class="map-name">Plaza Mayor</span><div class="map-addr">Plaza Mayor, Madrid Centro</div></div><a href="https://maps.google.com/?q=Plaza+Mayor,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">👑</span><span class="map-name">Palácio Real de Madrid</span><div class="map-addr">Calle Bailén s/n, Madrid</div></div><a href="https://maps.google.com/?q=Palacio+Real,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🏙️</span><span class="map-name">Gran Vía</span><div class="map-addr">Gran Via, Madrid</div></div><a href="https://maps.google.com/?q=Gran+Via,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🍺</span><span class="map-name">Bar El Tigre</span><div class="map-addr">Calle de las Infantas 7, Madrid · tapas GRÁTIS!</div></div><a href="https://maps.google.com/?q=El+Tigre+Bar,+Calle+Infantas+7,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🛒</span><span class="map-name">Mercado de San Miguel</span><div class="map-addr">Plaza San Miguel s/n, Madrid</div></div><a href="https://maps.google.com/?q=Mercado+de+San+Miguel,+Madrid" target="_blank" class="map-btn">📍 Maps</a></div>
+
+  <!-- ZARAGOZA -->
+  <div class="map-city" style="color:#1A5276">🕌 Zaragoza — Paragem de Almoço</div>
+
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🕌</span><span class="map-name">Basílica del Pilar</span><div class="map-addr">Plaza del Pilar s/n, Zaragoza · GRÁTIS</div></div><a href="https://maps.google.com/?q=Basilica+del+Pilar,+Zaragoza" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🍢</span><span class="map-name">Calle del Temple — Pintxos</span><div class="map-addr">Calle del Temple, Zaragoza · pintxos €1,50-2</div></div><a href="https://maps.google.com/?q=Calle+del+Temple,+Zaragoza" target="_blank" class="map-btn">📍 Maps</a></div>
+
+  <!-- BARCELONA -->
+  <div class="map-city" style="color:#7D3C98">🌊 Barcelona — Atrações</div>
+
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">⛪</span><span class="map-name">Sagrada Família</span><div class="map-addr">Calle Mallorca 401, Eixample, Barcelona</div></div><a href="https://maps.google.com/?q=Sagrada+Familia,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🌿</span><span class="map-name">Park Güell</span><div class="map-addr">Carrer d'Olot s/n, Gràcia, Barcelona</div></div><a href="https://maps.google.com/?q=Park+Guell,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🌅</span><span class="map-name">Bunkers del Carmel</span><div class="map-addr">Turó de la Rovira, Barcelona · melhor vista BCN!</div></div><a href="https://maps.google.com/?q=Bunkers+del+Carmel,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">⚽</span><span class="map-name">Camp Nou</span><div class="map-addr">Carrer d'Arístides Maillol s/n, Barcelona</div></div><a href="https://maps.google.com/?q=Camp+Nou,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🏖️</span><span class="map-name">Praia da Barceloneta</span><div class="map-addr">Passeig Marítim de la Barceloneta, Barcelona</div></div><a href="https://maps.google.com/?q=Barceloneta+Beach,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🍢</span><span class="map-name">Carrer de Blai — Pintxos</span><div class="map-addr">Carrer de Blai, El Poble Sec, Barcelona</div></div><a href="https://maps.google.com/?q=Carrer+de+Blai,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">⛩️</span><span class="map-name">Barri Gòtic + Catedral</span><div class="map-addr">Pla de la Seu s/n, Barri Gòtic, Barcelona</div></div><a href="https://maps.google.com/?q=Catedral+de+Barcelona,+Barri+Gothic" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🛒</span><span class="map-name">La Boqueria</span><div class="map-addr">La Rambla 91, El Raval, Barcelona</div></div><a href="https://maps.google.com/?q=Mercat+de+la+Boqueria,+Barcelona" target="_blank" class="map-btn">📍 Maps</a></div>
+
+  <!-- SALOU -->
+  <div class="map-city" style="color:#0E6655">🎢 Salou — PortAventura World</div>
+
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🎢</span><span class="map-name">PortAventura Park</span><div class="map-addr">Avenida Alcalde Pere Molas km 2, Salou</div></div><a href="https://maps.google.com/?q=PortAventura+Park,+Salou" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🏎️</span><span class="map-name">Ferrari Land</span><div class="map-addr">Avenida Alcalde Pere Molas km 2, Salou</div></div><a href="https://maps.google.com/?q=Ferrari+Land,+PortAventura,+Salou" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🌊</span><span class="map-name">Caribe Aquatic Park</span><div class="map-addr">Avenida Alcalde Pere Molas km 2, Salou</div></div><a href="https://maps.google.com/?q=Caribe+Aquatic+Park,+PortAventura,+Salou" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🌅</span><span class="map-name">Passeig de Miramar — Jantar</span><div class="map-addr">Passeig de Miramar, Salou · vista ao pôr do sol</div></div><a href="https://maps.google.com/?q=Passeig+de+Miramar,+Salou" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🏖️</span><span class="map-name">Praia de Salou</span><div class="map-addr">Platja Llarga, Salou</div></div><a href="https://maps.google.com/?q=Platja+Llarga,+Salou" target="_blank" class="map-btn">📍 Maps</a></div>
+
+  <!-- TOLEDO -->
+  <div class="map-city" style="color:#6B2D8B">🏰 Toledo — Atrações</div>
+
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🌅</span><span class="map-name">Mirador del Valle ⭐</span><div class="map-addr">Carretera de Circunvalación, Toledo · 1ª paragem!</div></div><a href="https://maps.google.com/?q=Mirador+del+Valle,+Toledo" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">⛩️</span><span class="map-name">Catedral Primada de Toledo</span><div class="map-addr">Calle Cardenal Cisneros 1, Toledo</div></div><a href="https://maps.google.com/?q=Catedral+Primada+Toledo" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🏰</span><span class="map-name">Alcázar de Toledo</span><div class="map-addr">Calle Union s/n, Toledo · GRÁTIS</div></div><a href="https://maps.google.com/?q=Alcazar+de+Toledo" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🍬</span><span class="map-name">Mazapán Santo Tomé</span><div class="map-addr">Calle Santo Tomé 3, Toledo · trazer para Portugal!</div></div><a href="https://maps.google.com/?q=Pasteleria+Santo+Tome,+Toledo" target="_blank" class="map-btn">📍 Maps</a></div>
+  <div class="map-item"><div class="map-item-left"><span class="map-emoji">🅿️</span><span class="map-name">Parking Alfonso VI + Escaleras</span><div class="map-addr">Calle Alfonso VI, Toledo · escadas rolantes grátis ao centro</div></div><a href="https://maps.google.com/?q=Parking+Alfonso+VI,+Toledo" target="_blank" class="map-btn">📍 Maps</a></div>
+
+  <div style="background:#E8F8EF;border-radius:11px;padding:12px;margin-top:14px;border:1px solid #1A7A45;font-size:12px">
+    <div style="font-weight:800;color:#1A7A45;margin-bottom:6px">💡 Dica para o iPhone</div>
+    <div>Toque em <strong>📍 Maps</strong> para ver a localização · Toque em <strong>🚗 Navegar</strong> para iniciar navegação directa · <strong>🔵 Waze</strong> abre no Waze com rota calculada</div>
+  </div>
+</div><!-- /p12 -->
+
+</div><!-- /app -->
+</body>
+</html>
